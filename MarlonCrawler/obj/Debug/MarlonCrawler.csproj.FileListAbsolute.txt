@@ -1,0 +1,14 @@
+F:\MarlonWorkShop\MarlonLab\MarlonCrawler\bin\Debug\MarlonCrawler.exe.config
+F:\MarlonWorkShop\MarlonLab\MarlonCrawler\bin\Debug\MarlonCrawler.exe
+F:\MarlonWorkShop\MarlonLab\MarlonCrawler\bin\Debug\MarlonCrawler.pdb
+F:\MarlonWorkShop\MarlonLab\MarlonCrawler\obj\Debug\MarlonCrawler.csprojResolveAssemblyReference.cache
+F:\MarlonWorkShop\MarlonLab\MarlonCrawler\obj\Debug\MarlonCrawler.frmMain.resources
+F:\MarlonWorkShop\MarlonLab\MarlonCrawler\obj\Debug\MarlonCrawler.Properties.Resources.resources
+F:\MarlonWorkShop\MarlonLab\MarlonCrawler\obj\Debug\MarlonCrawler.csproj.GenerateResource.Cache
+F:\MarlonWorkShop\MarlonLab\MarlonCrawler\obj\Debug\MarlonCrawler.exe
+F:\MarlonWorkShop\MarlonLab\MarlonCrawler\obj\Debug\MarlonCrawler.pdb
+F:\MarlonWorkShop\MarlonLab\MarlonCrawler\bin\Debug\CommonLib.dll
+F:\MarlonWorkShop\MarlonLab\MarlonCrawler\bin\Debug\CommonLib.pdb
+F:\MarlonWorkShop\MarlonLab\MarlonCrawler\obj\Debug\MarlonCrawler.JianLib.frmJianLib.resources
+F:\MarlonWorkShop\MarlonLab\MarlonCrawler\bin\Debug\Newtonsoft.Json.dll
+F:\MarlonWorkShop\MarlonLab\MarlonCrawler\bin\Debug\Newtonsoft.Json.xml
