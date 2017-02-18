@@ -68,8 +68,8 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.rtbLog);
-            this.splitContainer1.Size = new System.Drawing.Size(822, 561);
-            this.splitContainer1.SplitterDistance = 405;
+            this.splitContainer1.Size = new System.Drawing.Size(900, 561);
+            this.splitContainer1.SplitterDistance = 443;
             this.splitContainer1.TabIndex = 0;
             // 
             // wbMain
@@ -80,7 +80,7 @@
             this.wbMain.Location = new System.Drawing.Point(3, 111);
             this.wbMain.MinimumSize = new System.Drawing.Size(20, 20);
             this.wbMain.Name = "wbMain";
-            this.wbMain.Size = new System.Drawing.Size(395, 443);
+            this.wbMain.Size = new System.Drawing.Size(433, 443);
             this.wbMain.TabIndex = 0;
             this.wbMain.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.wbMain_DocumentCompleted);
             // 
@@ -100,7 +100,7 @@
             this.groupBox1.Controls.Add(this.tbStorePath);
             this.groupBox1.Location = new System.Drawing.Point(3, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(395, 102);
+            this.groupBox1.Size = new System.Drawing.Size(433, 102);
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
             // 
@@ -125,7 +125,7 @@
             // 
             this.btStart.Location = new System.Drawing.Point(302, 69);
             this.btStart.Name = "btStart";
-            this.btStart.Size = new System.Drawing.Size(75, 23);
+            this.btStart.Size = new System.Drawing.Size(53, 23);
             this.btStart.TabIndex = 0;
             this.btStart.Text = "启动";
             this.btStart.UseVisualStyleBackColor = true;
@@ -193,7 +193,7 @@
             this.rtbLog.Dock = System.Windows.Forms.DockStyle.Fill;
             this.rtbLog.Location = new System.Drawing.Point(0, 0);
             this.rtbLog.Name = "rtbLog";
-            this.rtbLog.Size = new System.Drawing.Size(409, 557);
+            this.rtbLog.Size = new System.Drawing.Size(449, 557);
             this.rtbLog.TabIndex = 0;
             this.rtbLog.Text = "";
             // 
@@ -211,7 +211,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(822, 561);
+            this.ClientSize = new System.Drawing.Size(900, 561);
             this.Controls.Add(this.splitContainer1);
             this.Name = "frmJianLib";
             this.Text = "简库爬虫";

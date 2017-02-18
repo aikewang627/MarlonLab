@@ -27,6 +27,7 @@ namespace MarlonCrawler.JianLib
         string strSiteLoginUrl = @"http://jianlib.com/signin";
         string strSiteSearchUrl = @"http://jianlib.com/resume/search";
         string strSiteDetailUrl = @"http://jianlib.com/resume/detail";
+        string strSiteGetUrl = @"http://jianlib.com/resume/get";
         string strUserName = "aikewang627@163.com";
         string strPassword = "aike27";
         string strKeyword = "";
@@ -172,6 +173,7 @@ namespace MarlonCrawler.JianLib
             }
             else
             {
+                RequestResumeGetByHttpWebRequest(lsResumeChief[0]);//获取联系方式
                 RequestResumeDetailByHttpWebRequest(lsResumeChief[0]);//下载简历
                 lsResumeChief.RemoveAt(0);//下载后，移除Url
             }
@@ -180,7 +182,7 @@ namespace MarlonCrawler.JianLib
         //获得简历列表
         void RequestResumeListByHttpWebRequest(string keyword,int pageNo)
         {
-            AddLog("开始翻页……");
+            AddLog(string.Format("开始获取简历列表：关键字{0}，第{1}页",keyword,pageNo));
 
             System.Net.HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create(strSiteSearchUrl);
             request.Method = "POST";
@@ -188,12 +190,12 @@ namespace MarlonCrawler.JianLib
             request.Headers.Clear();
             request.Accept = "*/*";
             request.Connection = "false";
+            request.ContentType = "application/x-www-form-urlencoded; charset=UTF-8";
             request.Headers.Add("Accept-Encoding", "gzip, deflate");
             request.Headers.Add("Accept-Language", "zh-CN,zh;q=0.8");
             request.Headers.Add("Cookie", strCookie);
             request.Host = "jianlib.com";
             request.Referer = "http://jianlib.com/resume/search";
-            
             request.Headers.Add("Origin", "http://jianlib.com");
             request.UserAgent = "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36";
             request.Headers.Add("X-Request-With", "XMLHttpRequest");
@@ -218,8 +220,7 @@ namespace MarlonCrawler.JianLib
                 strPostdata += "&" + pair.Key + "=" + pair.Value;
             }
             if (strPostdata.Length > 1) { strPostdata = strPostdata.TrimStart('&'); }
-            Encoding encoding = Encoding.Default;
-            byte[] buffer = encoding.GetBytes(strPostdata);
+            byte[] buffer = System.Text.Encoding.UTF8.GetBytes(strPostdata);
             using (Stream reqStream = request.GetRequestStream())
             {
                 reqStream.Write(buffer, 0, buffer.Length);
@@ -228,7 +229,7 @@ namespace MarlonCrawler.JianLib
             System.Net.HttpWebResponse response = (HttpWebResponse)request.GetResponse();
             using (StreamReader reader = new StreamReader(response.GetResponseStream(), System.Text.Encoding.GetEncoding("utf-8")))
             {
-                AddLog("翻页结束" );
+                AddLog("获取列表结束" );
                 string strResponse = reader.ReadToEnd().FromUnicodeString();
                 HandResponseOfResumeList(strResponse);
                 SaveResumeList(keyword,pageNo.ToString(), strResponse);
@@ -238,14 +239,24 @@ namespace MarlonCrawler.JianLib
         //反序列化
         void HandResponseOfResumeList(string response)
         {
-            ResumeListResult result = JsonConvert.DeserializeObject<JianLib.ResumeListResult>(response);
-            if (result != null)
+            ResumeListResult result = new ResumeListResult();
+            try
             {
-                iSearchItemsCount = result.total;
-                lsResumeChief = result.resumes;
-                AddLog(string.Format("获得列表信息成功：总{0}条，当前第{1}页",result.total,result.current_page));
-               
+                result = JsonConvert.DeserializeObject<JianLib.ResumeListResult>(response);
+                if (result != null)
+                {
+                    iSearchItemsCount = result.total;
+                    lsResumeChief = result.resumes;
+                    AddLog(string.Format("获得列表信息成功：总{0}条，当前第{1}页", result.total, result.current_page));
+
+                }
             }
+            catch (Exception ex)
+            {
+                lsResumeChief = new List<ResumeChiefModel>();
+                AddLog(string.Format("获得列表信息错误：{0}", ex.Message));
+            }
+
         }
         void SaveResumeList(string keyword,string pageNo, string response)
         {
@@ -259,9 +270,42 @@ namespace MarlonCrawler.JianLib
             AddLog("保存结束：" + fileFullName);
         }
         //获得简历详情
+        void RequestResumeGetByHttpWebRequest(JianLib.ResumeChiefModel rcm)
+        {
+            AddLog("开始获取简历联系方式，编号：" + rcm.id);
+            System.Net.HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create(strSiteGetUrl + @"/" + rcm.id);
+            request.Method = "POST";
+            //添加Header
+            request.Headers.Clear();
+            request.Accept = "*/*";
+            request.Connection = "false";
+            request.ContentType = "application/x-www-form-urlencoded; charset=UTF-8";
+            request.Headers.Add("Accept-Encoding", "gzip, deflate");
+            request.Headers.Add("Accept-Language", "zh-CN,zh;q=0.8");
+            request.Headers.Add("Cookie", strCookie);
+            request.Host = "jianlib.com";
+            request.Referer = "http://jianlib.com/resume/detail" + @"/" + rcm.id;
+            request.Headers.Add("Origin", "http://jianlib.com");
+            request.UserAgent = "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36";
+            request.Headers.Add("X-Request-With", "XMLHttpRequest");
+            //组合Body
+
+            System.Net.HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+            using (StreamReader reader = new StreamReader(response.GetResponseStream(), System.Text.Encoding.GetEncoding("utf-8")))
+            {
+
+                string strResponse = reader.ReadToEnd().FromUnicodeString();
+                if (strResponse.Contains("ok"))
+                { AddLog("获取联系方式成功"); }
+                else
+                { AddLog("获取联系方式失败"); }
+            }
+            AddLog("获取简历联系方式结束");
+
+        }
         void RequestResumeDetailByHttpWebRequest(JianLib.ResumeChiefModel rcm)
         {
-            AddLog("开始下载简历，编号："+rcm.id+" ……");
+            AddLog("开始下载简历，编号："+rcm.id);
 
             string getUrl = strSiteDetailUrl + @"/" + rcm.id;
             System.Net.HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create(getUrl);
@@ -320,25 +364,23 @@ namespace MarlonCrawler.JianLib
         //添加日志
         void AddLog(string msg)
         {
+            if (rtbLog.Text.Length > 100000)
+            {
+                string fileFullName = string.Format(strStorePath + "\\{0}-{1}.html", "Log", DateTime.Now.ToString("yyyyMMddHHmmSS"));
+                FileStream fs = new FileStream(fileFullName, FileMode.Create);
+                StreamWriter sw = new StreamWriter(fs);
+                sw.Write(rtbLog.Text);
+                sw.Flush();
+                sw.Close();
+                fs.Close();
+
+                rtbLog.Text = "";
+            }
+
             rtbLog.Text += DateTime.Now.ToString("yyyy年MM月dd日 HH:mm:ss fff") + "  " + msg + "\r\n ";
             rtbLog.SelectionStart = rtbLog.Text.Length ;
             rtbLog.ScrollToCaret();
         }
-
-        List<string> GetAttributeList(string tagName, string attriName)
-        {
-            List<string> strResult = new List<string>();
-            HtmlDocument htmlDoc = wbMain.Document;
-            HtmlElementCollection htmlEleList = htmlDoc.GetElementsByTagName(tagName);
-            foreach (HtmlElement ele in htmlEleList)
-            {
-                if (ele.GetAttribute(attriName) != "") {
-                    strResult.Add(ele.GetAttribute(attriName));
-                }                
-            }
-            return strResult;
-        }
-
 
     }
 
