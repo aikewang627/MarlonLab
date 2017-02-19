@@ -20,6 +20,14 @@ using System.Web;//
 
 namespace MarlonCrawler.JianLib
 {
+    /// <summary>
+    /// 自动登录JianLib，并可设置关键字搜索简历下载。
+    /// 通过WebBrowse控件，加载页面，输入密码，实现登录。
+    /// 通过构建Ajax请求，实现简历列表的获取、联系方式的获取、简历页面的下载。
+    /// 获取简历列表时，需要设置好content-type报文头，否则服务器不能识别表单内容，将无法实现搜索、分页。
+    /// 获取简历页面时，返回是gzip格式的压缩文件，需要解压。
+    /// Marlon 2017-02-19
+    /// </summary>
     public partial class frmJianLib : Form
     {
         //变量声明
@@ -52,6 +60,10 @@ namespace MarlonCrawler.JianLib
             tbPassword.Text = strPassword;
             tbKeyword.Text = strKeyword;
             tbStorePath.Text = strStorePath;
+        }
+        private void frmJianLib_Load(object sender, EventArgs e)
+        {
+
         }
         //选择文件的存放路径
         private void btnSelectStorePath_Click(object sender, EventArgs e)
@@ -366,7 +378,7 @@ namespace MarlonCrawler.JianLib
         {
             if (rtbLog.Text.Length > 100000)
             {
-                string fileFullName = string.Format(strStorePath + "\\{0}-{1}.html", "Log", DateTime.Now.ToString("yyyyMMddHHmmSS"));
+                string fileFullName = string.Format(strStorePath + "\\{0}-{1}.txt", "Log", DateTime.Now.ToString("yyyyMMddHHmmss"));
                 FileStream fs = new FileStream(fileFullName, FileMode.Create);
                 StreamWriter sw = new StreamWriter(fs);
                 sw.Write(rtbLog.Text);
@@ -381,6 +393,7 @@ namespace MarlonCrawler.JianLib
             rtbLog.SelectionStart = rtbLog.Text.Length ;
             rtbLog.ScrollToCaret();
         }
+
 
     }
 

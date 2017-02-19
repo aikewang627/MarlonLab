@@ -64,6 +64,24 @@
       <DependentUpon>frmJianLib.cs</DependentUpon>
     </Compile>
     <Compile Include="JianLib\JianLibModel.cs" />
+    <Compile Include="Liepin\frmHeadhunter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Liepin\frmHeadhunter.Designer.cs">
+      <DependentUpon>frmHeadhunter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Liepin\frmHr.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Liepin\frmHr.Designer.cs">
+      <DependentUpon>frmHr.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Liepin\frmJobhunter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Liepin\frmJobhunter.Designer.cs">
+      <DependentUpon>frmJobhunter.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="frmMain.resx">
@@ -71,6 +89,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="JianLib\frmJianLib.resx">
       <DependentUpon>frmJianLib.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Liepin\frmHeadhunter.resx">
+      <DependentUpon>frmHeadhunter.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

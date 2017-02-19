@@ -26,3 +26,4 @@ E:\MarlonWorkShop\MarlonLab\MarlonCrawler\obj\Debug\MarlonCrawler.frmMain.resour
 E:\MarlonWorkShop\MarlonLab\MarlonCrawler\obj\Debug\MarlonCrawler.JianLib.frmJianLib.resources
 E:\MarlonWorkShop\MarlonLab\MarlonCrawler\obj\Debug\MarlonCrawler.Properties.Resources.resources
 E:\MarlonWorkShop\MarlonLab\MarlonCrawler\obj\Debug\MarlonCrawler.csproj.GenerateResource.Cache
+E:\MarlonWorkShop\MarlonLab\MarlonCrawler\obj\Debug\MarlonCrawler.Liepin.frmHeadhunter.resources

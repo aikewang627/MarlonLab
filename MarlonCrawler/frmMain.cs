@@ -27,5 +27,23 @@ namespace MarlonCrawler
             JianLib.frmJianLib frm = new JianLib.frmJianLib();
             frm.ShowDialog();
         }
+
+        private void btnLiepinHeadhunter_Click(object sender, EventArgs e)
+        {
+            Liepin.frmHeadhunter frm = new Liepin.frmHeadhunter();
+            frm.ShowDialog();
+        }
+
+        private void btnLiepinJobhunter_Click(object sender, EventArgs e)
+        {
+            Liepin.frmJobhunter frm = new Liepin.frmJobhunter();
+            frm.ShowDialog();
+        }
+
+        private void btnLiepinHr_Click(object sender, EventArgs e)
+        {
+            Liepin.frmHr frm = new Liepin.frmHr();
+            frm.ShowDialog();
+        }
     }
 }
