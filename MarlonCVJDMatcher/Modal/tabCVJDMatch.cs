@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MarlonCVJDMatcher.Modal
+namespace Maticsoft.Modal
 {
-    class tabCVJDMatch
+  public  class tabCVJDMatch
     {
+
+
     }
 }
