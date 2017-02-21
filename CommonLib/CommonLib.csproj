@@ -30,8 +30,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MySql.Data">
+      <HintPath>..\DllLib\MySql.Data.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.OracleClient" />
+    <Reference Include="System.Data.SQLite">
+      <HintPath>..\DllLib\System.Data.SQLite.DLL</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -40,6 +47,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\RandomHelper.cs" />
+    <Compile Include="Common\AppConfigHelper.cs" />
+    <Compile Include="Common\INIFile.cs" />
+    <Compile Include="Common\RMB.cs" />
+    <Compile Include="Common\StringPlus.cs" />
+    <Compile Include="Common\TimeParser.cs" />
+    <Compile Include="RedisHelper.cs" />
     <Compile Include="RegularHelper.cs" />
     <Compile Include="UnicodeHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

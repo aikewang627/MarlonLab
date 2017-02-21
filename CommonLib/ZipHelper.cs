@@ -8,6 +8,9 @@ using System.Data;
 
 namespace MarlonLab.CommonLib
 {
+    /// <summary>
+    /// 当Web服务器以gzip格式返回数据时使用
+    /// </summary>
     public static class ZipHelper
     {
         /// <summary>

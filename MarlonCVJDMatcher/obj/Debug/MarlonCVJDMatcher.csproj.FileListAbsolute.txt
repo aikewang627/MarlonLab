@@ -1,0 +1,13 @@
+E:\MarlonWorkShop\MarlonLab\MarlonCVJDMatcher\obj\Debug\MarlonCVJDMatcher.csprojResolveAssemblyReference.cache
+E:\MarlonWorkShop\MarlonLab\MarlonCVJDMatcher\obj\Debug\MarlonCVJDMatcher.frmMain.resources
+E:\MarlonWorkShop\MarlonLab\MarlonCVJDMatcher\obj\Debug\MarlonCVJDMatcher.Properties.Resources.resources
+E:\MarlonWorkShop\MarlonLab\MarlonCVJDMatcher\obj\Debug\MarlonCVJDMatcher.csproj.GenerateResource.Cache
+E:\MarlonWorkShop\MarlonLab\MarlonCVJDMatcher\bin\Debug\MarlonCVJDMatcher.exe.config
+E:\MarlonWorkShop\MarlonLab\MarlonCVJDMatcher\bin\Debug\MarlonCVJDMatcher.exe
+E:\MarlonWorkShop\MarlonLab\MarlonCVJDMatcher\bin\Debug\MarlonCVJDMatcher.pdb
+E:\MarlonWorkShop\MarlonLab\MarlonCVJDMatcher\bin\Debug\CommonLib.dll
+E:\MarlonWorkShop\MarlonLab\MarlonCVJDMatcher\bin\Debug\MySql.Data.dll
+E:\MarlonWorkShop\MarlonLab\MarlonCVJDMatcher\bin\Debug\System.Data.SQLite.DLL
+E:\MarlonWorkShop\MarlonLab\MarlonCVJDMatcher\bin\Debug\CommonLib.pdb
+E:\MarlonWorkShop\MarlonLab\MarlonCVJDMatcher\obj\Debug\MarlonCVJDMatcher.exe
+E:\MarlonWorkShop\MarlonLab\MarlonCVJDMatcher\obj\Debug\MarlonCVJDMatcher.pdb

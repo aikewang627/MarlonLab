@@ -5,6 +5,7 @@ F:\MarlonWorkShop\MarlonLab\CommonLib\obj\Debug\CommonLib.dll
 F:\MarlonWorkShop\MarlonLab\CommonLib\obj\Debug\CommonLib.pdb
 E:\MarlonWorkShop\MarlonLab\CommonLib\bin\Debug\CommonLib.dll
 E:\MarlonWorkShop\MarlonLab\CommonLib\bin\Debug\CommonLib.pdb
-E:\MarlonWorkShop\MarlonLab\CommonLib\obj\Debug\CommonLib.csprojResolveAssemblyReference.cache
 E:\MarlonWorkShop\MarlonLab\CommonLib\obj\Debug\CommonLib.dll
 E:\MarlonWorkShop\MarlonLab\CommonLib\obj\Debug\CommonLib.pdb
+E:\MarlonWorkShop\MarlonLab\CommonLib\bin\Debug\MySql.Data.dll
+E:\MarlonWorkShop\MarlonLab\CommonLib\bin\Debug\System.Data.SQLite.DLL
