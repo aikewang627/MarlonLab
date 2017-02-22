@@ -9,16 +9,17 @@ namespace MarlonLab.CommonLib.Common
 	/// </summary>
 	public sealed class AppConfigHelper
 	{
-		/// <summary>
-		/// 得到AppSettings中的配置字符串信息		
+        /// <summary>
+        /// 得到AppSettings中的配置字符串信息		
         /// /// </summary>
-		/// <param name="key"></param>
-		/// <returns></returns>
-		public static string GetConfigString(string key)
-		{
+        /// <param name="key"></param>
+        /// <returns></returns>
+        public static string GetConfigString(string key)
+        {
+            object objModel = ConfigurationManager.AppSettings[key];
 
-            return "";
-		}
+            return (string)objModel;
+        }
 
 		/// <summary>
 		/// 得到AppSettings中的配置Bool信息

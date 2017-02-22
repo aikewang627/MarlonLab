@@ -7,6 +7,9 @@ using PanGu;
 
 namespace MarlonLab.CommonLib
 {
+    /// <summary>
+    /// 使用前，须在运行目录下添加PanGu.xml文件、Dict目录。
+    /// </summary>
     public class PanGuSegmentHelper
     {
         public static Segment segment;

@@ -9,3 +9,16 @@ F:\MarlonWorkShop\MarlonLab\MarlonLab\obj\Debug\MarlonLab.Properties.Resources.r
 F:\MarlonWorkShop\MarlonLab\MarlonLab\obj\Debug\MarlonLab.csproj.GenerateResource.Cache
 F:\MarlonWorkShop\MarlonLab\MarlonLab\obj\Debug\MarlonLab.exe
 F:\MarlonWorkShop\MarlonLab\MarlonLab\obj\Debug\MarlonLab.pdb
+F:\MarlonWorkShop\MarlonLab\MarlonLab\bin\Debug\MySql.Data.dll
+F:\MarlonWorkShop\MarlonLab\MarlonLab\bin\Debug\System.Data.SQLite.dll
+F:\MarlonWorkShop\MarlonLab\MarlonLab\bin\Debug\PanGu.dll
+F:\MarlonWorkShop\MarlonLab\MarlonLab\bin\Debug\ServiceStack.Interfaces.dll
+F:\MarlonWorkShop\MarlonLab\MarlonLab\bin\Debug\ServiceStack.Redis.dll
+F:\MarlonWorkShop\MarlonLab\MarlonLab\bin\Debug\ServiceStack.Text.dll
+F:\MarlonWorkShop\MarlonLab\MarlonLab\bin\Debug\ServiceStack.Common.dll
+F:\MarlonWorkShop\MarlonLab\MarlonLab\bin\Debug\PanGu.pdb
+F:\MarlonWorkShop\MarlonLab\MarlonLab\bin\Debug\PanGu.xml
+F:\MarlonWorkShop\MarlonLab\MarlonLab\bin\Debug\ServiceStack.Redis.pdb
+F:\MarlonWorkShop\MarlonLab\MarlonLab\bin\Debug\ServiceStack.Redis.xml
+F:\MarlonWorkShop\MarlonLab\MarlonLab\bin\Debug\ServiceStack.Text.xml
+F:\MarlonWorkShop\MarlonLab\MarlonLab\bin\Debug\ServiceStack.Common.xml
