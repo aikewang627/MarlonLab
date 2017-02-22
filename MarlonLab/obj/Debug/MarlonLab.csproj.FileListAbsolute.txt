@@ -1,1 +1,11 @@
 F:\MarlonWorkShop\MarlonLab\MarlonLab\bin\Debug\MarlonLab.exe.config
+F:\MarlonWorkShop\MarlonLab\MarlonLab\bin\Debug\MarlonLab.exe
+F:\MarlonWorkShop\MarlonLab\MarlonLab\bin\Debug\MarlonLab.pdb
+F:\MarlonWorkShop\MarlonLab\MarlonLab\bin\Debug\CommonLib.dll
+F:\MarlonWorkShop\MarlonLab\MarlonLab\bin\Debug\CommonLib.pdb
+F:\MarlonWorkShop\MarlonLab\MarlonLab\obj\Debug\MarlonLab.csprojResolveAssemblyReference.cache
+F:\MarlonWorkShop\MarlonLab\MarlonLab\obj\Debug\MarlonLab.frmMain.resources
+F:\MarlonWorkShop\MarlonLab\MarlonLab\obj\Debug\MarlonLab.Properties.Resources.resources
+F:\MarlonWorkShop\MarlonLab\MarlonLab\obj\Debug\MarlonLab.csproj.GenerateResource.Cache
+F:\MarlonWorkShop\MarlonLab\MarlonLab\obj\Debug\MarlonLab.exe
+F:\MarlonWorkShop\MarlonLab\MarlonLab\obj\Debug\MarlonLab.pdb

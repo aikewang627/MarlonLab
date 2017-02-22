@@ -27,3 +27,17 @@ E:\MarlonWorkShop\MarlonLab\MarlonCrawler\obj\Debug\MarlonCrawler.JianLib.frmJia
 E:\MarlonWorkShop\MarlonLab\MarlonCrawler\obj\Debug\MarlonCrawler.Properties.Resources.resources
 E:\MarlonWorkShop\MarlonLab\MarlonCrawler\obj\Debug\MarlonCrawler.csproj.GenerateResource.Cache
 E:\MarlonWorkShop\MarlonLab\MarlonCrawler\obj\Debug\MarlonCrawler.Liepin.frmHeadhunter.resources
+F:\MarlonWorkShop\MarlonLab\MarlonCrawler\obj\Debug\MarlonCrawler.Liepin.frmHeadhunter.resources
+F:\MarlonWorkShop\MarlonLab\MarlonCrawler\bin\Debug\MySql.Data.dll
+F:\MarlonWorkShop\MarlonLab\MarlonCrawler\bin\Debug\System.Data.SQLite.dll
+F:\MarlonWorkShop\MarlonLab\MarlonCrawler\bin\Debug\PanGu.dll
+F:\MarlonWorkShop\MarlonLab\MarlonCrawler\bin\Debug\ServiceStack.Interfaces.dll
+F:\MarlonWorkShop\MarlonLab\MarlonCrawler\bin\Debug\ServiceStack.Redis.dll
+F:\MarlonWorkShop\MarlonLab\MarlonCrawler\bin\Debug\ServiceStack.Text.dll
+F:\MarlonWorkShop\MarlonLab\MarlonCrawler\bin\Debug\ServiceStack.Common.dll
+F:\MarlonWorkShop\MarlonLab\MarlonCrawler\bin\Debug\PanGu.pdb
+F:\MarlonWorkShop\MarlonLab\MarlonCrawler\bin\Debug\PanGu.xml
+F:\MarlonWorkShop\MarlonLab\MarlonCrawler\bin\Debug\ServiceStack.Redis.pdb
+F:\MarlonWorkShop\MarlonLab\MarlonCrawler\bin\Debug\ServiceStack.Redis.xml
+F:\MarlonWorkShop\MarlonLab\MarlonCrawler\bin\Debug\ServiceStack.Text.xml
+F:\MarlonWorkShop\MarlonLab\MarlonCrawler\bin\Debug\ServiceStack.Common.xml

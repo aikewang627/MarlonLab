@@ -9,3 +9,16 @@ E:\MarlonWorkShop\MarlonLab\CommonLib\obj\Debug\CommonLib.dll
 E:\MarlonWorkShop\MarlonLab\CommonLib\obj\Debug\CommonLib.pdb
 E:\MarlonWorkShop\MarlonLab\CommonLib\bin\Debug\MySql.Data.dll
 E:\MarlonWorkShop\MarlonLab\CommonLib\bin\Debug\System.Data.SQLite.DLL
+F:\MarlonWorkShop\MarlonLab\CommonLib\bin\Debug\MySql.Data.dll
+F:\MarlonWorkShop\MarlonLab\CommonLib\bin\Debug\System.Data.SQLite.DLL
+F:\MarlonWorkShop\MarlonLab\CommonLib\bin\Debug\ServiceStack.Common.dll
+F:\MarlonWorkShop\MarlonLab\CommonLib\bin\Debug\ServiceStack.Interfaces.dll
+F:\MarlonWorkShop\MarlonLab\CommonLib\bin\Debug\ServiceStack.Redis.dll
+F:\MarlonWorkShop\MarlonLab\CommonLib\bin\Debug\ServiceStack.Text.dll
+F:\MarlonWorkShop\MarlonLab\CommonLib\bin\Debug\ServiceStack.Common.xml
+F:\MarlonWorkShop\MarlonLab\CommonLib\bin\Debug\ServiceStack.Redis.pdb
+F:\MarlonWorkShop\MarlonLab\CommonLib\bin\Debug\ServiceStack.Redis.xml
+F:\MarlonWorkShop\MarlonLab\CommonLib\bin\Debug\ServiceStack.Text.xml
+F:\MarlonWorkShop\MarlonLab\CommonLib\bin\Debug\PanGu.dll
+F:\MarlonWorkShop\MarlonLab\CommonLib\bin\Debug\PanGu.pdb
+F:\MarlonWorkShop\MarlonLab\CommonLib\bin\Debug\PanGu.xml

@@ -33,12 +33,29 @@
     <Reference Include="MySql.Data">
       <HintPath>..\DllLib\MySql.Data.dll</HintPath>
     </Reference>
+    <Reference Include="PanGu">
+      <HintPath>..\DllLib\PanGuSegment\PanGu.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Common">
+      <HintPath>..\DllLib\ServiceStack.Redis-4.0.52\ServiceStack.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Interfaces">
+      <HintPath>..\DllLib\ServiceStack.Redis-4.0.52\ServiceStack.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Redis">
+      <HintPath>..\DllLib\ServiceStack.Redis-4.0.52\ServiceStack.Redis.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Text">
+      <HintPath>..\DllLib\ServiceStack.Redis-4.0.52\ServiceStack.Text.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.OracleClient" />
     <Reference Include="System.Data.SQLite">
       <HintPath>..\DllLib\System.Data.SQLite.DLL</HintPath>
     </Reference>
+    <Reference Include="System.Management" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -53,7 +70,26 @@
     <Compile Include="Common\RMB.cs" />
     <Compile Include="Common\StringPlus.cs" />
     <Compile Include="Common\TimeParser.cs" />
-    <Compile Include="RedisHelper.cs" />
+    <Compile Include="DBUtility\CommandInfo.cs" />
+    <Compile Include="DBUtility\DbHelperMySQL.cs" />
+    <Compile Include="DBUtility\DbHelperOleDb.cs" />
+    <Compile Include="DBUtility\DbHelperOra.cs" />
+    <Compile Include="DBUtility\DbHelperSQL.cs" />
+    <Compile Include="DBUtility\DbHelperSQLite.cs" />
+    <Compile Include="DBUtility\DbHelperSQLP.cs" />
+    <Compile Include="DBUtility\OracleHelper.cs" />
+    <Compile Include="DBUtility\PubConstant.cs" />
+    <Compile Include="DBUtility\SQLHelper.cs" />
+    <Compile Include="PanGuSegmentHelper.cs" />
+    <Compile Include="RedisHelper\DoRedisBase.cs" />
+    <Compile Include="RedisHelper\DoRedisHash.cs" />
+    <Compile Include="RedisHelper\DoRedisList.cs" />
+    <Compile Include="RedisHelper\DoRedisSet.cs" />
+    <Compile Include="RedisHelper\DoRedisString.cs" />
+    <Compile Include="RedisHelper\DoRedisZSet.cs" />
+    <Compile Include="RedisHelper\RedisBase.cs" />
+    <Compile Include="RedisHelper\RedisConfig.cs" />
+    <Compile Include="RedisHelper\RedisManager.cs" />
     <Compile Include="RegularHelper.cs" />
     <Compile Include="UnicodeHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -62,6 +98,7 @@
   <ItemGroup>
     <Content Include="ReadMe.txt" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

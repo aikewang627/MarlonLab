@@ -36,6 +36,12 @@
     <Reference Include="MySql.Data">
       <HintPath>..\DllLib\MySql.Data.dll</HintPath>
     </Reference>
+    <Reference Include="PanGu">
+      <HintPath>..\DllLib\PanGuSegment\PanGu.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Redis">
+      <HintPath>..\DllLib\ServiceStack.Redis-4.0.52\ServiceStack.Redis.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
@@ -68,16 +74,6 @@
     <Compile Include="DAL\tabPosition.cs" />
     <Compile Include="DAL\tabResume.cs" />
     <Compile Include="DAL\tabUser.cs" />
-    <Compile Include="DBUtility\CommandInfo.cs" />
-    <Compile Include="DBUtility\DbHelperMySQL.cs" />
-    <Compile Include="DBUtility\DbHelperOleDb.cs" />
-    <Compile Include="DBUtility\DbHelperOra.cs" />
-    <Compile Include="DBUtility\DbHelperSQL.cs" />
-    <Compile Include="DBUtility\DbHelperSQLite.cs" />
-    <Compile Include="DBUtility\DbHelperSQLP.cs" />
-    <Compile Include="DBUtility\OracleHelper.cs" />
-    <Compile Include="DBUtility\PubConstant.cs" />
-    <Compile Include="DBUtility\SQLHelper.cs" />
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -129,7 +125,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Matcher\" />
-    <Folder Include="PanGuFenCi\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
