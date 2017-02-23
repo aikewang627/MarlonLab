@@ -27,8 +27,8 @@ namespace MarlonCVJDMatcher.WinForm
         {
             InitializeComponent();
 
-            tbStNo.Text = "1";
-            tbEndNo.Text = "1000";
+            tbStNo.Text = "9443";
+            tbEndNo.Text = "10000";
 
         }
 
@@ -119,27 +119,31 @@ namespace MarlonCVJDMatcher.WinForm
                 modelRmOtln.Mobile = modelUsr.Mobile;
                 modelRmOtln.Email = modelUsr.Email;
                 modelRmOtln.Sex = modelUsr.Sex;
-                #region
+                #region 
                 foreach ( tabExperienceEduModel model in lsmodelEdu)
                 {
 
                 }
                 #endregion
-                #region
+                #region 
+                string strSkill = "";
                 foreach (tabExperienceWorkModel model in lsmodelWork)
                 {
 
 
                 }
                 #endregion
-                #region
+                #region 
                 foreach (tabExperienceProjectModel model in lsmodelProject)
                 {
 
 
                 }
                 #endregion
+                #region 
 
+
+                #endregion
                 #endregion
                 //插入或更新
                 if (IsExist)

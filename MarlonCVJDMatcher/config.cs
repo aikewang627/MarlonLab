@@ -10,7 +10,7 @@ namespace MarlonCVJDMatcher
     {
         public const string JDKeywordFilePath = "JDKeyword.txt";
         public const string CVKeywordFilePath = "CVKeyword.txt";
-
+        public const string CVJDKeywordFilePath = "CVJDKeyword.txt";
 
 
 

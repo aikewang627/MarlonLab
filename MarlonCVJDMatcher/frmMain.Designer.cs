@@ -33,8 +33,10 @@
             this.rtbResultText = new System.Windows.Forms.RichTextBox();
             this.rtbLog = new System.Windows.Forms.RichTextBox();
             this.msMain = new System.Windows.Forms.MenuStrip();
+            this.匹配词库ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.加载词库至RedisToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.保存词库从RedisToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cVJDToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.关键字加载ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.简历精要提取ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.职位精要提取ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.匹配ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -78,6 +80,7 @@
             // msMain
             // 
             this.msMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.匹配词库ToolStripMenuItem,
             this.cVJDToolStripMenuItem});
             this.msMain.Location = new System.Drawing.Point(0, 0);
             this.msMain.Name = "msMain";
@@ -85,23 +88,38 @@
             this.msMain.TabIndex = 5;
             this.msMain.Text = "menuStrip1";
             // 
+            // 匹配词库ToolStripMenuItem
+            // 
+            this.匹配词库ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.加载词库至RedisToolStripMenuItem,
+            this.保存词库从RedisToolStripMenuItem});
+            this.匹配词库ToolStripMenuItem.Name = "匹配词库ToolStripMenuItem";
+            this.匹配词库ToolStripMenuItem.Size = new System.Drawing.Size(68, 21);
+            this.匹配词库ToolStripMenuItem.Text = "匹配词库";
+            // 
+            // 加载词库至RedisToolStripMenuItem
+            // 
+            this.加载词库至RedisToolStripMenuItem.Name = "加载词库至RedisToolStripMenuItem";
+            this.加载词库至RedisToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
+            this.加载词库至RedisToolStripMenuItem.Text = "加载词库至Redis";
+            this.加载词库至RedisToolStripMenuItem.Click += new System.EventHandler(this.加载词库至RedisToolStripMenuItem_Click);
+            // 
+            // 保存词库从RedisToolStripMenuItem
+            // 
+            this.保存词库从RedisToolStripMenuItem.Name = "保存词库从RedisToolStripMenuItem";
+            this.保存词库从RedisToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
+            this.保存词库从RedisToolStripMenuItem.Text = "保存词库从Redis";
+            this.保存词库从RedisToolStripMenuItem.Click += new System.EventHandler(this.保存词库从RedisToolStripMenuItem_Click);
+            // 
             // cVJDToolStripMenuItem
             // 
             this.cVJDToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.关键字加载ToolStripMenuItem,
             this.简历精要提取ToolStripMenuItem,
             this.职位精要提取ToolStripMenuItem,
             this.匹配ToolStripMenuItem});
             this.cVJDToolStripMenuItem.Name = "cVJDToolStripMenuItem";
             this.cVJDToolStripMenuItem.Size = new System.Drawing.Size(50, 21);
             this.cVJDToolStripMenuItem.Text = "CVJD";
-            // 
-            // 关键字加载ToolStripMenuItem
-            // 
-            this.关键字加载ToolStripMenuItem.Name = "关键字加载ToolStripMenuItem";
-            this.关键字加载ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.关键字加载ToolStripMenuItem.Text = "关键字加载";
-            this.关键字加载ToolStripMenuItem.Click += new System.EventHandler(this.关键字加载ToolStripMenuItem_Click);
             // 
             // 简历精要提取ToolStripMenuItem
             // 
@@ -156,7 +174,9 @@
         private System.Windows.Forms.ToolStripMenuItem 简历精要提取ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 职位精要提取ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 匹配ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 关键字加载ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 匹配词库ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 加载词库至RedisToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 保存词库从RedisToolStripMenuItem;
     }
 }
 
