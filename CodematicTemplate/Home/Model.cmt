@@ -1,0 +1,581 @@
+﻿<#@ template language="c#" HostSpecific="True" #>
+<#@ output extension= ".cs" #>
+<#
+	TableHost host = (TableHost)(Host);	
+	host.Fieldlist.Sort(CodeCommon.CompareByintOrder);
+
+	string ModelSpace = host.NameSpace+".Model."+ host.GetModelClass(host.TableName);
+	ColumnInfo identityKey=host.IdentityKey;
+	string returnValue = "void";
+    if (identityKey!=null)
+    {         
+         returnValue = CodeCommon.DbTypeToCS(identityKey.TypeName);              
+    }
+
+	string DbParaHead=host.DbParaHead;
+	string DbParaDbType=host.DbParaDbType;
+	string preParameter=host.preParameter;
+#>
+
+using System; 
+using System.Text;
+using System.Linq;
+using System.Collections.Generic; 
+using System.Data;
+using System.Data.SqlClient;
+using Tclywork.Platform.Common;
+using Tclywork.DBUtility;
+using Tclywork.Model;
+using Tclywork.BLL;
+using Tclywork.DAL;
+#region  Model 实体类- <#= host.GetModelClass(host.TableName) #>
+namespace Tclywork.Model<# if( host.Folder.Length > 0) {#>.<#= host.Folder #><# } #>
+{
+	[Serializable]
+	<# if( host.TableDescription.Length > 0) {#>
+/// <summary>
+	/// <#= host.TableDescription #>
+    /// </summary> 	
+	<# } #>
+public partial class <#= host.GetModelClass(host.TableName) #>Model
+	{   		     
+      	<# foreach (ColumnInfo c in host.Fieldlist)
+		{ #>
+		<# if(CodeCommon.DbTypeToCS(c.TypeName)=="DateTime") {#>
+			
+			/// <summary>
+			/// <#= string.IsNullOrEmpty(c.Description)  ? c.ColumnName : c.Description #>
+	        /// </summary>
+	        public <#= CodeCommon.DbTypeToCS(c.TypeName) #>? <#= c.ColumnName #>
+	        {
+	            get{ return _<#= c.ColumnName.ToString()#>; }
+	            set{ _<#= c.ColumnName.ToString() #> = value;}
+	        }private <#= CodeCommon.DbTypeToCS(c.TypeName) #>? _<#= c.ColumnName.ToString() #>;      
+		<# } #>
+		<# if(CodeCommon.DbTypeToCS(c.TypeName)!="DateTime") {#>
+			/// <summary>
+			/// <#= string.IsNullOrEmpty(c.Description)  ? c.ColumnName : c.Description #>
+	        /// </summary>
+	        
+	        public <#= CodeCommon.DbTypeToCS(c.TypeName) #> <#= c.ColumnName #>
+	        {
+	            get{ return _<#= c.ColumnName.ToString()#>; }
+	            set{ _<#= c.ColumnName.ToString()#> = value;}
+	        }private <#= CodeCommon.DbTypeToCS(c.TypeName) #> _<#= c.ColumnName.ToString()#>;
+		<# } #>
+		        
+<# } #> 	}
+	
+	}
+#endregion
+
+#region	SQLDAL
+namespace Tclywork.DAL<# if( host.Folder.Length > 0) {#>.<#= host.Folder #><# } #>
+{
+	<# if( host.TableDescription.Length > 0) {#>
+/// <summary>
+	/// <#= host.TableDescription #>
+    /// </summary> 	
+	<# } #>
+public partial class <#= host.GetDALClass(host.TableName) #>SQLDAL
+	{
+		#region 实现方法
+   		 /// <summary>
+		/// 是否存在
+		/// </summary>    
+		public bool Exists(<#= CodeCommon.GetInParameter(host.Keys, false) #>)
+		{
+			StringBuilder strSql=new StringBuilder();
+			strSql.Append("select count(1) from <#= host.TableName #>");
+			strSql.Append(" where ");
+			<# for(int i=0;i< host.Keys.Count;i++)
+            {   ColumnInfo key = host.Keys[i]; #>
+                <# if (key.IsPrimaryKey || !key.IsIdentity)
+                {#>
+        strSql.Append(" <#= key.ColumnName#> = <#=preParameter#><#=key.ColumnName#> <# if (i< host.Keys.Count-1 ) {#>and <#}#> ");
+                <#}#>
+            <# }#>
+<#= CodeCommon.GetPreParameter(host.Keys, false, host.DbType) #>
+			return <#= host.DbHelperName#>.Exists(strSql.ToString(),parameters);
+		}
+		/// <summary>
+		/// 增加一条数据
+		/// </summary>
+		public <#= returnValue #> Add(<#= host.GetBLLClass(host.TableName) #>Model model)
+		{
+		 	model.Version = model.Version.IsNotNullOrEmpty()? model.Version: "1";
+            model.RandomNo = model.RandomNo.IsNotNullOrEmpty()? model.RandomNo: Guid.NewGuid().ToString("N");
+            model.Status = model.Status.IsNotNullOrEmpty()? model.Status: "1";
+            model.OrderNo = model.OrderNo>0? model.OrderNo: 1;
+			model.CreateDate=DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+			model.ModifyDate=DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+			StringBuilder strSql=new StringBuilder();
+			strSql.Append("insert into <#= host.TableName #>(");			
+            strSql.Append("<# for(int i=0;i< host.Fieldlist.Count;i++) {   ColumnInfo c = host.Fieldlist[i]; if (!c.IsIdentity) {#><#= c.ColumnName#><# if (i< host.Fieldlist.Count-1 ) {#>,<#}#><#}}#>");
+			strSql.Append(") values (");
+            strSql.Append("<# for(int i=0;i< host.Fieldlist.Count;i++) {   ColumnInfo c = host.Fieldlist[i]; if (!c.IsIdentity) {#><#=preParameter#><#= c.ColumnName#><# if (i< host.Fieldlist.Count-1 ) {#>,<#}#><#}}#>");            
+            strSql.Append(") ");            
+            <#if (identityKey!=null) {#>strSql.Append(";select @@IDENTITY");<#}#>		
+			SqlParameter[] parameters = {
+			<# for(int i=0;i< host.Fieldlist.Count;i++)
+            {   
+            ColumnInfo c = host.Fieldlist[i];
+            if(c.IsIdentity) continue;
+            #>
+            new SqlParameter("<#=preParameter#><#=c.ColumnName#>", SqlDbType.<#=CodeCommon.DbTypeLength(host.DbType, c.TypeName, c.Length)#>) <# if (i< host.Fieldlist.Count-1 ) {#>,<#}#>            
+            <# }#>  
+            };
+			<# foreach (ColumnInfo c in host.Fieldlist) { if(c.IsIdentity) continue;#>            
+            parameters[<#= n #>].Value = <# if ("uniqueidentifier" == c.TypeName.ToLower()){#>Guid.NewGuid();<#} else {#>model.<#=c.ColumnName#>;<#} n=n+1; #>
+            <# }#>
+            
+			<#if (identityKey!=null) {#>   
+			object obj = <#= host.DbHelperName#>.GetSingle(strSql.ToString(),parameters);			
+			if (obj == null)
+			{
+				return 0;
+			}
+			else
+			{
+				<# if ( returnValue=="int" ) 
+				{#>                    
+            	return Convert.ToInt32(obj);
+                <#}#>
+                <# if ( returnValue=="long" ) 
+				{#>                    
+            	return Convert.ToInt64(obj);
+                <#}#>
+                <# if ( returnValue=="decimal" ) 
+				{#>                    
+            	return Convert.ToDecimal(obj);
+                <#}#>                  
+			}			   
+            <#} else {#>
+            <#= host.DbHelperName#>.ExecuteSql(strSql.ToString(),parameters);
+            <#}#>			
+		}
+		/// <summary>
+		/// 更新一条数据
+		/// </summary>
+		public bool Update(<#= host.GetBLLClass(host.TableName) #>Model model)
+		{
+			model.ModifyDate=DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+			StringBuilder strSql=new StringBuilder();
+			strSql.Append("update <#= host.TableName #> set ");
+			<# for(int i=0;i< host.Fieldlist.Count;i++)
+            {   ColumnInfo c = host.Fieldlist[i]; #>
+            <# if (!c.IsIdentity) {#>            
+            strSql.Append(" <#= c.ColumnName #> = <#=preParameter#><#=c.ColumnName#> <# if (i< host.Fieldlist.Count-1 ) {#>,<#}#> ");<# }#>
+            <# }#>			
+			strSql.Append(" where <#= CodeCommon.GetWhereParameterExpression(host.Keys, true ,host.DbType) #> ");
+						
+SqlParameter[] parameters = {
+			<# for(int i=0;i< host.Fieldlist.Count;i++)
+            {   ColumnInfo c = host.Fieldlist[i]; #>
+            new SqlParameter("<#=preParameter#><#=c.ColumnName#>", SqlDbType.<#=CodeCommon.DbTypeLength(host.DbType, c.TypeName, c.Length)#>) <# if (i< host.Fieldlist.Count-1 ) {#>,<#}#>
+            
+            <# }#>  
+            };
+			<# n=0; #>
+			<# foreach (ColumnInfo c in host.Fieldlist) { #>            
+            parameters[<#= n #>].Value = model.<#=c.ColumnName#>;<# n=n+1; #>
+            <# }#>
+            
+            int rows=<#= host.DbHelperName#>.ExecuteSql(strSql.ToString(),parameters);
+			if (rows > 0)
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}
+		/// <summary>
+        /// 修改一列数据
+        /// </summary>
+        public void UpdateField(int id, string strValue)
+        {
+            StringBuilder strSql = new StringBuilder();
+			strSql.Append("update <#= host.TableName #> set " + strValue);           
+            strSql.Append(" where id=" + id);
+            DbHelperSQL.ExecuteSql(strSql.ToString());
+        }
+		/// <summary>
+		/// 更新一条数据
+		/// </summary>
+		public bool Update(<#= host.GetBLLClass(host.TableName) #>Model model, List<string> ChangedFields)
+		{
+			StringBuilder strSql=new StringBuilder();
+			strSql.Append("update <#= host.TableName #> set ");
+			<# for(int i=0;i< host.Fieldlist.Count;i++)
+            {   ColumnInfo c = host.Fieldlist[i]; #>
+            <# if (!c.IsIdentity) {#>            
+            strSql.Append(" <#= c.ColumnName #> = <#=preParameter#><#=c.ColumnName#> <# if (i< host.Fieldlist.Count-1 ) {#>,<#}#> ");<# }#>
+            <# }#>			
+			strSql.Append(" where <#= CodeCommon.GetWhereParameterExpression(host.Keys, true ,host.DbType) #> ");						
+SqlParameter[] parameters = {
+			<# for(int i=0;i< host.Fieldlist.Count;i++)
+            {   ColumnInfo c = host.Fieldlist[i]; #>
+            new SqlParameter("<#=preParameter#><#=c.ColumnName#>", SqlDbType.<#=CodeCommon.DbTypeLength(host.DbType, c.TypeName, c.Length)#>) <# if (i< host.Fieldlist.Count-1 ) {#>,<#}#>
+            
+            <# }#>  
+            };
+			<# n=0; #>
+			<# foreach (ColumnInfo c in host.Fieldlist) { #>            
+            parameters[<#= n #>].Value = model.<#=c.ColumnName#>;<# n=n+1; #>
+            <# }#>
+            
+            int rows=<#= host.DbHelperName#>.ExecuteSql(strSql.ToString(),parameters);
+			if (rows > 0)
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}		
+		/// <summary>
+		/// 删除一条数据
+		/// </summary>
+		public bool Delete(<#=CodeCommon.GetInParameter(host.Keys, true)#>)
+		{
+			
+			StringBuilder strSql=new StringBuilder();
+			strSql.Append("delete from <#= host.TableName #> ");
+			strSql.Append(" where <#= CodeCommon.GetWhereParameterExpression(host.Keys, true, host.DbType)#>");
+			<#= CodeCommon.GetPreParameter(host.Keys, true, host.DbType) #>
+			int rows=<#= host.DbHelperName#>.ExecuteSql(strSql.ToString(),parameters);
+			if (rows > 0)
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}		
+		<#if (identityKey!=null) {#>
+		/// <summary>
+		/// 批量删除一批数据
+		/// </summary>
+		public bool DeleteList(string <#=identityKey.ColumnName#>list )
+		{
+			StringBuilder strSql=new StringBuilder();
+			strSql.Append("delete from <#= host.TableName #> ");
+			strSql.Append(" where ID in ("+<#=identityKey.ColumnName#>list + ")  ");
+			int rows=<#= host.DbHelperName#>.ExecuteSql(strSql.ToString());
+			if (rows > 0)
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}
+		<#}#>		
+		/// <summary>
+		/// 得到一个对象实体
+		/// </summary>
+		public <#= host.GetBLLClass(host.TableName) #>Model GetModel(<#= CodeCommon.GetInParameter(host.Keys,true) #>)
+		{
+			
+			StringBuilder strSql=new StringBuilder();
+			strSql.Append("select * ");			
+			strSql.Append("  from <#= host.TableName #> ");
+			strSql.Append(" where <#= CodeCommon.GetWhereParameterExpression(host.Keys, true, host.DbType) #>");
+			<#=CodeCommon.GetPreParameter(host.Keys, true, host.DbType)#>
+			
+			<#= host.GetBLLClass(host.TableName) #>Model model=new <#= host.GetBLLClass(host.TableName) #>Model();
+			DataSet ds=<#= host.DbHelperName#>.Query(strSql.ToString(),parameters);
+			if (ds.Tables[0].Rows.Count > 0)
+                return ModelHandler<<#= host.GetBLLClass(host.TableName) #>Model>.FillModel(ds.Tables[0].Rows[0]);
+            else
+                return null;
+		}		
+		/// <summary>
+		/// 获得数据列表
+		/// </summary>
+		public DataSet GetList(int pageSize, int pageIndex, string strWhere, string filedOrder, out int recordCount)
+		{
+			StringBuilder strSql=new StringBuilder();
+			strSql.Append("select * ");
+			strSql.Append(" FROM <#= host.TableName #> ");
+			if(strWhere.Trim()!="")
+			{
+				strSql.Append(" where "+strWhere);
+			}
+			recordCount = Convert.ToInt32(<#= host.DbHelperName#>.GetSingle(PagingHelper.CreateCountingSql(strSql.ToString())));
+			return <#= host.DbHelperName#>.Query(PagingHelper.CreatePagingSql(recordCount, pageSize, pageIndex, strSql.ToString(), filedOrder));			
+		}
+		/// <summary>
+		/// 获得数据列表
+		/// </summary>
+		public DataSet GetList(string strWhere)
+		{
+			StringBuilder strSql=new StringBuilder();
+			strSql.Append("select * ");
+			strSql.Append(" FROM <#= host.TableName #> ");
+			if(strWhere.Trim()!="")
+			{
+				strSql.Append(" where "+strWhere);
+			}
+			return <#= host.DbHelperName#>.Query(strSql.ToString());
+		}		
+		/// <summary>
+		/// 获得前几行数据
+		/// </summary>
+		public DataSet GetList(int Top,string strWhere,string filedOrder)
+		{
+			StringBuilder strSql=new StringBuilder();
+			strSql.Append("select ");
+			if(Top>0)
+			{
+				strSql.Append(" top "+Top.ToString());
+			}
+			strSql.Append(" * ");
+			strSql.Append(" FROM <#= host.TableName #> ");
+			if(strWhere.Trim()!="")
+			{
+				strSql.Append(" where "+strWhere);
+			}
+			strSql.Append(" order by " + filedOrder);
+			return <#= host.DbHelperName#>.Query(strSql.ToString());
+		}
+		/// <summary>
+		/// 获得数据列表，取最新版本数据
+		/// </summary>
+		public DataSet GetListVersion(int pageSize, int pageIndex, string strWhere, string filedOrder, out int recordCount)
+		{
+			StringBuilder strSql=new StringBuilder();
+			strSql.Append("select * ");
+			strSql.Append(" FROM <#= host.TableName #> as a  where  version=(select max(b.version)  from <#= host.TableName #>  as b  where a.RandomNo =  b.RandomNo) ");
+			if(strWhere.Trim()!="")
+			{
+				strSql.Append(" and "+strWhere);
+			}
+			recordCount = Convert.ToInt32(<#= host.DbHelperName#>.GetSingle(PagingHelper.CreateCountingSql(strSql.ToString())));
+			return <#= host.DbHelperName#>.Query(PagingHelper.CreatePagingSql(recordCount, pageSize, pageIndex, strSql.ToString(), filedOrder));			
+		}
+		/// <summary>
+		/// 获得数据列表，取最新版本数据
+		/// </summary>
+		public DataSet GetListVersion(string strWhere)
+		{
+			StringBuilder strSql=new StringBuilder();
+			strSql.Append("select * ");
+			strSql.Append(" FROM <#= host.TableName #> as a  where  version=(select max(b.version)  from <#= host.TableName #>  as b  where a.RandomNo =  b.RandomNo) ");
+			if(strWhere.Trim()!="")
+			{
+				strSql.Append(" and "+strWhere);
+			}
+			return <#= host.DbHelperName#>.Query(strSql.ToString());
+		}		
+		/// <summary>
+		/// 获得前几行数据，取最新版本数据
+		/// </summary>
+		public DataSet GetListVersion(int Top,string strWhere,string filedOrder)
+		{
+			StringBuilder strSql=new StringBuilder();
+			strSql.Append("select ");
+			if(Top>0)
+			{
+				strSql.Append(" top "+Top.ToString());
+			}
+			strSql.Append(" * ");
+			strSql.Append(" FROM <#= host.TableName #> as a  where  version=(select max(b.version)  from <#= host.TableName #>  as b  where a.RandomNo =  b.RandomNo)");
+			if(strWhere.Trim()!="")
+			{
+				strSql.Append(" and "+strWhere);
+			}
+			strSql.Append(" order by " + filedOrder);
+			return <#= host.DbHelperName#>.Query(strSql.ToString());
+		}
+		#endregion
+	}
+}
+#endregion
+#region BLL类    
+namespace Tclywork.BLL<# if( host.Folder.Length > 0) {#>.<#= host.Folder #><# } #>
+{    
+    <# if( host.TableDescription.Length > 0) {#>
+/// <summary>
+	/// <#= host.TableDescription #>
+    /// </summary> 	
+	<# } #>
+public partial class <#= host.GetBLLClass(host.TableName) #>BLL
+	{
+        private readonly <#= host.GetBLLClass(host.TableName) #>SQLDAL dal=new <#= host.GetBLLClass(host.TableName) #>SQLDAL();
+		public void <#= host.GetBLLClass(host.TableName) #>()
+		{
+		}
+		public static <#= host.GetBLLClass(host.TableName) #>BLL Instance
+        {
+            get
+            {
+                return _Instance;
+            }
+            set { _Instance = value; }
+        }private static <#= host.GetBLLClass(host.TableName) #>BLL _Instance;
+        public static <#= host.GetBLLClass(host.TableName) #>BLL GetInstance()
+        {
+            if (Instance == null)
+            {
+                Instance = new <#= host.GetBLLClass(host.TableName) #>BLL();
+            }
+            return Instance;
+        }
+		/// <summary>
+		/// 是否存在该记录
+		/// </summary>
+		public bool Exists(<#= CodeCommon.GetInParameter(host.Keys, false) #>)
+		{
+			return dal.Exists(<#= CodeCommon.GetFieldstrlist(host.Keys, false)#>);
+		}
+		/// <summary>
+		/// 增加一条数据
+		/// </summary>
+		public <#= returnValue #>  Add(<#= host.GetBLLClass(host.TableName) #>Model model)
+		{
+			<#if (identityKey!=null) {#>return dal.Add(model);
+			<#} else {#>dal.Add(model);
+			<#}#>			
+		}
+		/// <summary>
+		/// 修改一列数据
+		/// </summary>
+		public void UpdateField(int id, string strValue)
+		{
+			dal.UpdateField(id, strValue);
+		}
+		/// <summary>
+		/// 更新一条数据
+		/// </summary>
+		public bool Update(<#= host.GetBLLClass(host.TableName) #>Model model)
+		{
+			return dal.Update(model);
+		}
+		/// <summary>
+		/// 删除一条数据
+		/// </summary>
+		public bool Delete(<#=CodeCommon.GetInParameter(host.Keys, true)#>)
+		{		
+			return dal.Delete(<#=CodeCommon.GetFieldstrlist(host.Keys, true)#>);
+		}
+		<#if (identityKey!=null) {#>
+		/// <summary>
+		/// 批量删除一批数据
+		/// </summary>
+		public bool DeleteList(string <#=identityKey.ColumnName#>list )
+		{
+			return dal.DeleteList(<#=identityKey.ColumnName#>list );
+		}
+		<#}#>	
+		/// <summary>
+		/// 得到一个对象实体
+		/// </summary>
+		public <#= host.GetBLLClass(host.TableName) #>Model GetModel(<#= CodeCommon.GetInParameter(host.Keys,true) #>)
+		{
+			
+			return dal.GetModel(<#=CodeCommon.GetFieldstrlist(host.Keys, true)#>);
+		}	
+		/// <summary>
+		/// 得到对象列表中第一个对象实体
+		/// </summary>
+		public <#= host.GetBLLClass(host.TableName) #>Model GetModel(string _where,int Index)
+		{
+			List<<#= host.GetBLLClass(host.TableName) #>Model> lsmodel = GetModelList(_where);
+			if(lsmodel != null && lsmodel.Count>0)
+            {
+                return lsmodel[Index];
+            }
+            else
+            {
+                return null;
+            }
+		}
+		/// <summary>
+		/// 获得数据列表
+		/// </summary>
+		public DataSet GetList(int pageSize, int pageIndex, string strWhere, string filedOrder, out int recordCount)
+		{
+			return dal.GetList(pageSize, pageIndex, strWhere, filedOrder, out recordCount);
+		}
+		/// <summary>
+        /// 获得数据列表
+        /// </summary>
+        public List<<#= host.GetBLLClass(host.TableName) #>Model> GetModelList(int pageSize, int pageIndex, string strWhere, string filedOrder, out int recordCount)
+        {
+            DataSet ds = dal.GetList(pageSize, pageIndex, strWhere, filedOrder, out recordCount);
+            if (ds.Tables[0].Rows.Count > 0)
+                return ModelHandler<<#= host.GetBLLClass(host.TableName) #>Model>.FillModel(ds.Tables[0]);
+            else
+                return new List<<#= host.GetBLLClass(host.TableName) #>Model>();
+        }
+        
+		/// <summary>
+		/// 获得前几行数据
+		/// </summary>
+		public DataSet GetList(int Top,string strWhere,string filedOrder)
+		{
+			return dal.GetList(Top,strWhere,filedOrder);
+		}
+		/// <summary>
+		/// 获得数据列表
+		/// </summary>
+		public List<<#= host.GetBLLClass(host.TableName) #>Model> GetModelList(string strWhere)
+		{
+			DataSet ds = dal.GetList(strWhere);
+			if (ds.Tables[0].Rows.Count > 0)
+                return ModelHandler<<#= host.GetBLLClass(host.TableName) #>Model>.FillModel(ds.Tables[0]);
+            else
+                return null;
+		}
+		/// <summary>
+		/// 获得数据列表
+		/// </summary>
+		public DataSet GetAllList()
+		{
+			return dal.GetList("");
+		}
+		/// <summary>
+		/// 获得数据列表，取最新版本数据
+		/// </summary>
+		public DataSet GetListVersion(int pageSize, int pageIndex, string strWhere, string filedOrder, out int recordCount)
+		{
+			return dal.GetListVersion(pageSize, pageIndex, strWhere, filedOrder, out recordCount);
+		}
+		/// <summary>
+		/// 获得前几行数据，取最新版本数据
+		/// </summary>
+		public DataSet GetListVersion(int Top,string strWhere,string filedOrder)
+		{
+			return dal.GetListVersion(Top,strWhere,filedOrder);
+		}
+		/// <summary>
+		/// 获得数据列表，取最新版本数据
+		/// </summary>
+		public List<<#= host.GetBLLClass(host.TableName) #>Model> GetModelListVersion(string strWhere)
+		{
+			DataSet ds = dal.GetListVersion(strWhere);
+			if (ds.Tables[0].Rows.Count > 0)
+                return ModelHandler<<#= host.GetBLLClass(host.TableName) #>Model>.FillModel(ds.Tables[0]);
+            else
+                return null;
+		}
+		/// <summary>
+		/// 获得数据列表，取最新版本数据
+		/// </summary>
+		public DataSet GetAllListVersion()
+		{
+			return dal.GetListVersion("");
+		}
+	}
+	
+}
+#endregion
+<#+
+int n=0;
+#>

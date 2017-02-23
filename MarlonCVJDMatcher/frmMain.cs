@@ -33,16 +33,14 @@ namespace MarlonCVJDMatcher
                 AddLog(rtbLog, "请先输入文本");
                 return;
             }
-
+            rtbResultText.Text = "";
             List<string> strList = PanGuSegmentHelper.SegmentReturnStringList(rtbSourseText.Text);
             foreach (string str in strList)
             {
                 rtbResultText.Text += str + "    ";
-            }
-
-
-
+            }          
         }
+
         private void 关键字加载ToolStripMenuItem_Click(object sender, EventArgs e)
         {
 

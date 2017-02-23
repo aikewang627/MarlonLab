@@ -1,0 +1,74 @@
+﻿<#@ template language="c#" HostSpecific="True" #>
+<#@ output extension= ".cs" #>
+<#
+	TableHost host = (TableHost)(Host);	
+	host.Fieldlist.Sort(CodeCommon.CompareByintOrder);
+
+	string ModelSpace = host.NameSpace+".Model."+ host.GetModelClass(host.TableName);
+	ColumnInfo identityKey=host.IdentityKey;
+	string returnValue = "void";
+    if (identityKey!=null)
+    {         
+         returnValue = CodeCommon.DbTypeToCS(identityKey.TypeName);              
+    }
+
+	string DbParaHead=host.DbParaHead;
+	string DbParaDbType=host.DbParaDbType;
+	string preParameter=host.preParameter;
+#>
+
+using System; 
+using System.Text;
+using System.Linq;
+using System.Collections.Generic; 
+using System.Data;
+using System.Data.SqlClient;
+using Tclywork.Common;
+using Tclywork.DBUtility;
+using Tclywork.Model;
+using Tclywork.DAL;
+#region  Model 实体类
+namespace Tclywork.Model<# if( host.Folder.Length > 0) {#>.<#= host.Folder #><# } #>
+
+{
+	<# if( host.TableDescription.Length > 0) {#>
+/// <summary>
+	/// <#= host.TableDescription #>
+    /// </summary> 	
+	<# } #>
+public partial class <#= host.GetModelClass(host.TableName) #>Model
+	{      
+	
+	}
+}
+#endregion
+
+#region	SQLDAL
+namespace Tclywork.DAL<# if( host.Folder.Length > 0) {#>.<#= host.Folder #><# } #>
+
+{
+	<# if( host.TableDescription.Length > 0) {#>
+/// <summary>
+	/// <#= host.TableDescription #>
+    /// </summary> 	
+	<# } #>
+public partial class <#= host.GetDALClass(host.TableName) #>SQLDAL
+	{
+		
+	}
+}	
+#endregion
+#region BLL类    
+namespace Tclywork.BLL<# if( host.Folder.Length > 0) {#>.<#= host.Folder #><# } #>
+{    
+    <# if( host.TableDescription.Length > 0) {#>
+/// <summary>
+	/// <#= host.TableDescription #>
+    /// </summary> 	
+	<# } #>
+public partial class <#= host.GetBLLClass(host.TableName) #>BLL
+	{		
+		
+	}	
+}
+#endregion

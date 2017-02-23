@@ -1,0 +1,570 @@
+﻿<#@ template language="c#" HostSpecific="True" #>
+<#@ output extension= ".cs" #>
+<#
+	TableHost host = (TableHost)(Host);	
+	host.Fieldlist.Sort(CodeCommon.CompareByintOrder);
+
+	string ModelSpace = host.NameSpace+".Model."+ host.GetModelClass(host.TableName);
+	ColumnInfo identityKey=host.IdentityKey;
+	string returnValue = "void";
+    if (identityKey!=null)
+    {         
+         returnValue = CodeCommon.DbTypeToCS(identityKey.TypeName);              
+    }
+
+	string DbParaHead=host.DbParaHead;
+	string DbParaDbType=host.DbParaDbType;
+	string preParameter=host.preParameter;
+#>
+
+using System; 
+using System.Text;
+using System.Collections.Generic; 
+using System.Data;
+using System.Data.SqlClient;
+using Tclywork.Platform.DBUtility;
+using Tclywork.Platform.Common;
+namespace <#= host.NameSpace #>.Model<# if( host.Folder.Length > 0) {#>.<#= host.Folder #><# } #>
+{
+///////////////////////////////////////////////////////////////////////////////
+	#region  Model 实体类
+	[Serializable]
+	<# if( host.TableDescription.Length > 0) {#>
+ 	//<#= host.TableDescription #>
+	<# } #>
+public class <#= host.GetModelClass(host.TableName) #>Model: Entity
+	{
+   		     
+      	<# foreach (ColumnInfo c in host.Fieldlist)
+		{ #>
+private <#= CodeCommon.DbTypeToCS(c.TypeName) #> _<#= c.ColumnName.ToString().ToLower() #>;
+		/// <summary>
+		/// <#= string.IsNullOrEmpty(c.Description)  ? c.ColumnName : c.Description #>
+        /// </summary>
+        public <#= CodeCommon.DbTypeToCS(c.TypeName) #> <#= c.ColumnName #>
+        {
+            get{ return _<#= c.ColumnName.ToString().ToLower()#>; }
+            set{ 
+            OnPropertyValueChange("<#= c.ColumnName #>", _<#= c.ColumnName.ToString().ToLower() #>, value);
+            _<#= c.ColumnName.ToString().ToLower() #> = value;
+            }
+        }        
+		<# } #>
+   
+	}
+	#endregion
+///////////////////////////////////////////////////////////////////////////////
+	#region IDAL类
+	/// <summary>
+	/// 接口层<#= host.GetDALClass(host.TableName) #>
+	/// </summary>
+	public interface I<#= host.GetDALClass(host.TableName) #>
+	{
+		#region  成员方法
+		/// <summary>
+		/// 是否存在该记录
+		/// </summary>
+		bool Exists(<#= CodeCommon.GetInParameter(host.Keys, false) #>);
+		/// <summary>
+		/// 增加一条数据
+		/// </summary>
+		<#= returnValue #>  Add(<#= ModelSpace #>Model model);
+		/// <summary>
+		/// 更新一条数据
+		/// </summary>
+		bool Update(<#= ModelSpace #>Model model);
+		/// <summary>
+		/// 删除数据
+		/// </summary>
+		bool Delete(<#=CodeCommon.GetInParameter(host.Keys, true)#>);
+		<#if (identityKey!=null) {#>
+		bool DeleteList(string <#=identityKey.ColumnName#>list );
+		<#}#>
+		/// <summary>
+		/// 得到一个对象实体
+		/// </summary>
+		<#= ModelSpace #>Model GetModel(<#= CodeCommon.GetInParameter(host.Keys,true) #>);
+		/// <summary>
+		/// 获得数据列表
+		/// </summary>
+		DataSet GetList(string strWhere);
+		/// <summary>
+		/// 获得前几行数据
+		/// </summary>
+		DataSet GetList(int Top,string strWhere,string filedOrder);
+		/// <summary>
+		/// 根据分页获得数据列表
+		/// </summary>
+		//DataSet GetList(int PageSize,int PageIndex,string strWhere);
+		#endregion  成员方法
+	} 
+	#endregion 
+///////////////////////////////////////////////////////////////////////////////
+	#region DALFactory类
+	/// <summary>
+	/// 如果在这里创建对象报错，请检查web.config里是否修改了<add key="DAL" value="Maticsoft.SQLServerDAL" />。
+	/// </summary>
+	public sealed partial class DataAccess
+	{
+        #region Create<#= host.GetDALClass(host.TableName) #>
+        public static I<#= host.GetDALClass(host.TableName) #> Create<#= host.GetDALClass(host.TableName) #>()
+		{
+			//方式1			
+			//return I<#= host.GetDALClass(host.TableName) #>)Assembly.Load(AssemblyPath).CreateInstance(AssemblyPath+".<#= host.GetDALClass(host.TableName) #>");
+
+			//方式2 			
+			string classNamespace = AssemblyPath+".<#= host.GetDALClass(host.TableName) #>SQLDAL";	
+			object objType=CreateObject(AssemblyPath,classNamespace);
+            return (I<#= host.GetDALClass(host.TableName) #>)objType;		
+		}
+		#endregion        
+    }
+    #endregion
+   ///////////////////////////////////////////////////////////////////////////////
+    #region BLL类    
+    <# if( host.TableDescription.Length > 0) {#>
+ 	//<#= host.TableDescription #>
+	<# } #>
+public partial class <#= host.GetBLLClass(host.TableName) #>BLL
+	{
+		private readonly I<#= host.GetBLLClass(host.TableName) #> dal=DataAccess.Create<#= host.GetBLLClass(host.TableName) #>();
+		public void <#= host.GetBLLClass(host.TableName) #>()
+		{}
+		
+		#region  Method
+		/// <summary>
+		/// 是否存在该记录
+		/// </summary>
+		public bool Exists(<#= CodeCommon.GetInParameter(host.Keys, false) #>)
+		{
+			return dal.Exists(<#= CodeCommon.GetFieldstrlist(host.Keys, false)#>);
+		}
+
+		/// <summary>
+		/// 增加一条数据
+		/// </summary>
+		public <#= returnValue #>  Add(<#= ModelSpace #>Model model)
+		{
+			<#if (identityKey!=null) {#>return dal.Add(model);
+			<#} else {#>dal.Add(model);
+			<#}#>			
+		}
+
+		/// <summary>
+		/// 更新一条数据
+		/// </summary>
+		public bool Update(<#= ModelSpace #>Model model)
+		{
+			return dal.Update(model);
+		}
+
+		/// <summary>
+		/// 删除一条数据
+		/// </summary>
+		public bool Delete(<#=CodeCommon.GetInParameter(host.Keys, true)#>)
+		{
+			
+			return dal.Delete(<#=CodeCommon.GetFieldstrlist(host.Keys, true)#>);
+		}
+		<#if (identityKey!=null) {#>
+		/// <summary>
+		/// 批量删除一批数据
+		/// </summary>
+		public bool DeleteList(string <#=identityKey.ColumnName#>list )
+		{
+			return dal.DeleteList(<#=identityKey.ColumnName#>list );
+		}
+		<#}#>
+
+		/// <summary>
+		/// 得到一个对象实体
+		/// </summary>
+		public <#= ModelSpace #>Model GetModel(<#= CodeCommon.GetInParameter(host.Keys,true) #>)
+		{
+			
+			return dal.GetModel(<#=CodeCommon.GetFieldstrlist(host.Keys, true)#>);
+		}
+
+		/// <summary>
+		/// 得到一个对象实体，从缓存中
+		/// </summary>
+		public <#= ModelSpace #>Model GetModelByCache(<#= CodeCommon.GetInParameter(host.Keys,true) #>)
+		{
+			
+			string CacheKey = "<#= host.TableName #>Model-" + <#=CodeCommon.GetFieldstrlistAdd(host.Keys, true)#>;
+			object objModel =DataCacheHelper.GetCache(CacheKey);
+			if (objModel == null)
+			{
+				try
+				{
+					objModel = dal.GetModel(<#=CodeCommon.GetFieldstrlist(host.Keys, true)#>);
+					if (objModel != null)
+					{
+						int ModelCache = ConfigHelper.GetConfigInt("ModelCache");
+						DataCacheHelper.SetCache(CacheKey, objModel, DateTime.Now.AddMinutes(ModelCache), TimeSpan.Zero);
+					}
+				}
+				catch{}
+			}
+			return (<#= ModelSpace #>Model)objModel;
+		}
+
+		/// <summary>
+		/// 获得数据列表
+		/// </summary>
+		public DataSet GetList(string strWhere)
+		{
+			return dal.GetList(strWhere);
+		}
+		/// <summary>
+		/// 获得前几行数据
+		/// </summary>
+		public DataSet GetList(int Top,string strWhere,string filedOrder)
+		{
+			return dal.GetList(Top,strWhere,filedOrder);
+		}
+		/// <summary>
+		/// 获得数据列表
+		/// </summary>
+		public List<<#= ModelSpace #>Model> GetModelList(string strWhere)
+		{
+			DataSet ds = dal.GetList(strWhere);
+			return DataTableToList(ds.Tables[0]);
+		}
+		/// <summary>
+		/// 获得数据列表
+		/// </summary>
+		public List<<#= ModelSpace #>Model> DataTableToList(DataTable dt)
+		{
+			List<<#= ModelSpace #>Model> modelList = new List<<#= ModelSpace #>Model>();
+			int rowsCount = dt.Rows.Count;
+			if (rowsCount > 0)
+			{
+				<#= ModelSpace #>Model model;
+				for (int n = 0; n < rowsCount; n++)
+				{
+					model = new <#= ModelSpace #>Model();					
+					<# foreach (ColumnInfo c in host.Fieldlist) { #>
+				<# if(CodeCommon.DbTypeToCS(c.TypeName)=="int"||
+				CodeCommon.DbTypeToCS(c.TypeName)=="long"||
+				CodeCommon.DbTypeToCS(c.TypeName)=="float"||
+				CodeCommon.DbTypeToCS(c.TypeName)=="DateTime"||
+				CodeCommon.DbTypeToCS(c.TypeName)=="decimal")
+				{#>if(dt.Rows[n]["<#=c.ColumnName#>"].ToString()!="")
+				{
+					model.<#=c.ColumnName#>=<#=CodeCommon.DbTypeToCS(c.TypeName)#>.Parse(dt.Rows[n]["<#=c.ColumnName#>"].ToString());
+				}
+				<# } #><# if(CodeCommon.DbTypeToCS(c.TypeName)=="string") {#>
+				model.<#=c.ColumnName#>= dt.Rows[n]["<#=c.ColumnName#>"].ToString();
+				<# } #>
+				<# if(CodeCommon.DbTypeToCS(c.TypeName)=="byte[]") {#>
+				if(dt.Rows[n]["<#=c.ColumnName#>"].ToString()!="")
+				{
+					model.<#=c.ColumnName#>= (byte[])dt.Rows[n]["<#=c.ColumnName#>"];
+				}
+				<# } #>
+				<# if(CodeCommon.DbTypeToCS(c.TypeName)=="Guid") {#>
+				if(dt.Rows[n]["<#=c.ColumnName#>"].ToString()!="")
+				{
+					model.<#=c.ColumnName#>= dt.Rows[n]["<#=c.ColumnName#>"].ToString();
+				}
+				<# } #>
+				<# if(CodeCommon.DbTypeToCS(c.TypeName)=="bool") {#>
+				if(dt.Rows[n]["<#=c.ColumnName#>"].ToString()!="")
+				{
+if((dt.Rows[n]["<#=c.ColumnName#>"].ToString()=="1")||(dt.Rows[n]["<#=c.ColumnName#>"].ToString().ToLower()=="true"))
+					{
+					model.<#=c.ColumnName#>= true;
+					}
+					else
+					{
+					model.<#=c.ColumnName#>= false;
+					}
+				}
+				<# } #>
+				<# } #>	
+				modelList.Add(model);
+				}
+			}
+			return modelList;
+		}
+
+		/// <summary>
+		/// 获得数据列表
+		/// </summary>
+		public DataSet GetAllList()
+		{
+			return GetList("");
+		}
+	#endregion   
+	}
+	#endregion
+///////////////////////////////////////////////////////////////////////////////
+	#region	SQLDAL
+	<# if( host.TableDescription.Length > 0) {#>
+ 	//<#= host.TableDescription #>
+	<# } #>
+public partial class <#= host.GetDALClass(host.TableName) #>SQLDAL: I<#= host.GetDALClass(host.TableName) #>
+	{
+   		     
+		public bool Exists(<#= CodeCommon.GetInParameter(host.Keys, false) #>)
+		{
+			StringBuilder strSql=new StringBuilder();
+			strSql.Append("select count(1) from <#= host.TableName #>");
+			strSql.Append(" where ");
+			<# for(int i=0;i< host.Keys.Count;i++)
+            {   ColumnInfo key = host.Keys[i]; #>
+                <# if (key.IsPrimaryKey || !key.IsIdentity)
+                {#>
+                       strSql.Append(" <#= key.ColumnName#> = <#=preParameter#><#=key.ColumnName#> <# if (i< host.Keys.Count-1 ) {#>and <#}#> ");
+                <#}#>
+            <# }#>
+<#= CodeCommon.GetPreParameter(host.Keys, false, host.DbType) #>
+			return <#= host.DbHelperName#>.Exists(strSql.ToString(),parameters);
+		}
+		
+				
+		
+		/// <summary>
+		/// 增加一条数据
+		/// </summary>
+		public <#= returnValue #> Add(<#= ModelSpace #>Model model)
+		{
+			StringBuilder strSql=new StringBuilder();
+			strSql.Append("insert into <#= host.TableName #>(");			
+            strSql.Append("<# for(int i=0;i< host.Fieldlist.Count;i++) {   ColumnInfo c = host.Fieldlist[i]; if (!c.IsIdentity) {#><#= c.ColumnName#><# if (i< host.Fieldlist.Count-1 ) {#>,<#}#><#}}#>");
+			strSql.Append(") values (");
+            strSql.Append("<# for(int i=0;i< host.Fieldlist.Count;i++) {   ColumnInfo c = host.Fieldlist[i]; if (!c.IsIdentity) {#><#=preParameter#><#= c.ColumnName#><# if (i< host.Fieldlist.Count-1 ) {#>,<#}#><#}}#>");            
+            strSql.Append(") ");            
+            <#if (identityKey!=null) {#>strSql.Append(";select @@IDENTITY");<#}#>		
+			SqlParameter[] parameters = {
+			<# for(int i=0;i< host.Fieldlist.Count;i++)
+            {   
+            ColumnInfo c = host.Fieldlist[i];
+            if(c.IsIdentity) continue;
+            #>
+            new SqlParameter("<#=preParameter#><#=c.ColumnName#>", SqlDbType.<#=CodeCommon.DbTypeLength(host.DbType, c.TypeName, c.Length)#>) <# if (i< host.Fieldlist.Count-1 ) {#>,<#}#>            
+            <# }#>  
+            };
+			<# foreach (ColumnInfo c in host.Fieldlist) { if(c.IsIdentity) continue;#>            
+            parameters[<#= n #>].Value = <# if ("uniqueidentifier" == c.TypeName.ToLower()){#>Guid.NewGuid();<#} else {#>model.<#=c.ColumnName#>;<#} n=n+1; #>
+            <# }#>
+            
+			<#if (identityKey!=null) {#>   
+			object obj = <#= host.DbHelperName#>.GetSingle(strSql.ToString(),parameters);			
+			if (obj == null)
+			{
+				return 0;
+			}
+			else
+			{
+				<# if ( returnValue=="int" ) 
+				{#>                    
+            	return Convert.ToInt32(obj);
+                <#}#>
+                <# if ( returnValue=="long" ) 
+				{#>                    
+            	return Convert.ToInt64(obj);
+                <#}#>
+                <# if ( returnValue=="decimal" ) 
+				{#>                    
+            	return Convert.ToDecimal(obj);
+                <#}#>                  
+			}			   
+            <#} else {#>
+            <#= host.DbHelperName#>.ExecuteSql(strSql.ToString(),parameters);
+            <#}#>			
+		}
+		
+		
+		/// <summary>
+		/// 更新一条数据
+		/// </summary>
+		public bool Update(<#= ModelSpace #>Model model)
+		{
+			StringBuilder strSql=new StringBuilder();
+			strSql.Append("update <#= host.TableName #> set ");
+			<# for(int i=0;i< host.Fieldlist.Count;i++)
+            {   ColumnInfo c = host.Fieldlist[i]; #>
+            <# if (!c.IsIdentity) {#>            
+            strSql.Append(" <#= c.ColumnName #> = <#=preParameter#><#=c.ColumnName#> <# if (i< host.Fieldlist.Count-1 ) {#>,<#}#> ");<# }#>
+            <# }#>			
+			strSql.Append(" where <#= CodeCommon.GetWhereParameterExpression(host.Keys, true ,host.DbType) #> ");
+						
+SqlParameter[] parameters = {
+			<# for(int i=0;i< host.Fieldlist.Count;i++)
+            {   ColumnInfo c = host.Fieldlist[i]; #>
+            new SqlParameter("<#=preParameter#><#=c.ColumnName#>", SqlDbType.<#=CodeCommon.DbTypeLength(host.DbType, c.TypeName, c.Length)#>) <# if (i< host.Fieldlist.Count-1 ) {#>,<#}#>
+            
+            <# }#>  
+            };
+			<# n=0; #>
+			<# foreach (ColumnInfo c in host.Fieldlist) { #>            
+            parameters[<#= n #>].Value = model.<#=c.ColumnName#>;<# n=n+1; #>
+            <# }#>
+            
+            int rows=<#= host.DbHelperName#>.ExecuteSql(strSql.ToString(),parameters);
+			if (rows > 0)
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}
+		
+		
+		/// <summary>
+		/// 删除一条数据
+		/// </summary>
+		public bool Delete(<#=CodeCommon.GetInParameter(host.Keys, true)#>)
+		{
+			
+			StringBuilder strSql=new StringBuilder();
+			strSql.Append("delete from <#= host.TableName #> ");
+			strSql.Append(" where <#= CodeCommon.GetWhereParameterExpression(host.Keys, true, host.DbType)#>");
+			<#= CodeCommon.GetPreParameter(host.Keys, true, host.DbType) #>
+
+			int rows=<#= host.DbHelperName#>.ExecuteSql(strSql.ToString(),parameters);
+			if (rows > 0)
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}
+		
+		<#if (identityKey!=null) {#>
+		/// <summary>
+		/// 批量删除一批数据
+		/// </summary>
+		public bool DeleteList(string <#=identityKey.ColumnName#>list )
+		{
+			StringBuilder strSql=new StringBuilder();
+			strSql.Append("delete from <#= host.TableName #> ");
+			strSql.Append(" where ID in ("+<#=identityKey.ColumnName#>list + ")  ");
+			int rows=<#= host.DbHelperName#>.ExecuteSql(strSql.ToString());
+			if (rows > 0)
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}
+		<#}#>
+		
+		
+		/// <summary>
+		/// 得到一个对象实体
+		/// </summary>
+		public <#= ModelSpace #>Model GetModel(<#= CodeCommon.GetInParameter(host.Keys,true) #>)
+		{
+			
+			StringBuilder strSql=new StringBuilder();
+			strSql.Append("select <# for(int i=0;i< host.Fieldlist.Count;i++) { #><#= host.Fieldlist[i].ColumnName #><# if(i< host.Fieldlist.Count-1 ) {#>,<# } #> <#}#> ");			
+			strSql.Append("  from <#= host.TableName #> ");
+			strSql.Append(" where <#= CodeCommon.GetWhereParameterExpression(host.Keys, true, host.DbType) #>");
+			<#=CodeCommon.GetPreParameter(host.Keys, true, host.DbType)#>
+			
+			<#=ModelSpace#>Model model=new <#=ModelSpace#>Model();
+			DataSet ds=<#= host.DbHelperName#>.Query(strSql.ToString(),parameters);
+			
+			if(ds.Tables[0].Rows.Count>0)
+			{
+				<# foreach (ColumnInfo c in host.Fieldlist) { #>
+				<# if(CodeCommon.DbTypeToCS(c.TypeName)=="int"||
+				CodeCommon.DbTypeToCS(c.TypeName)=="long"||
+				CodeCommon.DbTypeToCS(c.TypeName)=="float"||
+				CodeCommon.DbTypeToCS(c.TypeName)=="DateTime"||
+				CodeCommon.DbTypeToCS(c.TypeName)=="decimal")
+				{#>
+				if(ds.Tables[0].Rows[0]["<#=c.ColumnName#>"].ToString()!="")
+				{
+					model.<#=c.ColumnName#>=<#=CodeCommon.DbTypeToCS(c.TypeName)#>.Parse(ds.Tables[0].Rows[0]["<#=c.ColumnName#>"].ToString());
+				}
+				<# } #>
+				<# if(CodeCommon.DbTypeToCS(c.TypeName)=="string") {#>
+				model.<#=c.ColumnName#>= ds.Tables[0].Rows[0]["<#=c.ColumnName#>"].ToString();
+				<# } #>
+				<# if(CodeCommon.DbTypeToCS(c.TypeName)=="byte[]") {#>
+				if(ds.Tables[0].Rows[0]["<#=c.ColumnName#>"].ToString()!="")
+				{
+					model.<#=c.ColumnName#>= (byte[])ds.Tables[0].Rows[0]["<#=c.ColumnName#>"];
+				}
+				<# } #>
+				<# if(CodeCommon.DbTypeToCS(c.TypeName)=="Guid") {#>
+				if(ds.Tables[0].Rows[0]["<#=c.ColumnName#>"].ToString()!="")
+				{
+					model.<#=c.ColumnName#>= ds.Tables[0].Rows[0]["<#=c.ColumnName#>"].ToString();
+				}
+				<# } #>
+				<# if(CodeCommon.DbTypeToCS(c.TypeName)=="bool") {#>
+				if(ds.Tables[0].Rows[0]["<#=c.ColumnName#>"].ToString()!="")
+				{
+					if((ds.Tables[0].Rows[0]["<#=c.ColumnName#>"].ToString()=="1")||(ds.Tables[0].Rows[0]["<#=c.ColumnName#>"].ToString().ToLower()=="true"))
+					{
+					model.<#=c.ColumnName#>= true;
+					}
+					else
+					{
+					model.<#=c.ColumnName#>= false;
+					}
+				}
+				<# } #>
+				<# } #>						
+				return model;
+			}
+			else
+			{
+				return null;
+			}
+		}
+		
+		
+		/// <summary>
+		/// 获得数据列表
+		/// </summary>
+		public DataSet GetList(string strWhere)
+		{
+			StringBuilder strSql=new StringBuilder();
+			strSql.Append("select * ");
+			strSql.Append(" FROM <#= host.TableName #> ");
+			if(strWhere.Trim()!="")
+			{
+				strSql.Append(" where "+strWhere);
+			}
+			return <#= host.DbHelperName#>.Query(strSql.ToString());
+		}
+		
+		/// <summary>
+		/// 获得前几行数据
+		/// </summary>
+		public DataSet GetList(int Top,string strWhere,string filedOrder)
+		{
+			StringBuilder strSql=new StringBuilder();
+			strSql.Append("select ");
+			if(Top>0)
+			{
+				strSql.Append(" top "+Top.ToString());
+			}
+			strSql.Append(" * ");
+			strSql.Append(" FROM <#= host.TableName #> ");
+			if(strWhere.Trim()!="")
+			{
+				strSql.Append(" where "+strWhere);
+			}
+			strSql.Append(" order by " + filedOrder);
+			return <#= host.DbHelperName#>.Query(strSql.ToString());
+		}
+	}
+	#endregion
+}
+
+<#+
+int n=0;
+#>
