@@ -35,3 +35,10 @@ F:\MarlonWorkShop\MarlonLab\MarlonCVJDMatcher\bin\Debug\ServiceStack.Redis.pdb
 F:\MarlonWorkShop\MarlonLab\MarlonCVJDMatcher\bin\Debug\ServiceStack.Redis.xml
 F:\MarlonWorkShop\MarlonLab\MarlonCVJDMatcher\bin\Debug\ServiceStack.Text.xml
 F:\MarlonWorkShop\MarlonLab\MarlonCVJDMatcher\bin\Debug\ServiceStack.Common.xml
+F:\MarlonWorkShop\MarlonLab\MarlonCVJDMatcher\obj\Debug\MarlonCVJDMatcher.WinForm.frmCVJDMatch.resources
+F:\MarlonWorkShop\MarlonLab\MarlonCVJDMatcher\obj\Debug\MarlonCVJDMatcher.WinForm.frmPositionOutLine.resources
+F:\MarlonWorkShop\MarlonLab\MarlonCVJDMatcher\obj\Debug\MarlonCVJDMatcher.WinForm.frmResumeOutline.resources
+F:\MarlonWorkShop\MarlonLab\MarlonCVJDMatcher\bin\Debug\Tclywork.Platform.Common.dll
+F:\MarlonWorkShop\MarlonLab\MarlonCVJDMatcher\bin\Debug\COM.Excel.dll
+F:\MarlonWorkShop\MarlonLab\MarlonCVJDMatcher\bin\Debug\Newtonsoft.Json.dll
+F:\MarlonWorkShop\MarlonLab\MarlonCVJDMatcher\bin\Debug\Newtonsoft.Json.xml

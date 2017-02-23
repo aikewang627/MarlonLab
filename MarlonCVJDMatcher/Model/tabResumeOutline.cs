@@ -268,6 +268,96 @@ namespace Tclywork.Model{
 	            set{ _HopeSalary = value;}
 	        }private decimal _HopeSalary;
 				        
+							/// <summary>
+			/// AppID
+	        /// </summary>
+	        
+	        public string AppID
+	        {
+	            get{ return _AppID; }
+	            set{ _AppID = value;}
+	        }private string _AppID;
+				        
+							/// <summary>
+			/// Version
+	        /// </summary>
+	        
+	        public string Version
+	        {
+	            get{ return _Version; }
+	            set{ _Version = value;}
+	        }private string _Version;
+				        
+							/// <summary>
+			/// 随机码
+	        /// </summary>
+	        
+	        public string RandomNo
+	        {
+	            get{ return _RandomNo; }
+	            set{ _RandomNo = value;}
+	        }private string _RandomNo;
+				        
+							/// <summary>
+			/// 备注
+	        /// </summary>
+	        
+	        public string Remark
+	        {
+	            get{ return _Remark; }
+	            set{ _Remark = value;}
+	        }private string _Remark;
+				        
+							/// <summary>
+			/// 标签
+	        /// </summary>
+	        
+	        public string LableText
+	        {
+	            get{ return _LableText; }
+	            set{ _LableText = value;}
+	        }private string _LableText;
+				        
+							/// <summary>
+			/// 扩展Json
+	        /// </summary>
+	        
+	        public string ExJson
+	        {
+	            get{ return _ExJson; }
+	            set{ _ExJson = value;}
+	        }private string _ExJson;
+				        
+							/// <summary>
+			/// 排序
+	        /// </summary>
+	        
+	        public int OrderNo
+	        {
+	            get{ return _OrderNo; }
+	            set{ _OrderNo = value;}
+	        }private int _OrderNo;
+				        
+							/// <summary>
+			/// 修改时间
+	        /// </summary>
+	        
+	        public string ModifyDate
+	        {
+	            get{ return _ModifyDate; }
+	            set{ _ModifyDate = value;}
+	        }private string _ModifyDate;
+				        
+							/// <summary>
+			/// 修改用户
+	        /// </summary>
+	        
+	        public int ModifyUser
+	        {
+	            get{ return _ModifyUser; }
+	            set{ _ModifyUser = value;}
+	        }private int _ModifyUser;
+				        
  	}
 	
 	}
@@ -289,9 +379,9 @@ namespace Tclywork.DAL{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("select count(1) from tabResumeOutline");
 			strSql.Append(" where ");
-			                        strSql.Append(" id = SQL2012id  ");
+			                        strSql.Append(" id = @id  ");
                             			SqlParameter[] parameters = {
-					new SqlParameter("SQL2012id", SqlDbType.Int,4)
+					new SqlParameter("@id", SqlDbType.Int,4)
 			};
 			parameters[0].Value = id;
 
@@ -310,36 +400,45 @@ namespace Tclywork.DAL{
 			model.ModifyDate=DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("insert into tabResumeOutline(");			
-            strSql.Append("ResumeID,ResumeNo,ResumeName,Status,CreateUser,CreateDate,ParentID,RealName,Sex,Birthday,Marriage,BeginJobYear,Mobile,Email,XueLi,School,Major,Company,Skill,CoreSkill,HopeAddress,HopePosition,HopeIndustry,HopeSalary");
+            strSql.Append("ResumeID,ResumeNo,ResumeName,Status,CreateUser,CreateDate,ParentID,RealName,Sex,Birthday,Marriage,BeginJobYear,Mobile,Email,XueLi,School,Major,Company,Skill,CoreSkill,HopeAddress,HopePosition,HopeIndustry,HopeSalary,AppID,Version,RandomNo,Remark,LableText,ExJson,OrderNo,ModifyDate,ModifyUser");
 			strSql.Append(") values (");
-            strSql.Append("SQL2012ResumeID,SQL2012ResumeNo,SQL2012ResumeName,SQL2012Status,SQL2012CreateUser,SQL2012CreateDate,SQL2012ParentID,SQL2012RealName,SQL2012Sex,SQL2012Birthday,SQL2012Marriage,SQL2012BeginJobYear,SQL2012Mobile,SQL2012Email,SQL2012XueLi,SQL2012School,SQL2012Major,SQL2012Company,SQL2012Skill,SQL2012CoreSkill,SQL2012HopeAddress,SQL2012HopePosition,SQL2012HopeIndustry,SQL2012HopeSalary");            
+            strSql.Append("@ResumeID,@ResumeNo,@ResumeName,@Status,@CreateUser,@CreateDate,@ParentID,@RealName,@Sex,@Birthday,@Marriage,@BeginJobYear,@Mobile,@Email,@XueLi,@School,@Major,@Company,@Skill,@CoreSkill,@HopeAddress,@HopePosition,@HopeIndustry,@HopeSalary,@AppID,@Version,@RandomNo,@Remark,@LableText,@ExJson,@OrderNo,@ModifyDate,@ModifyUser");            
             strSql.Append(") ");            
             strSql.Append(";select @@IDENTITY");		
 			SqlParameter[] parameters = {
-			            new SqlParameter("SQL2012ResumeID", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012ResumeNo", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012ResumeName", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012Status", SqlDbType.NVarChar,-1) ,            
-                        new SqlParameter("SQL2012CreateUser", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012CreateDate", SqlDbType.NVarChar,200) ,            
-                        new SqlParameter("SQL2012ParentID", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012RealName", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012Sex", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012Birthday", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012Marriage", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012BeginJobYear", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012Mobile", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012Email", SqlDbType.NVarChar,500) ,            
-                        new SqlParameter("SQL2012XueLi", SqlDbType.NVarChar,500) ,            
-                        new SqlParameter("SQL2012School", SqlDbType.NVarChar,500) ,            
-                        new SqlParameter("SQL2012Major", SqlDbType.NVarChar,500) ,            
-                        new SqlParameter("SQL2012Company", SqlDbType.NVarChar,500) ,            
-                        new SqlParameter("SQL2012Skill", SqlDbType.NText) ,            
-                        new SqlParameter("SQL2012CoreSkill", SqlDbType.NVarChar,500) ,            
-                        new SqlParameter("SQL2012HopeAddress", SqlDbType.NVarChar,100) ,            
-                        new SqlParameter("SQL2012HopePosition", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012HopeIndustry", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012HopeSalary", SqlDbType.Decimal,9)             
+			            new SqlParameter("@ResumeID", SqlDbType.Int,4) ,            
+                        new SqlParameter("@ResumeNo", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@ResumeName", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@Status", SqlDbType.NVarChar,-1) ,            
+                        new SqlParameter("@CreateUser", SqlDbType.Int,4) ,            
+                        new SqlParameter("@CreateDate", SqlDbType.NVarChar,200) ,            
+                        new SqlParameter("@ParentID", SqlDbType.Int,4) ,            
+                        new SqlParameter("@RealName", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@Sex", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@Birthday", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@Marriage", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@BeginJobYear", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@Mobile", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@Email", SqlDbType.NVarChar,500) ,            
+                        new SqlParameter("@XueLi", SqlDbType.NVarChar,500) ,            
+                        new SqlParameter("@School", SqlDbType.NVarChar,500) ,            
+                        new SqlParameter("@Major", SqlDbType.NVarChar,500) ,            
+                        new SqlParameter("@Company", SqlDbType.NVarChar,500) ,            
+                        new SqlParameter("@Skill", SqlDbType.NText) ,            
+                        new SqlParameter("@CoreSkill", SqlDbType.NVarChar,500) ,            
+                        new SqlParameter("@HopeAddress", SqlDbType.NVarChar,100) ,            
+                        new SqlParameter("@HopePosition", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@HopeIndustry", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@HopeSalary", SqlDbType.Decimal,9) ,            
+                        new SqlParameter("@AppID", SqlDbType.NVarChar,100) ,            
+                        new SqlParameter("@Version", SqlDbType.NVarChar,100) ,            
+                        new SqlParameter("@RandomNo", SqlDbType.NVarChar,200) ,            
+                        new SqlParameter("@Remark", SqlDbType.NVarChar,-1) ,            
+                        new SqlParameter("@LableText", SqlDbType.NVarChar,-1) ,            
+                        new SqlParameter("@ExJson", SqlDbType.NVarChar,-1) ,            
+                        new SqlParameter("@OrderNo", SqlDbType.Int,4) ,            
+                        new SqlParameter("@ModifyDate", SqlDbType.NVarChar,200) ,            
+                        new SqlParameter("@ModifyUser", SqlDbType.Int,4)             
               
             };
 			            
@@ -367,6 +466,15 @@ namespace Tclywork.DAL{
             parameters[21].Value = model.HopePosition;                        
             parameters[22].Value = model.HopeIndustry;                        
             parameters[23].Value = model.HopeSalary;                        
+            parameters[24].Value = model.AppID;                        
+            parameters[25].Value = model.Version;                        
+            parameters[26].Value = model.RandomNo;                        
+            parameters[27].Value = model.Remark;                        
+            parameters[28].Value = model.LableText;                        
+            parameters[29].Value = model.ExJson;                        
+            parameters[30].Value = model.OrderNo;                        
+            parameters[31].Value = model.ModifyDate;                        
+            parameters[32].Value = model.ModifyUser;                        
 			   
 			object obj = DbHelperSQL.GetSingle(strSql.ToString(),parameters);			
 			if (obj == null)
@@ -390,58 +498,76 @@ namespace Tclywork.DAL{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("update tabResumeOutline set ");
 			                                                
-            strSql.Append(" ResumeID = SQL2012ResumeID , ");                                    
-            strSql.Append(" ResumeNo = SQL2012ResumeNo , ");                                    
-            strSql.Append(" ResumeName = SQL2012ResumeName , ");                                    
-            strSql.Append(" Status = SQL2012Status , ");                                    
-            strSql.Append(" CreateUser = SQL2012CreateUser , ");                                    
-            strSql.Append(" CreateDate = SQL2012CreateDate , ");                                    
-            strSql.Append(" ParentID = SQL2012ParentID , ");                                    
-            strSql.Append(" RealName = SQL2012RealName , ");                                    
-            strSql.Append(" Sex = SQL2012Sex , ");                                    
-            strSql.Append(" Birthday = SQL2012Birthday , ");                                    
-            strSql.Append(" Marriage = SQL2012Marriage , ");                                    
-            strSql.Append(" BeginJobYear = SQL2012BeginJobYear , ");                                    
-            strSql.Append(" Mobile = SQL2012Mobile , ");                                    
-            strSql.Append(" Email = SQL2012Email , ");                                    
-            strSql.Append(" XueLi = SQL2012XueLi , ");                                    
-            strSql.Append(" School = SQL2012School , ");                                    
-            strSql.Append(" Major = SQL2012Major , ");                                    
-            strSql.Append(" Company = SQL2012Company , ");                                    
-            strSql.Append(" Skill = SQL2012Skill , ");                                    
-            strSql.Append(" CoreSkill = SQL2012CoreSkill , ");                                    
-            strSql.Append(" HopeAddress = SQL2012HopeAddress , ");                                    
-            strSql.Append(" HopePosition = SQL2012HopePosition , ");                                    
-            strSql.Append(" HopeIndustry = SQL2012HopeIndustry , ");                                    
-            strSql.Append(" HopeSalary = SQL2012HopeSalary  ");            			
-			strSql.Append(" where id=SQL2012id ");
+            strSql.Append(" ResumeID = @ResumeID , ");                                    
+            strSql.Append(" ResumeNo = @ResumeNo , ");                                    
+            strSql.Append(" ResumeName = @ResumeName , ");                                    
+            strSql.Append(" Status = @Status , ");                                    
+            strSql.Append(" CreateUser = @CreateUser , ");                                    
+            strSql.Append(" CreateDate = @CreateDate , ");                                    
+            strSql.Append(" ParentID = @ParentID , ");                                    
+            strSql.Append(" RealName = @RealName , ");                                    
+            strSql.Append(" Sex = @Sex , ");                                    
+            strSql.Append(" Birthday = @Birthday , ");                                    
+            strSql.Append(" Marriage = @Marriage , ");                                    
+            strSql.Append(" BeginJobYear = @BeginJobYear , ");                                    
+            strSql.Append(" Mobile = @Mobile , ");                                    
+            strSql.Append(" Email = @Email , ");                                    
+            strSql.Append(" XueLi = @XueLi , ");                                    
+            strSql.Append(" School = @School , ");                                    
+            strSql.Append(" Major = @Major , ");                                    
+            strSql.Append(" Company = @Company , ");                                    
+            strSql.Append(" Skill = @Skill , ");                                    
+            strSql.Append(" CoreSkill = @CoreSkill , ");                                    
+            strSql.Append(" HopeAddress = @HopeAddress , ");                                    
+            strSql.Append(" HopePosition = @HopePosition , ");                                    
+            strSql.Append(" HopeIndustry = @HopeIndustry , ");                                    
+            strSql.Append(" HopeSalary = @HopeSalary , ");                                    
+            strSql.Append(" AppID = @AppID , ");                                    
+            strSql.Append(" Version = @Version , ");                                    
+            strSql.Append(" RandomNo = @RandomNo , ");                                    
+            strSql.Append(" Remark = @Remark , ");                                    
+            strSql.Append(" LableText = @LableText , ");                                    
+            strSql.Append(" ExJson = @ExJson , ");                                    
+            strSql.Append(" OrderNo = @OrderNo , ");                                    
+            strSql.Append(" ModifyDate = @ModifyDate , ");                                    
+            strSql.Append(" ModifyUser = @ModifyUser  ");            			
+			strSql.Append(" where id=@id ");
 						
 SqlParameter[] parameters = {
-			            new SqlParameter("SQL2012id", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012ResumeID", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012ResumeNo", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012ResumeName", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012Status", SqlDbType.NVarChar,-1) ,            
-                        new SqlParameter("SQL2012CreateUser", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012CreateDate", SqlDbType.NVarChar,200) ,            
-                        new SqlParameter("SQL2012ParentID", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012RealName", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012Sex", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012Birthday", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012Marriage", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012BeginJobYear", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012Mobile", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012Email", SqlDbType.NVarChar,500) ,            
-                        new SqlParameter("SQL2012XueLi", SqlDbType.NVarChar,500) ,            
-                        new SqlParameter("SQL2012School", SqlDbType.NVarChar,500) ,            
-                        new SqlParameter("SQL2012Major", SqlDbType.NVarChar,500) ,            
-                        new SqlParameter("SQL2012Company", SqlDbType.NVarChar,500) ,            
-                        new SqlParameter("SQL2012Skill", SqlDbType.NText) ,            
-                        new SqlParameter("SQL2012CoreSkill", SqlDbType.NVarChar,500) ,            
-                        new SqlParameter("SQL2012HopeAddress", SqlDbType.NVarChar,100) ,            
-                        new SqlParameter("SQL2012HopePosition", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012HopeIndustry", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012HopeSalary", SqlDbType.Decimal,9)             
+			            new SqlParameter("@id", SqlDbType.Int,4) ,            
+                        new SqlParameter("@ResumeID", SqlDbType.Int,4) ,            
+                        new SqlParameter("@ResumeNo", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@ResumeName", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@Status", SqlDbType.NVarChar,-1) ,            
+                        new SqlParameter("@CreateUser", SqlDbType.Int,4) ,            
+                        new SqlParameter("@CreateDate", SqlDbType.NVarChar,200) ,            
+                        new SqlParameter("@ParentID", SqlDbType.Int,4) ,            
+                        new SqlParameter("@RealName", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@Sex", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@Birthday", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@Marriage", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@BeginJobYear", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@Mobile", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@Email", SqlDbType.NVarChar,500) ,            
+                        new SqlParameter("@XueLi", SqlDbType.NVarChar,500) ,            
+                        new SqlParameter("@School", SqlDbType.NVarChar,500) ,            
+                        new SqlParameter("@Major", SqlDbType.NVarChar,500) ,            
+                        new SqlParameter("@Company", SqlDbType.NVarChar,500) ,            
+                        new SqlParameter("@Skill", SqlDbType.NText) ,            
+                        new SqlParameter("@CoreSkill", SqlDbType.NVarChar,500) ,            
+                        new SqlParameter("@HopeAddress", SqlDbType.NVarChar,100) ,            
+                        new SqlParameter("@HopePosition", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@HopeIndustry", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@HopeSalary", SqlDbType.Decimal,9) ,            
+                        new SqlParameter("@AppID", SqlDbType.NVarChar,100) ,            
+                        new SqlParameter("@Version", SqlDbType.NVarChar,100) ,            
+                        new SqlParameter("@RandomNo", SqlDbType.NVarChar,200) ,            
+                        new SqlParameter("@Remark", SqlDbType.NVarChar,-1) ,            
+                        new SqlParameter("@LableText", SqlDbType.NVarChar,-1) ,            
+                        new SqlParameter("@ExJson", SqlDbType.NVarChar,-1) ,            
+                        new SqlParameter("@OrderNo", SqlDbType.Int,4) ,            
+                        new SqlParameter("@ModifyDate", SqlDbType.NVarChar,200) ,            
+                        new SqlParameter("@ModifyUser", SqlDbType.Int,4)             
               
             };
 						            
@@ -470,6 +596,15 @@ SqlParameter[] parameters = {
             parameters[22].Value = model.HopePosition;                        
             parameters[23].Value = model.HopeIndustry;                        
             parameters[24].Value = model.HopeSalary;                        
+            parameters[25].Value = model.AppID;                        
+            parameters[26].Value = model.Version;                        
+            parameters[27].Value = model.RandomNo;                        
+            parameters[28].Value = model.Remark;                        
+            parameters[29].Value = model.LableText;                        
+            parameters[30].Value = model.ExJson;                        
+            parameters[31].Value = model.OrderNo;                        
+            parameters[32].Value = model.ModifyDate;                        
+            parameters[33].Value = model.ModifyUser;                        
             int rows=DbHelperSQL.ExecuteSql(strSql.ToString(),parameters);
 			if (rows > 0)
 			{
@@ -498,57 +633,75 @@ SqlParameter[] parameters = {
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("update tabResumeOutline set ");
 			                                                
-            strSql.Append(" ResumeID = SQL2012ResumeID , ");                                    
-            strSql.Append(" ResumeNo = SQL2012ResumeNo , ");                                    
-            strSql.Append(" ResumeName = SQL2012ResumeName , ");                                    
-            strSql.Append(" Status = SQL2012Status , ");                                    
-            strSql.Append(" CreateUser = SQL2012CreateUser , ");                                    
-            strSql.Append(" CreateDate = SQL2012CreateDate , ");                                    
-            strSql.Append(" ParentID = SQL2012ParentID , ");                                    
-            strSql.Append(" RealName = SQL2012RealName , ");                                    
-            strSql.Append(" Sex = SQL2012Sex , ");                                    
-            strSql.Append(" Birthday = SQL2012Birthday , ");                                    
-            strSql.Append(" Marriage = SQL2012Marriage , ");                                    
-            strSql.Append(" BeginJobYear = SQL2012BeginJobYear , ");                                    
-            strSql.Append(" Mobile = SQL2012Mobile , ");                                    
-            strSql.Append(" Email = SQL2012Email , ");                                    
-            strSql.Append(" XueLi = SQL2012XueLi , ");                                    
-            strSql.Append(" School = SQL2012School , ");                                    
-            strSql.Append(" Major = SQL2012Major , ");                                    
-            strSql.Append(" Company = SQL2012Company , ");                                    
-            strSql.Append(" Skill = SQL2012Skill , ");                                    
-            strSql.Append(" CoreSkill = SQL2012CoreSkill , ");                                    
-            strSql.Append(" HopeAddress = SQL2012HopeAddress , ");                                    
-            strSql.Append(" HopePosition = SQL2012HopePosition , ");                                    
-            strSql.Append(" HopeIndustry = SQL2012HopeIndustry , ");                                    
-            strSql.Append(" HopeSalary = SQL2012HopeSalary  ");            			
-			strSql.Append(" where id=SQL2012id ");						
+            strSql.Append(" ResumeID = @ResumeID , ");                                    
+            strSql.Append(" ResumeNo = @ResumeNo , ");                                    
+            strSql.Append(" ResumeName = @ResumeName , ");                                    
+            strSql.Append(" Status = @Status , ");                                    
+            strSql.Append(" CreateUser = @CreateUser , ");                                    
+            strSql.Append(" CreateDate = @CreateDate , ");                                    
+            strSql.Append(" ParentID = @ParentID , ");                                    
+            strSql.Append(" RealName = @RealName , ");                                    
+            strSql.Append(" Sex = @Sex , ");                                    
+            strSql.Append(" Birthday = @Birthday , ");                                    
+            strSql.Append(" Marriage = @Marriage , ");                                    
+            strSql.Append(" BeginJobYear = @BeginJobYear , ");                                    
+            strSql.Append(" Mobile = @Mobile , ");                                    
+            strSql.Append(" Email = @Email , ");                                    
+            strSql.Append(" XueLi = @XueLi , ");                                    
+            strSql.Append(" School = @School , ");                                    
+            strSql.Append(" Major = @Major , ");                                    
+            strSql.Append(" Company = @Company , ");                                    
+            strSql.Append(" Skill = @Skill , ");                                    
+            strSql.Append(" CoreSkill = @CoreSkill , ");                                    
+            strSql.Append(" HopeAddress = @HopeAddress , ");                                    
+            strSql.Append(" HopePosition = @HopePosition , ");                                    
+            strSql.Append(" HopeIndustry = @HopeIndustry , ");                                    
+            strSql.Append(" HopeSalary = @HopeSalary , ");                                    
+            strSql.Append(" AppID = @AppID , ");                                    
+            strSql.Append(" Version = @Version , ");                                    
+            strSql.Append(" RandomNo = @RandomNo , ");                                    
+            strSql.Append(" Remark = @Remark , ");                                    
+            strSql.Append(" LableText = @LableText , ");                                    
+            strSql.Append(" ExJson = @ExJson , ");                                    
+            strSql.Append(" OrderNo = @OrderNo , ");                                    
+            strSql.Append(" ModifyDate = @ModifyDate , ");                                    
+            strSql.Append(" ModifyUser = @ModifyUser  ");            			
+			strSql.Append(" where id=@id ");						
 SqlParameter[] parameters = {
-			            new SqlParameter("SQL2012id", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012ResumeID", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012ResumeNo", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012ResumeName", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012Status", SqlDbType.NVarChar,-1) ,            
-                        new SqlParameter("SQL2012CreateUser", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012CreateDate", SqlDbType.NVarChar,200) ,            
-                        new SqlParameter("SQL2012ParentID", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012RealName", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012Sex", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012Birthday", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012Marriage", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012BeginJobYear", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012Mobile", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012Email", SqlDbType.NVarChar,500) ,            
-                        new SqlParameter("SQL2012XueLi", SqlDbType.NVarChar,500) ,            
-                        new SqlParameter("SQL2012School", SqlDbType.NVarChar,500) ,            
-                        new SqlParameter("SQL2012Major", SqlDbType.NVarChar,500) ,            
-                        new SqlParameter("SQL2012Company", SqlDbType.NVarChar,500) ,            
-                        new SqlParameter("SQL2012Skill", SqlDbType.NText) ,            
-                        new SqlParameter("SQL2012CoreSkill", SqlDbType.NVarChar,500) ,            
-                        new SqlParameter("SQL2012HopeAddress", SqlDbType.NVarChar,100) ,            
-                        new SqlParameter("SQL2012HopePosition", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012HopeIndustry", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012HopeSalary", SqlDbType.Decimal,9)             
+			            new SqlParameter("@id", SqlDbType.Int,4) ,            
+                        new SqlParameter("@ResumeID", SqlDbType.Int,4) ,            
+                        new SqlParameter("@ResumeNo", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@ResumeName", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@Status", SqlDbType.NVarChar,-1) ,            
+                        new SqlParameter("@CreateUser", SqlDbType.Int,4) ,            
+                        new SqlParameter("@CreateDate", SqlDbType.NVarChar,200) ,            
+                        new SqlParameter("@ParentID", SqlDbType.Int,4) ,            
+                        new SqlParameter("@RealName", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@Sex", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@Birthday", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@Marriage", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@BeginJobYear", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@Mobile", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@Email", SqlDbType.NVarChar,500) ,            
+                        new SqlParameter("@XueLi", SqlDbType.NVarChar,500) ,            
+                        new SqlParameter("@School", SqlDbType.NVarChar,500) ,            
+                        new SqlParameter("@Major", SqlDbType.NVarChar,500) ,            
+                        new SqlParameter("@Company", SqlDbType.NVarChar,500) ,            
+                        new SqlParameter("@Skill", SqlDbType.NText) ,            
+                        new SqlParameter("@CoreSkill", SqlDbType.NVarChar,500) ,            
+                        new SqlParameter("@HopeAddress", SqlDbType.NVarChar,100) ,            
+                        new SqlParameter("@HopePosition", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@HopeIndustry", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@HopeSalary", SqlDbType.Decimal,9) ,            
+                        new SqlParameter("@AppID", SqlDbType.NVarChar,100) ,            
+                        new SqlParameter("@Version", SqlDbType.NVarChar,100) ,            
+                        new SqlParameter("@RandomNo", SqlDbType.NVarChar,200) ,            
+                        new SqlParameter("@Remark", SqlDbType.NVarChar,-1) ,            
+                        new SqlParameter("@LableText", SqlDbType.NVarChar,-1) ,            
+                        new SqlParameter("@ExJson", SqlDbType.NVarChar,-1) ,            
+                        new SqlParameter("@OrderNo", SqlDbType.Int,4) ,            
+                        new SqlParameter("@ModifyDate", SqlDbType.NVarChar,200) ,            
+                        new SqlParameter("@ModifyUser", SqlDbType.Int,4)             
               
             };
 						            
@@ -577,6 +730,15 @@ SqlParameter[] parameters = {
             parameters[22].Value = model.HopePosition;                        
             parameters[23].Value = model.HopeIndustry;                        
             parameters[24].Value = model.HopeSalary;                        
+            parameters[25].Value = model.AppID;                        
+            parameters[26].Value = model.Version;                        
+            parameters[27].Value = model.RandomNo;                        
+            parameters[28].Value = model.Remark;                        
+            parameters[29].Value = model.LableText;                        
+            parameters[30].Value = model.ExJson;                        
+            parameters[31].Value = model.OrderNo;                        
+            parameters[32].Value = model.ModifyDate;                        
+            parameters[33].Value = model.ModifyUser;                        
             int rows=DbHelperSQL.ExecuteSql(strSql.ToString(),parameters);
 			if (rows > 0)
 			{
@@ -595,9 +757,9 @@ SqlParameter[] parameters = {
 			
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("delete from tabResumeOutline ");
-			strSql.Append(" where id=SQL2012id");
+			strSql.Append(" where id=@id");
 						SqlParameter[] parameters = {
-					new SqlParameter("SQL2012id", SqlDbType.Int,4)
+					new SqlParameter("@id", SqlDbType.Int,4)
 			};
 			parameters[0].Value = id;
 
@@ -639,9 +801,9 @@ SqlParameter[] parameters = {
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("select * ");			
 			strSql.Append("  from tabResumeOutline ");
-			strSql.Append(" where id=SQL2012id");
+			strSql.Append(" where id=@id");
 						SqlParameter[] parameters = {
-					new SqlParameter("SQL2012id", SqlDbType.Int,4)
+					new SqlParameter("@id", SqlDbType.Int,4)
 			};
 			parameters[0].Value = id;
 

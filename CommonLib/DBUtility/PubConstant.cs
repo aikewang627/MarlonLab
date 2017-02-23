@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Configuration;
 
-namespace Maticsoft.DBUtility
+namespace MarlonLab.CommonLib.DBUtility
 {
     
     public class PubConstant

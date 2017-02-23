@@ -21,4 +21,3 @@ F:\MarlonWorkShop\MarlonLab\CommonLib\bin\Debug\ServiceStack.Text.xml
 F:\MarlonWorkShop\MarlonLab\CommonLib\bin\Debug\PanGu.dll
 F:\MarlonWorkShop\MarlonLab\CommonLib\bin\Debug\PanGu.pdb
 F:\MarlonWorkShop\MarlonLab\CommonLib\bin\Debug\PanGu.xml
-F:\MarlonWorkShop\MarlonLab\CommonLib\obj\Debug\CommonLib.csprojResolveAssemblyReference.cache

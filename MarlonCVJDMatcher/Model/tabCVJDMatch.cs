@@ -178,6 +178,126 @@ namespace Tclywork.Model{
 	            set{ _MatchDegree = value;}
 	        }private int _MatchDegree;
 				        
+							/// <summary>
+			/// AppID
+	        /// </summary>
+	        
+	        public string AppID
+	        {
+	            get{ return _AppID; }
+	            set{ _AppID = value;}
+	        }private string _AppID;
+				        
+							/// <summary>
+			/// Version
+	        /// </summary>
+	        
+	        public string Version
+	        {
+	            get{ return _Version; }
+	            set{ _Version = value;}
+	        }private string _Version;
+				        
+							/// <summary>
+			/// 随机码
+	        /// </summary>
+	        
+	        public string RandomNo
+	        {
+	            get{ return _RandomNo; }
+	            set{ _RandomNo = value;}
+	        }private string _RandomNo;
+				        
+							/// <summary>
+			/// 消费此积分的消费记录ID,如购买简历的积分，购买保面试的积分。
+	        /// </summary>
+	        
+	        public int ParentID
+	        {
+	            get{ return _ParentID; }
+	            set{ _ParentID = value;}
+	        }private int _ParentID;
+				        
+							/// <summary>
+			/// 备注
+	        /// </summary>
+	        
+	        public string Remark
+	        {
+	            get{ return _Remark; }
+	            set{ _Remark = value;}
+	        }private string _Remark;
+				        
+							/// <summary>
+			/// 标签
+	        /// </summary>
+	        
+	        public string LableText
+	        {
+	            get{ return _LableText; }
+	            set{ _LableText = value;}
+	        }private string _LableText;
+				        
+							/// <summary>
+			/// 扩展Json
+	        /// </summary>
+	        
+	        public string ExJson
+	        {
+	            get{ return _ExJson; }
+	            set{ _ExJson = value;}
+	        }private string _ExJson;
+				        
+							/// <summary>
+			/// 状态
+	        /// </summary>
+	        
+	        public string Status
+	        {
+	            get{ return _Status; }
+	            set{ _Status = value;}
+	        }private string _Status;
+				        
+							/// <summary>
+			/// 排序
+	        /// </summary>
+	        
+	        public int OrderNo
+	        {
+	            get{ return _OrderNo; }
+	            set{ _OrderNo = value;}
+	        }private int _OrderNo;
+				        
+							/// <summary>
+			/// 修改时间
+	        /// </summary>
+	        
+	        public string ModifyDate
+	        {
+	            get{ return _ModifyDate; }
+	            set{ _ModifyDate = value;}
+	        }private string _ModifyDate;
+				        
+							/// <summary>
+			/// 创建用户
+	        /// </summary>
+	        
+	        public int CreateUser
+	        {
+	            get{ return _CreateUser; }
+	            set{ _CreateUser = value;}
+	        }private int _CreateUser;
+				        
+							/// <summary>
+			/// 修改用户
+	        /// </summary>
+	        
+	        public int ModifyUser
+	        {
+	            get{ return _ModifyUser; }
+	            set{ _ModifyUser = value;}
+	        }private int _ModifyUser;
+				        
  	}
 	
 	}
@@ -199,9 +319,9 @@ namespace Tclywork.DAL{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("select count(1) from tabCVJDMatch");
 			strSql.Append(" where ");
-			                        strSql.Append(" id = SQL2012id  ");
+			                        strSql.Append(" id = @id  ");
                             			SqlParameter[] parameters = {
-					new SqlParameter("SQL2012id", SqlDbType.Int,4)
+					new SqlParameter("@id", SqlDbType.Int,4)
 			};
 			parameters[0].Value = id;
 
@@ -220,27 +340,39 @@ namespace Tclywork.DAL{
 			model.ModifyDate=DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("insert into tabCVJDMatch(");			
-            strSql.Append("BaseOn,ResumeID,ResumeNo,PositionID,CreateDate,WordAddress,Age,WorkYear,Salary,XueLi,Skill,CoreSkill,Major,OrgScale,MatchDegree");
+            strSql.Append("BaseOn,ResumeID,ResumeNo,PositionID,CreateDate,WordAddress,Age,WorkYear,Salary,XueLi,Skill,CoreSkill,Major,OrgScale,MatchDegree,AppID,Version,RandomNo,ParentID,Remark,LableText,ExJson,Status,OrderNo,ModifyDate,CreateUser,ModifyUser");
 			strSql.Append(") values (");
-            strSql.Append("SQL2012BaseOn,SQL2012ResumeID,SQL2012ResumeNo,SQL2012PositionID,SQL2012CreateDate,SQL2012WordAddress,SQL2012Age,SQL2012WorkYear,SQL2012Salary,SQL2012XueLi,SQL2012Skill,SQL2012CoreSkill,SQL2012Major,SQL2012OrgScale,SQL2012MatchDegree");            
+            strSql.Append("@BaseOn,@ResumeID,@ResumeNo,@PositionID,@CreateDate,@WordAddress,@Age,@WorkYear,@Salary,@XueLi,@Skill,@CoreSkill,@Major,@OrgScale,@MatchDegree,@AppID,@Version,@RandomNo,@ParentID,@Remark,@LableText,@ExJson,@Status,@OrderNo,@ModifyDate,@CreateUser,@ModifyUser");            
             strSql.Append(") ");            
             strSql.Append(";select @@IDENTITY");		
 			SqlParameter[] parameters = {
-			            new SqlParameter("SQL2012BaseOn", SqlDbType.NVarChar,200) ,            
-                        new SqlParameter("SQL2012ResumeID", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012ResumeNo", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012PositionID", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012CreateDate", SqlDbType.NVarChar,200) ,            
-                        new SqlParameter("SQL2012WordAddress", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012Age", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012WorkYear", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012Salary", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012XueLi", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012Skill", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012CoreSkill", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012Major", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012OrgScale", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012MatchDegree", SqlDbType.Int,4)             
+			            new SqlParameter("@BaseOn", SqlDbType.NVarChar,200) ,            
+                        new SqlParameter("@ResumeID", SqlDbType.Int,4) ,            
+                        new SqlParameter("@ResumeNo", SqlDbType.Int,4) ,            
+                        new SqlParameter("@PositionID", SqlDbType.Int,4) ,            
+                        new SqlParameter("@CreateDate", SqlDbType.NVarChar,200) ,            
+                        new SqlParameter("@WordAddress", SqlDbType.Int,4) ,            
+                        new SqlParameter("@Age", SqlDbType.Int,4) ,            
+                        new SqlParameter("@WorkYear", SqlDbType.Int,4) ,            
+                        new SqlParameter("@Salary", SqlDbType.Int,4) ,            
+                        new SqlParameter("@XueLi", SqlDbType.Int,4) ,            
+                        new SqlParameter("@Skill", SqlDbType.Int,4) ,            
+                        new SqlParameter("@CoreSkill", SqlDbType.Int,4) ,            
+                        new SqlParameter("@Major", SqlDbType.Int,4) ,            
+                        new SqlParameter("@OrgScale", SqlDbType.Int,4) ,            
+                        new SqlParameter("@MatchDegree", SqlDbType.Int,4) ,            
+                        new SqlParameter("@AppID", SqlDbType.NVarChar,100) ,            
+                        new SqlParameter("@Version", SqlDbType.NVarChar,100) ,            
+                        new SqlParameter("@RandomNo", SqlDbType.NVarChar,200) ,            
+                        new SqlParameter("@ParentID", SqlDbType.Int,4) ,            
+                        new SqlParameter("@Remark", SqlDbType.NVarChar,-1) ,            
+                        new SqlParameter("@LableText", SqlDbType.NVarChar,-1) ,            
+                        new SqlParameter("@ExJson", SqlDbType.NVarChar,-1) ,            
+                        new SqlParameter("@Status", SqlDbType.NVarChar,-1) ,            
+                        new SqlParameter("@OrderNo", SqlDbType.Int,4) ,            
+                        new SqlParameter("@ModifyDate", SqlDbType.NVarChar,200) ,            
+                        new SqlParameter("@CreateUser", SqlDbType.Int,4) ,            
+                        new SqlParameter("@ModifyUser", SqlDbType.Int,4)             
               
             };
 			            
@@ -259,6 +391,18 @@ namespace Tclywork.DAL{
             parameters[12].Value = model.Major;                        
             parameters[13].Value = model.OrgScale;                        
             parameters[14].Value = model.MatchDegree;                        
+            parameters[15].Value = model.AppID;                        
+            parameters[16].Value = model.Version;                        
+            parameters[17].Value = model.RandomNo;                        
+            parameters[18].Value = model.ParentID;                        
+            parameters[19].Value = model.Remark;                        
+            parameters[20].Value = model.LableText;                        
+            parameters[21].Value = model.ExJson;                        
+            parameters[22].Value = model.Status;                        
+            parameters[23].Value = model.OrderNo;                        
+            parameters[24].Value = model.ModifyDate;                        
+            parameters[25].Value = model.CreateUser;                        
+            parameters[26].Value = model.ModifyUser;                        
 			   
 			object obj = DbHelperSQL.GetSingle(strSql.ToString(),parameters);			
 			if (obj == null)
@@ -282,40 +426,64 @@ namespace Tclywork.DAL{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("update tabCVJDMatch set ");
 			                                                
-            strSql.Append(" BaseOn = SQL2012BaseOn , ");                                    
-            strSql.Append(" ResumeID = SQL2012ResumeID , ");                                    
-            strSql.Append(" ResumeNo = SQL2012ResumeNo , ");                                    
-            strSql.Append(" PositionID = SQL2012PositionID , ");                                    
-            strSql.Append(" CreateDate = SQL2012CreateDate , ");                                    
-            strSql.Append(" WordAddress = SQL2012WordAddress , ");                                    
-            strSql.Append(" Age = SQL2012Age , ");                                    
-            strSql.Append(" WorkYear = SQL2012WorkYear , ");                                    
-            strSql.Append(" Salary = SQL2012Salary , ");                                    
-            strSql.Append(" XueLi = SQL2012XueLi , ");                                    
-            strSql.Append(" Skill = SQL2012Skill , ");                                    
-            strSql.Append(" CoreSkill = SQL2012CoreSkill , ");                                    
-            strSql.Append(" Major = SQL2012Major , ");                                    
-            strSql.Append(" OrgScale = SQL2012OrgScale , ");                                    
-            strSql.Append(" MatchDegree = SQL2012MatchDegree  ");            			
-			strSql.Append(" where id=SQL2012id ");
+            strSql.Append(" BaseOn = @BaseOn , ");                                    
+            strSql.Append(" ResumeID = @ResumeID , ");                                    
+            strSql.Append(" ResumeNo = @ResumeNo , ");                                    
+            strSql.Append(" PositionID = @PositionID , ");                                    
+            strSql.Append(" CreateDate = @CreateDate , ");                                    
+            strSql.Append(" WordAddress = @WordAddress , ");                                    
+            strSql.Append(" Age = @Age , ");                                    
+            strSql.Append(" WorkYear = @WorkYear , ");                                    
+            strSql.Append(" Salary = @Salary , ");                                    
+            strSql.Append(" XueLi = @XueLi , ");                                    
+            strSql.Append(" Skill = @Skill , ");                                    
+            strSql.Append(" CoreSkill = @CoreSkill , ");                                    
+            strSql.Append(" Major = @Major , ");                                    
+            strSql.Append(" OrgScale = @OrgScale , ");                                    
+            strSql.Append(" MatchDegree = @MatchDegree , ");                                    
+            strSql.Append(" AppID = @AppID , ");                                    
+            strSql.Append(" Version = @Version , ");                                    
+            strSql.Append(" RandomNo = @RandomNo , ");                                    
+            strSql.Append(" ParentID = @ParentID , ");                                    
+            strSql.Append(" Remark = @Remark , ");                                    
+            strSql.Append(" LableText = @LableText , ");                                    
+            strSql.Append(" ExJson = @ExJson , ");                                    
+            strSql.Append(" Status = @Status , ");                                    
+            strSql.Append(" OrderNo = @OrderNo , ");                                    
+            strSql.Append(" ModifyDate = @ModifyDate , ");                                    
+            strSql.Append(" CreateUser = @CreateUser , ");                                    
+            strSql.Append(" ModifyUser = @ModifyUser  ");            			
+			strSql.Append(" where id=@id ");
 						
 SqlParameter[] parameters = {
-			            new SqlParameter("SQL2012id", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012BaseOn", SqlDbType.NVarChar,200) ,            
-                        new SqlParameter("SQL2012ResumeID", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012ResumeNo", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012PositionID", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012CreateDate", SqlDbType.NVarChar,200) ,            
-                        new SqlParameter("SQL2012WordAddress", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012Age", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012WorkYear", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012Salary", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012XueLi", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012Skill", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012CoreSkill", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012Major", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012OrgScale", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012MatchDegree", SqlDbType.Int,4)             
+			            new SqlParameter("@id", SqlDbType.Int,4) ,            
+                        new SqlParameter("@BaseOn", SqlDbType.NVarChar,200) ,            
+                        new SqlParameter("@ResumeID", SqlDbType.Int,4) ,            
+                        new SqlParameter("@ResumeNo", SqlDbType.Int,4) ,            
+                        new SqlParameter("@PositionID", SqlDbType.Int,4) ,            
+                        new SqlParameter("@CreateDate", SqlDbType.NVarChar,200) ,            
+                        new SqlParameter("@WordAddress", SqlDbType.Int,4) ,            
+                        new SqlParameter("@Age", SqlDbType.Int,4) ,            
+                        new SqlParameter("@WorkYear", SqlDbType.Int,4) ,            
+                        new SqlParameter("@Salary", SqlDbType.Int,4) ,            
+                        new SqlParameter("@XueLi", SqlDbType.Int,4) ,            
+                        new SqlParameter("@Skill", SqlDbType.Int,4) ,            
+                        new SqlParameter("@CoreSkill", SqlDbType.Int,4) ,            
+                        new SqlParameter("@Major", SqlDbType.Int,4) ,            
+                        new SqlParameter("@OrgScale", SqlDbType.Int,4) ,            
+                        new SqlParameter("@MatchDegree", SqlDbType.Int,4) ,            
+                        new SqlParameter("@AppID", SqlDbType.NVarChar,100) ,            
+                        new SqlParameter("@Version", SqlDbType.NVarChar,100) ,            
+                        new SqlParameter("@RandomNo", SqlDbType.NVarChar,200) ,            
+                        new SqlParameter("@ParentID", SqlDbType.Int,4) ,            
+                        new SqlParameter("@Remark", SqlDbType.NVarChar,-1) ,            
+                        new SqlParameter("@LableText", SqlDbType.NVarChar,-1) ,            
+                        new SqlParameter("@ExJson", SqlDbType.NVarChar,-1) ,            
+                        new SqlParameter("@Status", SqlDbType.NVarChar,-1) ,            
+                        new SqlParameter("@OrderNo", SqlDbType.Int,4) ,            
+                        new SqlParameter("@ModifyDate", SqlDbType.NVarChar,200) ,            
+                        new SqlParameter("@CreateUser", SqlDbType.Int,4) ,            
+                        new SqlParameter("@ModifyUser", SqlDbType.Int,4)             
               
             };
 						            
@@ -335,6 +503,18 @@ SqlParameter[] parameters = {
             parameters[13].Value = model.Major;                        
             parameters[14].Value = model.OrgScale;                        
             parameters[15].Value = model.MatchDegree;                        
+            parameters[16].Value = model.AppID;                        
+            parameters[17].Value = model.Version;                        
+            parameters[18].Value = model.RandomNo;                        
+            parameters[19].Value = model.ParentID;                        
+            parameters[20].Value = model.Remark;                        
+            parameters[21].Value = model.LableText;                        
+            parameters[22].Value = model.ExJson;                        
+            parameters[23].Value = model.Status;                        
+            parameters[24].Value = model.OrderNo;                        
+            parameters[25].Value = model.ModifyDate;                        
+            parameters[26].Value = model.CreateUser;                        
+            parameters[27].Value = model.ModifyUser;                        
             int rows=DbHelperSQL.ExecuteSql(strSql.ToString(),parameters);
 			if (rows > 0)
 			{
@@ -363,39 +543,63 @@ SqlParameter[] parameters = {
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("update tabCVJDMatch set ");
 			                                                
-            strSql.Append(" BaseOn = SQL2012BaseOn , ");                                    
-            strSql.Append(" ResumeID = SQL2012ResumeID , ");                                    
-            strSql.Append(" ResumeNo = SQL2012ResumeNo , ");                                    
-            strSql.Append(" PositionID = SQL2012PositionID , ");                                    
-            strSql.Append(" CreateDate = SQL2012CreateDate , ");                                    
-            strSql.Append(" WordAddress = SQL2012WordAddress , ");                                    
-            strSql.Append(" Age = SQL2012Age , ");                                    
-            strSql.Append(" WorkYear = SQL2012WorkYear , ");                                    
-            strSql.Append(" Salary = SQL2012Salary , ");                                    
-            strSql.Append(" XueLi = SQL2012XueLi , ");                                    
-            strSql.Append(" Skill = SQL2012Skill , ");                                    
-            strSql.Append(" CoreSkill = SQL2012CoreSkill , ");                                    
-            strSql.Append(" Major = SQL2012Major , ");                                    
-            strSql.Append(" OrgScale = SQL2012OrgScale , ");                                    
-            strSql.Append(" MatchDegree = SQL2012MatchDegree  ");            			
-			strSql.Append(" where id=SQL2012id ");						
+            strSql.Append(" BaseOn = @BaseOn , ");                                    
+            strSql.Append(" ResumeID = @ResumeID , ");                                    
+            strSql.Append(" ResumeNo = @ResumeNo , ");                                    
+            strSql.Append(" PositionID = @PositionID , ");                                    
+            strSql.Append(" CreateDate = @CreateDate , ");                                    
+            strSql.Append(" WordAddress = @WordAddress , ");                                    
+            strSql.Append(" Age = @Age , ");                                    
+            strSql.Append(" WorkYear = @WorkYear , ");                                    
+            strSql.Append(" Salary = @Salary , ");                                    
+            strSql.Append(" XueLi = @XueLi , ");                                    
+            strSql.Append(" Skill = @Skill , ");                                    
+            strSql.Append(" CoreSkill = @CoreSkill , ");                                    
+            strSql.Append(" Major = @Major , ");                                    
+            strSql.Append(" OrgScale = @OrgScale , ");                                    
+            strSql.Append(" MatchDegree = @MatchDegree , ");                                    
+            strSql.Append(" AppID = @AppID , ");                                    
+            strSql.Append(" Version = @Version , ");                                    
+            strSql.Append(" RandomNo = @RandomNo , ");                                    
+            strSql.Append(" ParentID = @ParentID , ");                                    
+            strSql.Append(" Remark = @Remark , ");                                    
+            strSql.Append(" LableText = @LableText , ");                                    
+            strSql.Append(" ExJson = @ExJson , ");                                    
+            strSql.Append(" Status = @Status , ");                                    
+            strSql.Append(" OrderNo = @OrderNo , ");                                    
+            strSql.Append(" ModifyDate = @ModifyDate , ");                                    
+            strSql.Append(" CreateUser = @CreateUser , ");                                    
+            strSql.Append(" ModifyUser = @ModifyUser  ");            			
+			strSql.Append(" where id=@id ");						
 SqlParameter[] parameters = {
-			            new SqlParameter("SQL2012id", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012BaseOn", SqlDbType.NVarChar,200) ,            
-                        new SqlParameter("SQL2012ResumeID", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012ResumeNo", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012PositionID", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012CreateDate", SqlDbType.NVarChar,200) ,            
-                        new SqlParameter("SQL2012WordAddress", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012Age", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012WorkYear", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012Salary", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012XueLi", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012Skill", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012CoreSkill", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012Major", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012OrgScale", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012MatchDegree", SqlDbType.Int,4)             
+			            new SqlParameter("@id", SqlDbType.Int,4) ,            
+                        new SqlParameter("@BaseOn", SqlDbType.NVarChar,200) ,            
+                        new SqlParameter("@ResumeID", SqlDbType.Int,4) ,            
+                        new SqlParameter("@ResumeNo", SqlDbType.Int,4) ,            
+                        new SqlParameter("@PositionID", SqlDbType.Int,4) ,            
+                        new SqlParameter("@CreateDate", SqlDbType.NVarChar,200) ,            
+                        new SqlParameter("@WordAddress", SqlDbType.Int,4) ,            
+                        new SqlParameter("@Age", SqlDbType.Int,4) ,            
+                        new SqlParameter("@WorkYear", SqlDbType.Int,4) ,            
+                        new SqlParameter("@Salary", SqlDbType.Int,4) ,            
+                        new SqlParameter("@XueLi", SqlDbType.Int,4) ,            
+                        new SqlParameter("@Skill", SqlDbType.Int,4) ,            
+                        new SqlParameter("@CoreSkill", SqlDbType.Int,4) ,            
+                        new SqlParameter("@Major", SqlDbType.Int,4) ,            
+                        new SqlParameter("@OrgScale", SqlDbType.Int,4) ,            
+                        new SqlParameter("@MatchDegree", SqlDbType.Int,4) ,            
+                        new SqlParameter("@AppID", SqlDbType.NVarChar,100) ,            
+                        new SqlParameter("@Version", SqlDbType.NVarChar,100) ,            
+                        new SqlParameter("@RandomNo", SqlDbType.NVarChar,200) ,            
+                        new SqlParameter("@ParentID", SqlDbType.Int,4) ,            
+                        new SqlParameter("@Remark", SqlDbType.NVarChar,-1) ,            
+                        new SqlParameter("@LableText", SqlDbType.NVarChar,-1) ,            
+                        new SqlParameter("@ExJson", SqlDbType.NVarChar,-1) ,            
+                        new SqlParameter("@Status", SqlDbType.NVarChar,-1) ,            
+                        new SqlParameter("@OrderNo", SqlDbType.Int,4) ,            
+                        new SqlParameter("@ModifyDate", SqlDbType.NVarChar,200) ,            
+                        new SqlParameter("@CreateUser", SqlDbType.Int,4) ,            
+                        new SqlParameter("@ModifyUser", SqlDbType.Int,4)             
               
             };
 						            
@@ -415,6 +619,18 @@ SqlParameter[] parameters = {
             parameters[13].Value = model.Major;                        
             parameters[14].Value = model.OrgScale;                        
             parameters[15].Value = model.MatchDegree;                        
+            parameters[16].Value = model.AppID;                        
+            parameters[17].Value = model.Version;                        
+            parameters[18].Value = model.RandomNo;                        
+            parameters[19].Value = model.ParentID;                        
+            parameters[20].Value = model.Remark;                        
+            parameters[21].Value = model.LableText;                        
+            parameters[22].Value = model.ExJson;                        
+            parameters[23].Value = model.Status;                        
+            parameters[24].Value = model.OrderNo;                        
+            parameters[25].Value = model.ModifyDate;                        
+            parameters[26].Value = model.CreateUser;                        
+            parameters[27].Value = model.ModifyUser;                        
             int rows=DbHelperSQL.ExecuteSql(strSql.ToString(),parameters);
 			if (rows > 0)
 			{
@@ -433,9 +649,9 @@ SqlParameter[] parameters = {
 			
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("delete from tabCVJDMatch ");
-			strSql.Append(" where id=SQL2012id");
+			strSql.Append(" where id=@id");
 						SqlParameter[] parameters = {
-					new SqlParameter("SQL2012id", SqlDbType.Int,4)
+					new SqlParameter("@id", SqlDbType.Int,4)
 			};
 			parameters[0].Value = id;
 
@@ -477,9 +693,9 @@ SqlParameter[] parameters = {
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("select * ");			
 			strSql.Append("  from tabCVJDMatch ");
-			strSql.Append(" where id=SQL2012id");
+			strSql.Append(" where id=@id");
 						SqlParameter[] parameters = {
-					new SqlParameter("SQL2012id", SqlDbType.Int,4)
+					new SqlParameter("@id", SqlDbType.Int,4)
 			};
 			parameters[0].Value = id;
 

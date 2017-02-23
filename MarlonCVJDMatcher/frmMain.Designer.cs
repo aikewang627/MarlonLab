@@ -34,16 +34,16 @@
             this.rtbLog = new System.Windows.Forms.RichTextBox();
             this.msMain = new System.Windows.Forms.MenuStrip();
             this.cVJDToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.关键字加载ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.简历精要提取ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.职位精要提取ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.匹配ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.关键字加载ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.msMain.SuspendLayout();
             this.SuspendLayout();
             // 
             // rtbSourseText
             // 
-            this.rtbSourseText.Location = new System.Drawing.Point(12, 82);
+            this.rtbSourseText.Location = new System.Drawing.Point(12, 28);
             this.rtbSourseText.Name = "rtbSourseText";
             this.rtbSourseText.Size = new System.Drawing.Size(356, 103);
             this.rtbSourseText.TabIndex = 0;
@@ -51,7 +51,7 @@
             // 
             // btnSegment
             // 
-            this.btnSegment.Location = new System.Drawing.Point(374, 118);
+            this.btnSegment.Location = new System.Drawing.Point(374, 64);
             this.btnSegment.Name = "btnSegment";
             this.btnSegment.Size = new System.Drawing.Size(80, 23);
             this.btnSegment.TabIndex = 1;
@@ -61,7 +61,7 @@
             // 
             // rtbResultText
             // 
-            this.rtbResultText.Location = new System.Drawing.Point(460, 82);
+            this.rtbResultText.Location = new System.Drawing.Point(460, 28);
             this.rtbResultText.Name = "rtbResultText";
             this.rtbResultText.Size = new System.Drawing.Size(356, 103);
             this.rtbResultText.TabIndex = 2;
@@ -69,9 +69,9 @@
             // 
             // rtbLog
             // 
-            this.rtbLog.Location = new System.Drawing.Point(12, 358);
+            this.rtbLog.Location = new System.Drawing.Point(12, 137);
             this.rtbLog.Name = "rtbLog";
-            this.rtbLog.Size = new System.Drawing.Size(804, 103);
+            this.rtbLog.Size = new System.Drawing.Size(804, 324);
             this.rtbLog.TabIndex = 3;
             this.rtbLog.Text = "";
             // 
@@ -96,6 +96,13 @@
             this.cVJDToolStripMenuItem.Size = new System.Drawing.Size(50, 21);
             this.cVJDToolStripMenuItem.Text = "CVJD";
             // 
+            // 关键字加载ToolStripMenuItem
+            // 
+            this.关键字加载ToolStripMenuItem.Name = "关键字加载ToolStripMenuItem";
+            this.关键字加载ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.关键字加载ToolStripMenuItem.Text = "关键字加载";
+            this.关键字加载ToolStripMenuItem.Click += new System.EventHandler(this.关键字加载ToolStripMenuItem_Click);
+            // 
             // 简历精要提取ToolStripMenuItem
             // 
             this.简历精要提取ToolStripMenuItem.Name = "简历精要提取ToolStripMenuItem";
@@ -116,13 +123,6 @@
             this.匹配ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.匹配ToolStripMenuItem.Text = "匹配";
             this.匹配ToolStripMenuItem.Click += new System.EventHandler(this.匹配ToolStripMenuItem_Click);
-            // 
-            // 关键字加载ToolStripMenuItem
-            // 
-            this.关键字加载ToolStripMenuItem.Name = "关键字加载ToolStripMenuItem";
-            this.关键字加载ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.关键字加载ToolStripMenuItem.Text = "关键字加载";
-            this.关键字加载ToolStripMenuItem.Click += new System.EventHandler(this.关键字加载ToolStripMenuItem_Click);
             // 
             // frmMain
             // 

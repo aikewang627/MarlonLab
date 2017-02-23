@@ -9,6 +9,7 @@ using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MarlonLab.CommonLib;
+using MarlonLab.CommonLib.Common;
 using MarlonLab.CommonLib.RedisHelper;//
 
 namespace MarlonCVJDMatcher
@@ -30,7 +31,7 @@ namespace MarlonCVJDMatcher
 
             if (rtbSourseText.TextLength == 0)
             {
-                AddLog(rtbLog, "请先输入文本");
+                WinFormControlHelper.AddLog(rtbLog,"", "请先输入文本");
                 return;
             }
             rtbResultText.Text = "";
@@ -54,18 +55,23 @@ namespace MarlonCVJDMatcher
         }
         private void 简历精要提取ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            WinForm.frmResumeOutline frmRmOtli = new WinForm.frmResumeOutline();
+            frmRmOtli.Show();
         }
 
         private void 职位精要提取ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            WinForm.frmPositionOutLine frmPosOtli = new WinForm.frmPositionOutLine();
+            frmPosOtli.Show();
         }
 
         private void 匹配ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            WinForm.frmCVJDMatch frmMch = new WinForm.frmCVJDMatch();
+            frmMch.Show();
         }
+
+
         List<string> FileSegment(string FileRelativePath)
         {
             //读取文件
@@ -81,13 +87,6 @@ namespace MarlonCVJDMatcher
             return lsFile;            
         }
 
-        public void AddLog(RichTextBox rtbLog,string strLog)
-        {
-            rtbLog.Text += string.Format("{0} {1}\r\n",DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss fff"),strLog);
-            rtbLog.SelectionStart = rtbLog.TextLength;
-            rtbLog.ScrollToCaret();
-
-        }
 
 
     }

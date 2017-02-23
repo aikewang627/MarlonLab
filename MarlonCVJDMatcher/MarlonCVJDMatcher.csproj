@@ -55,41 +55,61 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="Tclywork.Platform.Common">
+      <HintPath>..\DllLib\Tclywork.Platform.Common.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BLL\tabExperienceEdu.cs" />
-    <Compile Include="BLL\tabExperienceProject.cs" />
-    <Compile Include="BLL\tabExperienceWork.cs" />
-    <Compile Include="BLL\tabOrg.cs" />
-    <Compile Include="BLL\tabPosition.cs" />
-    <Compile Include="BLL\tabResume.cs" />
-    <Compile Include="BLL\tabUser.cs" />
     <Compile Include="Config.cs" />
-    <Compile Include="DAL\tabExperienceEdu.cs" />
-    <Compile Include="DAL\tabExperienceProject.cs" />
-    <Compile Include="DAL\tabExperienceWork.cs" />
-    <Compile Include="DAL\tabOrg.cs" />
-    <Compile Include="DAL\tabPosition.cs" />
-    <Compile Include="DAL\tabResume.cs" />
-    <Compile Include="DAL\tabUser.cs" />
+    <Compile Include="DBUtility\CommandInfo.cs" />
+    <Compile Include="DBUtility\DbHelperSQL.cs" />
+    <Compile Include="DBUtility\DbHelperSQLWin.cs" />
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="Modal\tabCVJDMatch.cs" />
-    <Compile Include="Modal\tabExperienceEdu.cs" />
-    <Compile Include="Modal\tabExperienceProject.cs" />
-    <Compile Include="Modal\tabExperienceWork.cs" />
-    <Compile Include="Modal\tabOrg.cs" />
-    <Compile Include="Modal\tabPosition.cs" />
-    <Compile Include="Modal\tabPositionChief.cs" />
-    <Compile Include="Modal\tabResume.cs" />
-    <Compile Include="Modal\tabResumeChief.cs" />
-    <Compile Include="Modal\tabUser.cs" />
+    <Compile Include="ModelEx\tabCVJDMatch.cs" />
+    <Compile Include="ModelEx\tabExperienceEduEx.cs" />
+    <Compile Include="ModelEx\tabExperienceProjectEx.cs" />
+    <Compile Include="ModelEx\tabExperienceWorkEx.cs" />
+    <Compile Include="ModelEx\tabOrgEx.cs" />
+    <Compile Include="ModelEx\tabPositionEx.cs" />
+    <Compile Include="ModelEx\tabPositionOutline.cs" />
+    <Compile Include="ModelEx\tabResumeEx.cs" />
+    <Compile Include="ModelEx\tabResumeOutline.cs" />
+    <Compile Include="ModelEx\tabUserEx.cs" />
+    <Compile Include="Model\tabCVJDMatch.cs" />
+    <Compile Include="Model\tabExperienceEdu.cs" />
+    <Compile Include="Model\tabExperienceProject.cs" />
+    <Compile Include="Model\tabExperienceWork.cs" />
+    <Compile Include="Model\tabOrg.cs" />
+    <Compile Include="Model\tabPosition.cs" />
+    <Compile Include="Model\tabPositionOutline.cs" />
+    <Compile Include="Model\tabResume.cs" />
+    <Compile Include="Model\tabResumeOutline.cs" />
+    <Compile Include="Model\tabUser.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WinForm\frmCVJDMatch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WinForm\frmCVJDMatch.Designer.cs">
+      <DependentUpon>frmCVJDMatch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WinForm\frmPositionOutLine.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WinForm\frmPositionOutLine.Designer.cs">
+      <DependentUpon>frmPositionOutLine.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WinForm\frmResumeOutline.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WinForm\frmResumeOutline.Designer.cs">
+      <DependentUpon>frmResumeOutline.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
@@ -102,6 +122,15 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="WinForm\frmCVJDMatch.resx">
+      <DependentUpon>frmCVJDMatch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinForm\frmPositionOutLine.resx">
+      <DependentUpon>frmPositionOutLine.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinForm\frmResumeOutline.resx">
+      <DependentUpon>frmResumeOutline.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

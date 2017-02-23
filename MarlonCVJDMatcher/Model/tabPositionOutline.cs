@@ -218,6 +218,106 @@ namespace Tclywork.Model{
 	            set{ _RequireCoreSkill = value;}
 	        }private string _RequireCoreSkill;
 				        
+							/// <summary>
+			/// AppID
+	        /// </summary>
+	        
+	        public string AppID
+	        {
+	            get{ return _AppID; }
+	            set{ _AppID = value;}
+	        }private string _AppID;
+				        
+							/// <summary>
+			/// Version
+	        /// </summary>
+	        
+	        public string Version
+	        {
+	            get{ return _Version; }
+	            set{ _Version = value;}
+	        }private string _Version;
+				        
+							/// <summary>
+			/// 随机码
+	        /// </summary>
+	        
+	        public string RandomNo
+	        {
+	            get{ return _RandomNo; }
+	            set{ _RandomNo = value;}
+	        }private string _RandomNo;
+				        
+							/// <summary>
+			/// 备注
+	        /// </summary>
+	        
+	        public string Remark
+	        {
+	            get{ return _Remark; }
+	            set{ _Remark = value;}
+	        }private string _Remark;
+				        
+							/// <summary>
+			/// 标签
+	        /// </summary>
+	        
+	        public string LableText
+	        {
+	            get{ return _LableText; }
+	            set{ _LableText = value;}
+	        }private string _LableText;
+				        
+							/// <summary>
+			/// 扩展Json
+	        /// </summary>
+	        
+	        public string ExJson
+	        {
+	            get{ return _ExJson; }
+	            set{ _ExJson = value;}
+	        }private string _ExJson;
+				        
+							/// <summary>
+			/// 状态
+	        /// </summary>
+	        
+	        public string Status
+	        {
+	            get{ return _Status; }
+	            set{ _Status = value;}
+	        }private string _Status;
+				        
+							/// <summary>
+			/// 排序
+	        /// </summary>
+	        
+	        public int OrderNo
+	        {
+	            get{ return _OrderNo; }
+	            set{ _OrderNo = value;}
+	        }private int _OrderNo;
+				        
+							/// <summary>
+			/// 修改时间
+	        /// </summary>
+	        
+	        public string ModifyDate
+	        {
+	            get{ return _ModifyDate; }
+	            set{ _ModifyDate = value;}
+	        }private string _ModifyDate;
+				        
+							/// <summary>
+			/// 修改用户
+	        /// </summary>
+	        
+	        public int ModifyUser
+	        {
+	            get{ return _ModifyUser; }
+	            set{ _ModifyUser = value;}
+	        }private int _ModifyUser;
+				        
  	}
 	
 	}
@@ -239,9 +339,9 @@ namespace Tclywork.DAL{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("select count(1) from tabPositionOutline");
 			strSql.Append(" where ");
-			                        strSql.Append(" id = SQL2012id  ");
+			                        strSql.Append(" id = @id  ");
                             			SqlParameter[] parameters = {
-					new SqlParameter("SQL2012id", SqlDbType.Int,4)
+					new SqlParameter("@id", SqlDbType.Int,4)
 			};
 			parameters[0].Value = id;
 
@@ -260,31 +360,41 @@ namespace Tclywork.DAL{
 			model.ModifyDate=DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("insert into tabPositionOutline(");			
-            strSql.Append("PositionID,PositionName,CreateUser,CreateDate,ParentID,OrgName,OrgPro,OrgScale,WordAddress,SalaryBein,SalaryEnd,AgeBein,AgeEnd,RequireWorkYear,RequireSchool,RequireMajor,RequireXueLi,RequireSkill,RequireCoreSkill");
+            strSql.Append("PositionID,PositionName,CreateUser,CreateDate,ParentID,OrgName,OrgPro,OrgScale,WordAddress,SalaryBein,SalaryEnd,AgeBein,AgeEnd,RequireWorkYear,RequireSchool,RequireMajor,RequireXueLi,RequireSkill,RequireCoreSkill,AppID,Version,RandomNo,Remark,LableText,ExJson,Status,OrderNo,ModifyDate,ModifyUser");
 			strSql.Append(") values (");
-            strSql.Append("SQL2012PositionID,SQL2012PositionName,SQL2012CreateUser,SQL2012CreateDate,SQL2012ParentID,SQL2012OrgName,SQL2012OrgPro,SQL2012OrgScale,SQL2012WordAddress,SQL2012SalaryBein,SQL2012SalaryEnd,SQL2012AgeBein,SQL2012AgeEnd,SQL2012RequireWorkYear,SQL2012RequireSchool,SQL2012RequireMajor,SQL2012RequireXueLi,SQL2012RequireSkill,SQL2012RequireCoreSkill");            
+            strSql.Append("@PositionID,@PositionName,@CreateUser,@CreateDate,@ParentID,@OrgName,@OrgPro,@OrgScale,@WordAddress,@SalaryBein,@SalaryEnd,@AgeBein,@AgeEnd,@RequireWorkYear,@RequireSchool,@RequireMajor,@RequireXueLi,@RequireSkill,@RequireCoreSkill,@AppID,@Version,@RandomNo,@Remark,@LableText,@ExJson,@Status,@OrderNo,@ModifyDate,@ModifyUser");            
             strSql.Append(") ");            
             strSql.Append(";select @@IDENTITY");		
 			SqlParameter[] parameters = {
-			            new SqlParameter("SQL2012PositionID", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012PositionName", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012CreateUser", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012CreateDate", SqlDbType.NVarChar,200) ,            
-                        new SqlParameter("SQL2012ParentID", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012OrgName", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012OrgPro", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012OrgScale", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012WordAddress", SqlDbType.NVarChar,-1) ,            
-                        new SqlParameter("SQL2012SalaryBein", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012SalaryEnd", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012AgeBein", SqlDbType.NChar,10) ,            
-                        new SqlParameter("SQL2012AgeEnd", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012RequireWorkYear", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012RequireSchool", SqlDbType.NVarChar,500) ,            
-                        new SqlParameter("SQL2012RequireMajor", SqlDbType.NVarChar,500) ,            
-                        new SqlParameter("SQL2012RequireXueLi", SqlDbType.NVarChar,500) ,            
-                        new SqlParameter("SQL2012RequireSkill", SqlDbType.NText) ,            
-                        new SqlParameter("SQL2012RequireCoreSkill", SqlDbType.NVarChar,500)             
+			            new SqlParameter("@PositionID", SqlDbType.Int,4) ,            
+                        new SqlParameter("@PositionName", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@CreateUser", SqlDbType.Int,4) ,            
+                        new SqlParameter("@CreateDate", SqlDbType.NVarChar,200) ,            
+                        new SqlParameter("@ParentID", SqlDbType.Int,4) ,            
+                        new SqlParameter("@OrgName", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@OrgPro", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@OrgScale", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@WordAddress", SqlDbType.NVarChar,-1) ,            
+                        new SqlParameter("@SalaryBein", SqlDbType.Int,4) ,            
+                        new SqlParameter("@SalaryEnd", SqlDbType.Int,4) ,            
+                        new SqlParameter("@AgeBein", SqlDbType.NChar,10) ,            
+                        new SqlParameter("@AgeEnd", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@RequireWorkYear", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@RequireSchool", SqlDbType.NVarChar,500) ,            
+                        new SqlParameter("@RequireMajor", SqlDbType.NVarChar,500) ,            
+                        new SqlParameter("@RequireXueLi", SqlDbType.NVarChar,500) ,            
+                        new SqlParameter("@RequireSkill", SqlDbType.NText) ,            
+                        new SqlParameter("@RequireCoreSkill", SqlDbType.NVarChar,500) ,            
+                        new SqlParameter("@AppID", SqlDbType.NVarChar,100) ,            
+                        new SqlParameter("@Version", SqlDbType.NVarChar,100) ,            
+                        new SqlParameter("@RandomNo", SqlDbType.NVarChar,200) ,            
+                        new SqlParameter("@Remark", SqlDbType.NVarChar,-1) ,            
+                        new SqlParameter("@LableText", SqlDbType.NVarChar,-1) ,            
+                        new SqlParameter("@ExJson", SqlDbType.NVarChar,-1) ,            
+                        new SqlParameter("@Status", SqlDbType.NVarChar,-1) ,            
+                        new SqlParameter("@OrderNo", SqlDbType.Int,4) ,            
+                        new SqlParameter("@ModifyDate", SqlDbType.NVarChar,200) ,            
+                        new SqlParameter("@ModifyUser", SqlDbType.Int,4)             
               
             };
 			            
@@ -307,6 +417,16 @@ namespace Tclywork.DAL{
             parameters[16].Value = model.RequireXueLi;                        
             parameters[17].Value = model.RequireSkill;                        
             parameters[18].Value = model.RequireCoreSkill;                        
+            parameters[19].Value = model.AppID;                        
+            parameters[20].Value = model.Version;                        
+            parameters[21].Value = model.RandomNo;                        
+            parameters[22].Value = model.Remark;                        
+            parameters[23].Value = model.LableText;                        
+            parameters[24].Value = model.ExJson;                        
+            parameters[25].Value = model.Status;                        
+            parameters[26].Value = model.OrderNo;                        
+            parameters[27].Value = model.ModifyDate;                        
+            parameters[28].Value = model.ModifyUser;                        
 			   
 			object obj = DbHelperSQL.GetSingle(strSql.ToString(),parameters);			
 			if (obj == null)
@@ -330,48 +450,68 @@ namespace Tclywork.DAL{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("update tabPositionOutline set ");
 			                                                
-            strSql.Append(" PositionID = SQL2012PositionID , ");                                    
-            strSql.Append(" PositionName = SQL2012PositionName , ");                                    
-            strSql.Append(" CreateUser = SQL2012CreateUser , ");                                    
-            strSql.Append(" CreateDate = SQL2012CreateDate , ");                                    
-            strSql.Append(" ParentID = SQL2012ParentID , ");                                    
-            strSql.Append(" OrgName = SQL2012OrgName , ");                                    
-            strSql.Append(" OrgPro = SQL2012OrgPro , ");                                    
-            strSql.Append(" OrgScale = SQL2012OrgScale , ");                                    
-            strSql.Append(" WordAddress = SQL2012WordAddress , ");                                    
-            strSql.Append(" SalaryBein = SQL2012SalaryBein , ");                                    
-            strSql.Append(" SalaryEnd = SQL2012SalaryEnd , ");                                    
-            strSql.Append(" AgeBein = SQL2012AgeBein , ");                                    
-            strSql.Append(" AgeEnd = SQL2012AgeEnd , ");                                    
-            strSql.Append(" RequireWorkYear = SQL2012RequireWorkYear , ");                                    
-            strSql.Append(" RequireSchool = SQL2012RequireSchool , ");                                    
-            strSql.Append(" RequireMajor = SQL2012RequireMajor , ");                                    
-            strSql.Append(" RequireXueLi = SQL2012RequireXueLi , ");                                    
-            strSql.Append(" RequireSkill = SQL2012RequireSkill , ");                                    
-            strSql.Append(" RequireCoreSkill = SQL2012RequireCoreSkill  ");            			
-			strSql.Append(" where id=SQL2012id ");
+            strSql.Append(" PositionID = @PositionID , ");                                    
+            strSql.Append(" PositionName = @PositionName , ");                                    
+            strSql.Append(" CreateUser = @CreateUser , ");                                    
+            strSql.Append(" CreateDate = @CreateDate , ");                                    
+            strSql.Append(" ParentID = @ParentID , ");                                    
+            strSql.Append(" OrgName = @OrgName , ");                                    
+            strSql.Append(" OrgPro = @OrgPro , ");                                    
+            strSql.Append(" OrgScale = @OrgScale , ");                                    
+            strSql.Append(" WordAddress = @WordAddress , ");                                    
+            strSql.Append(" SalaryBein = @SalaryBein , ");                                    
+            strSql.Append(" SalaryEnd = @SalaryEnd , ");                                    
+            strSql.Append(" AgeBein = @AgeBein , ");                                    
+            strSql.Append(" AgeEnd = @AgeEnd , ");                                    
+            strSql.Append(" RequireWorkYear = @RequireWorkYear , ");                                    
+            strSql.Append(" RequireSchool = @RequireSchool , ");                                    
+            strSql.Append(" RequireMajor = @RequireMajor , ");                                    
+            strSql.Append(" RequireXueLi = @RequireXueLi , ");                                    
+            strSql.Append(" RequireSkill = @RequireSkill , ");                                    
+            strSql.Append(" RequireCoreSkill = @RequireCoreSkill , ");                                    
+            strSql.Append(" AppID = @AppID , ");                                    
+            strSql.Append(" Version = @Version , ");                                    
+            strSql.Append(" RandomNo = @RandomNo , ");                                    
+            strSql.Append(" Remark = @Remark , ");                                    
+            strSql.Append(" LableText = @LableText , ");                                    
+            strSql.Append(" ExJson = @ExJson , ");                                    
+            strSql.Append(" Status = @Status , ");                                    
+            strSql.Append(" OrderNo = @OrderNo , ");                                    
+            strSql.Append(" ModifyDate = @ModifyDate , ");                                    
+            strSql.Append(" ModifyUser = @ModifyUser  ");            			
+			strSql.Append(" where id=@id ");
 						
 SqlParameter[] parameters = {
-			            new SqlParameter("SQL2012id", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012PositionID", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012PositionName", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012CreateUser", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012CreateDate", SqlDbType.NVarChar,200) ,            
-                        new SqlParameter("SQL2012ParentID", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012OrgName", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012OrgPro", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012OrgScale", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012WordAddress", SqlDbType.NVarChar,-1) ,            
-                        new SqlParameter("SQL2012SalaryBein", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012SalaryEnd", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012AgeBein", SqlDbType.NChar,10) ,            
-                        new SqlParameter("SQL2012AgeEnd", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012RequireWorkYear", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012RequireSchool", SqlDbType.NVarChar,500) ,            
-                        new SqlParameter("SQL2012RequireMajor", SqlDbType.NVarChar,500) ,            
-                        new SqlParameter("SQL2012RequireXueLi", SqlDbType.NVarChar,500) ,            
-                        new SqlParameter("SQL2012RequireSkill", SqlDbType.NText) ,            
-                        new SqlParameter("SQL2012RequireCoreSkill", SqlDbType.NVarChar,500)             
+			            new SqlParameter("@id", SqlDbType.Int,4) ,            
+                        new SqlParameter("@PositionID", SqlDbType.Int,4) ,            
+                        new SqlParameter("@PositionName", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@CreateUser", SqlDbType.Int,4) ,            
+                        new SqlParameter("@CreateDate", SqlDbType.NVarChar,200) ,            
+                        new SqlParameter("@ParentID", SqlDbType.Int,4) ,            
+                        new SqlParameter("@OrgName", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@OrgPro", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@OrgScale", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@WordAddress", SqlDbType.NVarChar,-1) ,            
+                        new SqlParameter("@SalaryBein", SqlDbType.Int,4) ,            
+                        new SqlParameter("@SalaryEnd", SqlDbType.Int,4) ,            
+                        new SqlParameter("@AgeBein", SqlDbType.NChar,10) ,            
+                        new SqlParameter("@AgeEnd", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@RequireWorkYear", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@RequireSchool", SqlDbType.NVarChar,500) ,            
+                        new SqlParameter("@RequireMajor", SqlDbType.NVarChar,500) ,            
+                        new SqlParameter("@RequireXueLi", SqlDbType.NVarChar,500) ,            
+                        new SqlParameter("@RequireSkill", SqlDbType.NText) ,            
+                        new SqlParameter("@RequireCoreSkill", SqlDbType.NVarChar,500) ,            
+                        new SqlParameter("@AppID", SqlDbType.NVarChar,100) ,            
+                        new SqlParameter("@Version", SqlDbType.NVarChar,100) ,            
+                        new SqlParameter("@RandomNo", SqlDbType.NVarChar,200) ,            
+                        new SqlParameter("@Remark", SqlDbType.NVarChar,-1) ,            
+                        new SqlParameter("@LableText", SqlDbType.NVarChar,-1) ,            
+                        new SqlParameter("@ExJson", SqlDbType.NVarChar,-1) ,            
+                        new SqlParameter("@Status", SqlDbType.NVarChar,-1) ,            
+                        new SqlParameter("@OrderNo", SqlDbType.Int,4) ,            
+                        new SqlParameter("@ModifyDate", SqlDbType.NVarChar,200) ,            
+                        new SqlParameter("@ModifyUser", SqlDbType.Int,4)             
               
             };
 						            
@@ -395,6 +535,16 @@ SqlParameter[] parameters = {
             parameters[17].Value = model.RequireXueLi;                        
             parameters[18].Value = model.RequireSkill;                        
             parameters[19].Value = model.RequireCoreSkill;                        
+            parameters[20].Value = model.AppID;                        
+            parameters[21].Value = model.Version;                        
+            parameters[22].Value = model.RandomNo;                        
+            parameters[23].Value = model.Remark;                        
+            parameters[24].Value = model.LableText;                        
+            parameters[25].Value = model.ExJson;                        
+            parameters[26].Value = model.Status;                        
+            parameters[27].Value = model.OrderNo;                        
+            parameters[28].Value = model.ModifyDate;                        
+            parameters[29].Value = model.ModifyUser;                        
             int rows=DbHelperSQL.ExecuteSql(strSql.ToString(),parameters);
 			if (rows > 0)
 			{
@@ -423,47 +573,67 @@ SqlParameter[] parameters = {
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("update tabPositionOutline set ");
 			                                                
-            strSql.Append(" PositionID = SQL2012PositionID , ");                                    
-            strSql.Append(" PositionName = SQL2012PositionName , ");                                    
-            strSql.Append(" CreateUser = SQL2012CreateUser , ");                                    
-            strSql.Append(" CreateDate = SQL2012CreateDate , ");                                    
-            strSql.Append(" ParentID = SQL2012ParentID , ");                                    
-            strSql.Append(" OrgName = SQL2012OrgName , ");                                    
-            strSql.Append(" OrgPro = SQL2012OrgPro , ");                                    
-            strSql.Append(" OrgScale = SQL2012OrgScale , ");                                    
-            strSql.Append(" WordAddress = SQL2012WordAddress , ");                                    
-            strSql.Append(" SalaryBein = SQL2012SalaryBein , ");                                    
-            strSql.Append(" SalaryEnd = SQL2012SalaryEnd , ");                                    
-            strSql.Append(" AgeBein = SQL2012AgeBein , ");                                    
-            strSql.Append(" AgeEnd = SQL2012AgeEnd , ");                                    
-            strSql.Append(" RequireWorkYear = SQL2012RequireWorkYear , ");                                    
-            strSql.Append(" RequireSchool = SQL2012RequireSchool , ");                                    
-            strSql.Append(" RequireMajor = SQL2012RequireMajor , ");                                    
-            strSql.Append(" RequireXueLi = SQL2012RequireXueLi , ");                                    
-            strSql.Append(" RequireSkill = SQL2012RequireSkill , ");                                    
-            strSql.Append(" RequireCoreSkill = SQL2012RequireCoreSkill  ");            			
-			strSql.Append(" where id=SQL2012id ");						
+            strSql.Append(" PositionID = @PositionID , ");                                    
+            strSql.Append(" PositionName = @PositionName , ");                                    
+            strSql.Append(" CreateUser = @CreateUser , ");                                    
+            strSql.Append(" CreateDate = @CreateDate , ");                                    
+            strSql.Append(" ParentID = @ParentID , ");                                    
+            strSql.Append(" OrgName = @OrgName , ");                                    
+            strSql.Append(" OrgPro = @OrgPro , ");                                    
+            strSql.Append(" OrgScale = @OrgScale , ");                                    
+            strSql.Append(" WordAddress = @WordAddress , ");                                    
+            strSql.Append(" SalaryBein = @SalaryBein , ");                                    
+            strSql.Append(" SalaryEnd = @SalaryEnd , ");                                    
+            strSql.Append(" AgeBein = @AgeBein , ");                                    
+            strSql.Append(" AgeEnd = @AgeEnd , ");                                    
+            strSql.Append(" RequireWorkYear = @RequireWorkYear , ");                                    
+            strSql.Append(" RequireSchool = @RequireSchool , ");                                    
+            strSql.Append(" RequireMajor = @RequireMajor , ");                                    
+            strSql.Append(" RequireXueLi = @RequireXueLi , ");                                    
+            strSql.Append(" RequireSkill = @RequireSkill , ");                                    
+            strSql.Append(" RequireCoreSkill = @RequireCoreSkill , ");                                    
+            strSql.Append(" AppID = @AppID , ");                                    
+            strSql.Append(" Version = @Version , ");                                    
+            strSql.Append(" RandomNo = @RandomNo , ");                                    
+            strSql.Append(" Remark = @Remark , ");                                    
+            strSql.Append(" LableText = @LableText , ");                                    
+            strSql.Append(" ExJson = @ExJson , ");                                    
+            strSql.Append(" Status = @Status , ");                                    
+            strSql.Append(" OrderNo = @OrderNo , ");                                    
+            strSql.Append(" ModifyDate = @ModifyDate , ");                                    
+            strSql.Append(" ModifyUser = @ModifyUser  ");            			
+			strSql.Append(" where id=@id ");						
 SqlParameter[] parameters = {
-			            new SqlParameter("SQL2012id", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012PositionID", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012PositionName", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012CreateUser", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012CreateDate", SqlDbType.NVarChar,200) ,            
-                        new SqlParameter("SQL2012ParentID", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012OrgName", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012OrgPro", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012OrgScale", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012WordAddress", SqlDbType.NVarChar,-1) ,            
-                        new SqlParameter("SQL2012SalaryBein", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012SalaryEnd", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012AgeBein", SqlDbType.NChar,10) ,            
-                        new SqlParameter("SQL2012AgeEnd", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012RequireWorkYear", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012RequireSchool", SqlDbType.NVarChar,500) ,            
-                        new SqlParameter("SQL2012RequireMajor", SqlDbType.NVarChar,500) ,            
-                        new SqlParameter("SQL2012RequireXueLi", SqlDbType.NVarChar,500) ,            
-                        new SqlParameter("SQL2012RequireSkill", SqlDbType.NText) ,            
-                        new SqlParameter("SQL2012RequireCoreSkill", SqlDbType.NVarChar,500)             
+			            new SqlParameter("@id", SqlDbType.Int,4) ,            
+                        new SqlParameter("@PositionID", SqlDbType.Int,4) ,            
+                        new SqlParameter("@PositionName", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@CreateUser", SqlDbType.Int,4) ,            
+                        new SqlParameter("@CreateDate", SqlDbType.NVarChar,200) ,            
+                        new SqlParameter("@ParentID", SqlDbType.Int,4) ,            
+                        new SqlParameter("@OrgName", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@OrgPro", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@OrgScale", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@WordAddress", SqlDbType.NVarChar,-1) ,            
+                        new SqlParameter("@SalaryBein", SqlDbType.Int,4) ,            
+                        new SqlParameter("@SalaryEnd", SqlDbType.Int,4) ,            
+                        new SqlParameter("@AgeBein", SqlDbType.NChar,10) ,            
+                        new SqlParameter("@AgeEnd", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@RequireWorkYear", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@RequireSchool", SqlDbType.NVarChar,500) ,            
+                        new SqlParameter("@RequireMajor", SqlDbType.NVarChar,500) ,            
+                        new SqlParameter("@RequireXueLi", SqlDbType.NVarChar,500) ,            
+                        new SqlParameter("@RequireSkill", SqlDbType.NText) ,            
+                        new SqlParameter("@RequireCoreSkill", SqlDbType.NVarChar,500) ,            
+                        new SqlParameter("@AppID", SqlDbType.NVarChar,100) ,            
+                        new SqlParameter("@Version", SqlDbType.NVarChar,100) ,            
+                        new SqlParameter("@RandomNo", SqlDbType.NVarChar,200) ,            
+                        new SqlParameter("@Remark", SqlDbType.NVarChar,-1) ,            
+                        new SqlParameter("@LableText", SqlDbType.NVarChar,-1) ,            
+                        new SqlParameter("@ExJson", SqlDbType.NVarChar,-1) ,            
+                        new SqlParameter("@Status", SqlDbType.NVarChar,-1) ,            
+                        new SqlParameter("@OrderNo", SqlDbType.Int,4) ,            
+                        new SqlParameter("@ModifyDate", SqlDbType.NVarChar,200) ,            
+                        new SqlParameter("@ModifyUser", SqlDbType.Int,4)             
               
             };
 						            
@@ -487,6 +657,16 @@ SqlParameter[] parameters = {
             parameters[17].Value = model.RequireXueLi;                        
             parameters[18].Value = model.RequireSkill;                        
             parameters[19].Value = model.RequireCoreSkill;                        
+            parameters[20].Value = model.AppID;                        
+            parameters[21].Value = model.Version;                        
+            parameters[22].Value = model.RandomNo;                        
+            parameters[23].Value = model.Remark;                        
+            parameters[24].Value = model.LableText;                        
+            parameters[25].Value = model.ExJson;                        
+            parameters[26].Value = model.Status;                        
+            parameters[27].Value = model.OrderNo;                        
+            parameters[28].Value = model.ModifyDate;                        
+            parameters[29].Value = model.ModifyUser;                        
             int rows=DbHelperSQL.ExecuteSql(strSql.ToString(),parameters);
 			if (rows > 0)
 			{
@@ -505,9 +685,9 @@ SqlParameter[] parameters = {
 			
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("delete from tabPositionOutline ");
-			strSql.Append(" where id=SQL2012id");
+			strSql.Append(" where id=@id");
 						SqlParameter[] parameters = {
-					new SqlParameter("SQL2012id", SqlDbType.Int,4)
+					new SqlParameter("@id", SqlDbType.Int,4)
 			};
 			parameters[0].Value = id;
 
@@ -549,9 +729,9 @@ SqlParameter[] parameters = {
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("select * ");			
 			strSql.Append("  from tabPositionOutline ");
-			strSql.Append(" where id=SQL2012id");
+			strSql.Append(" where id=@id");
 						SqlParameter[] parameters = {
-					new SqlParameter("SQL2012id", SqlDbType.Int,4)
+					new SqlParameter("@id", SqlDbType.Int,4)
 			};
 			parameters[0].Value = id;
 

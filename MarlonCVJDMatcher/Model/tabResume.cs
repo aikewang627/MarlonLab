@@ -419,29 +419,29 @@ namespace Tclywork.DAL{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("select count(1) from tabResume");
 			strSql.Append(" where ");
-			                        strSql.Append(" ResumeNo = SQL2012ResumeNo and  ");
-                                                    strSql.Append(" ResumeName = SQL2012ResumeName and  ");
-                                                    strSql.Append(" IsMe = SQL2012IsMe and  ");
-                                                    strSql.Append(" CurPosition = SQL2012CurPosition and  ");
-                                                    strSql.Append(" CurStatus = SQL2012CurStatus and  ");
-                                                    strSql.Append(" HopeAddress = SQL2012HopeAddress and  ");
-                                                    strSql.Append(" HopePosition = SQL2012HopePosition and  ");
-                                                    strSql.Append(" HopeIndustry = SQL2012HopeIndustry and  ");
-                                                    strSql.Append(" id = SQL2012id and  ");
-                                                    strSql.Append(" ParentID = SQL2012ParentID and  ");
-                                                    strSql.Append(" CreateUser = SQL2012CreateUser  ");
+			                        strSql.Append(" ResumeNo = @ResumeNo and  ");
+                                                    strSql.Append(" ResumeName = @ResumeName and  ");
+                                                    strSql.Append(" IsMe = @IsMe and  ");
+                                                    strSql.Append(" CurPosition = @CurPosition and  ");
+                                                    strSql.Append(" CurStatus = @CurStatus and  ");
+                                                    strSql.Append(" HopeAddress = @HopeAddress and  ");
+                                                    strSql.Append(" HopePosition = @HopePosition and  ");
+                                                    strSql.Append(" HopeIndustry = @HopeIndustry and  ");
+                                                    strSql.Append(" id = @id and  ");
+                                                    strSql.Append(" ParentID = @ParentID and  ");
+                                                    strSql.Append(" CreateUser = @CreateUser  ");
                             			SqlParameter[] parameters = {
-					new SqlParameter("SQL2012ResumeNo", SqlDbType.NVarChar,50),
-					new SqlParameter("SQL2012ResumeName", SqlDbType.NVarChar,50),
-					new SqlParameter("SQL2012IsMe", SqlDbType.Bit,1),
-					new SqlParameter("SQL2012CurPosition", SqlDbType.NVarChar,50),
-					new SqlParameter("SQL2012CurStatus", SqlDbType.NVarChar,50),
-					new SqlParameter("SQL2012HopeAddress", SqlDbType.NVarChar,100),
-					new SqlParameter("SQL2012HopePosition", SqlDbType.NVarChar,50),
-					new SqlParameter("SQL2012HopeIndustry", SqlDbType.NVarChar,50),
-					new SqlParameter("SQL2012id", SqlDbType.Int,4),
-					new SqlParameter("SQL2012ParentID", SqlDbType.Int,4),
-					new SqlParameter("SQL2012CreateUser", SqlDbType.Int,4)			};
+					new SqlParameter("@ResumeNo", SqlDbType.NVarChar,50),
+					new SqlParameter("@ResumeName", SqlDbType.NVarChar,50),
+					new SqlParameter("@IsMe", SqlDbType.Bit,1),
+					new SqlParameter("@CurPosition", SqlDbType.NVarChar,50),
+					new SqlParameter("@CurStatus", SqlDbType.NVarChar,50),
+					new SqlParameter("@HopeAddress", SqlDbType.NVarChar,100),
+					new SqlParameter("@HopePosition", SqlDbType.NVarChar,50),
+					new SqlParameter("@HopeIndustry", SqlDbType.NVarChar,50),
+					new SqlParameter("@id", SqlDbType.Int,4),
+					new SqlParameter("@ParentID", SqlDbType.Int,4),
+					new SqlParameter("@CreateUser", SqlDbType.Int,4)			};
 			parameters[0].Value = ResumeNo;
 			parameters[1].Value = ResumeName;
 			parameters[2].Value = IsMe;
@@ -471,47 +471,47 @@ namespace Tclywork.DAL{
 			strSql.Append("insert into tabResume(");			
             strSql.Append("ResumeNo,ResumeName,UserID,IsMe,IsDisplayRealName,CurPosition,CurSalary,CurComapny,CurIndustry,CurStatus,CurAddress,HopeAddress,HopePosition,HopeIndustry,HopeSalary,HunterComment,ResumeInitFile,ResumePDFFile,Other,Price,SourceUrl,SourceText,Tags,Lang,AppID,Version,RandomNo,ParentID,Remark,LableText,ExJson,Status,OrderNo,CreateDate,ModifyDate,CreateUser,ModifyUser");
 			strSql.Append(") values (");
-            strSql.Append("SQL2012ResumeNo,SQL2012ResumeName,SQL2012UserID,SQL2012IsMe,SQL2012IsDisplayRealName,SQL2012CurPosition,SQL2012CurSalary,SQL2012CurComapny,SQL2012CurIndustry,SQL2012CurStatus,SQL2012CurAddress,SQL2012HopeAddress,SQL2012HopePosition,SQL2012HopeIndustry,SQL2012HopeSalary,SQL2012HunterComment,SQL2012ResumeInitFile,SQL2012ResumePDFFile,SQL2012Other,SQL2012Price,SQL2012SourceUrl,SQL2012SourceText,SQL2012Tags,SQL2012Lang,SQL2012AppID,SQL2012Version,SQL2012RandomNo,SQL2012ParentID,SQL2012Remark,SQL2012LableText,SQL2012ExJson,SQL2012Status,SQL2012OrderNo,SQL2012CreateDate,SQL2012ModifyDate,SQL2012CreateUser,SQL2012ModifyUser");            
+            strSql.Append("@ResumeNo,@ResumeName,@UserID,@IsMe,@IsDisplayRealName,@CurPosition,@CurSalary,@CurComapny,@CurIndustry,@CurStatus,@CurAddress,@HopeAddress,@HopePosition,@HopeIndustry,@HopeSalary,@HunterComment,@ResumeInitFile,@ResumePDFFile,@Other,@Price,@SourceUrl,@SourceText,@Tags,@Lang,@AppID,@Version,@RandomNo,@ParentID,@Remark,@LableText,@ExJson,@Status,@OrderNo,@CreateDate,@ModifyDate,@CreateUser,@ModifyUser");            
             strSql.Append(") ");            
             strSql.Append(";select @@IDENTITY");		
 			SqlParameter[] parameters = {
-			            new SqlParameter("SQL2012ResumeNo", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012ResumeName", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012UserID", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012IsMe", SqlDbType.Bit,1) ,            
-                        new SqlParameter("SQL2012IsDisplayRealName", SqlDbType.Bit,1) ,            
-                        new SqlParameter("SQL2012CurPosition", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012CurSalary", SqlDbType.Decimal,9) ,            
-                        new SqlParameter("SQL2012CurComapny", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012CurIndustry", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012CurStatus", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012CurAddress", SqlDbType.NVarChar,100) ,            
-                        new SqlParameter("SQL2012HopeAddress", SqlDbType.NVarChar,100) ,            
-                        new SqlParameter("SQL2012HopePosition", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012HopeIndustry", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012HopeSalary", SqlDbType.Decimal,9) ,            
-                        new SqlParameter("SQL2012HunterComment", SqlDbType.NVarChar,-1) ,            
-                        new SqlParameter("SQL2012ResumeInitFile", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012ResumePDFFile", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012Other", SqlDbType.NVarChar,-1) ,            
-                        new SqlParameter("SQL2012Price", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012SourceUrl", SqlDbType.NVarChar,200) ,            
-                        new SqlParameter("SQL2012SourceText", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012Tags", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012Lang", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012AppID", SqlDbType.NVarChar,100) ,            
-                        new SqlParameter("SQL2012Version", SqlDbType.NVarChar,100) ,            
-                        new SqlParameter("SQL2012RandomNo", SqlDbType.NVarChar,200) ,            
-                        new SqlParameter("SQL2012ParentID", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012Remark", SqlDbType.NVarChar,-1) ,            
-                        new SqlParameter("SQL2012LableText", SqlDbType.NVarChar,-1) ,            
-                        new SqlParameter("SQL2012ExJson", SqlDbType.NVarChar,-1) ,            
-                        new SqlParameter("SQL2012Status", SqlDbType.NVarChar,-1) ,            
-                        new SqlParameter("SQL2012OrderNo", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012CreateDate", SqlDbType.NVarChar,200) ,            
-                        new SqlParameter("SQL2012ModifyDate", SqlDbType.NVarChar,200) ,            
-                        new SqlParameter("SQL2012CreateUser", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012ModifyUser", SqlDbType.Int,4)             
+			            new SqlParameter("@ResumeNo", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@ResumeName", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@UserID", SqlDbType.Int,4) ,            
+                        new SqlParameter("@IsMe", SqlDbType.Bit,1) ,            
+                        new SqlParameter("@IsDisplayRealName", SqlDbType.Bit,1) ,            
+                        new SqlParameter("@CurPosition", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@CurSalary", SqlDbType.Decimal,9) ,            
+                        new SqlParameter("@CurComapny", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@CurIndustry", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@CurStatus", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@CurAddress", SqlDbType.NVarChar,100) ,            
+                        new SqlParameter("@HopeAddress", SqlDbType.NVarChar,100) ,            
+                        new SqlParameter("@HopePosition", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@HopeIndustry", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@HopeSalary", SqlDbType.Decimal,9) ,            
+                        new SqlParameter("@HunterComment", SqlDbType.NVarChar,-1) ,            
+                        new SqlParameter("@ResumeInitFile", SqlDbType.Int,4) ,            
+                        new SqlParameter("@ResumePDFFile", SqlDbType.Int,4) ,            
+                        new SqlParameter("@Other", SqlDbType.NVarChar,-1) ,            
+                        new SqlParameter("@Price", SqlDbType.Int,4) ,            
+                        new SqlParameter("@SourceUrl", SqlDbType.NVarChar,200) ,            
+                        new SqlParameter("@SourceText", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@Tags", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@Lang", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@AppID", SqlDbType.NVarChar,100) ,            
+                        new SqlParameter("@Version", SqlDbType.NVarChar,100) ,            
+                        new SqlParameter("@RandomNo", SqlDbType.NVarChar,200) ,            
+                        new SqlParameter("@ParentID", SqlDbType.Int,4) ,            
+                        new SqlParameter("@Remark", SqlDbType.NVarChar,-1) ,            
+                        new SqlParameter("@LableText", SqlDbType.NVarChar,-1) ,            
+                        new SqlParameter("@ExJson", SqlDbType.NVarChar,-1) ,            
+                        new SqlParameter("@Status", SqlDbType.NVarChar,-1) ,            
+                        new SqlParameter("@OrderNo", SqlDbType.Int,4) ,            
+                        new SqlParameter("@CreateDate", SqlDbType.NVarChar,200) ,            
+                        new SqlParameter("@ModifyDate", SqlDbType.NVarChar,200) ,            
+                        new SqlParameter("@CreateUser", SqlDbType.Int,4) ,            
+                        new SqlParameter("@ModifyUser", SqlDbType.Int,4)             
               
             };
 			            
@@ -575,84 +575,84 @@ namespace Tclywork.DAL{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("update tabResume set ");
 			                        
-            strSql.Append(" ResumeNo = SQL2012ResumeNo , ");                                    
-            strSql.Append(" ResumeName = SQL2012ResumeName , ");                                    
-            strSql.Append(" UserID = SQL2012UserID , ");                                    
-            strSql.Append(" IsMe = SQL2012IsMe , ");                                    
-            strSql.Append(" IsDisplayRealName = SQL2012IsDisplayRealName , ");                                    
-            strSql.Append(" CurPosition = SQL2012CurPosition , ");                                    
-            strSql.Append(" CurSalary = SQL2012CurSalary , ");                                    
-            strSql.Append(" CurComapny = SQL2012CurComapny , ");                                    
-            strSql.Append(" CurIndustry = SQL2012CurIndustry , ");                                    
-            strSql.Append(" CurStatus = SQL2012CurStatus , ");                                    
-            strSql.Append(" CurAddress = SQL2012CurAddress , ");                                    
-            strSql.Append(" HopeAddress = SQL2012HopeAddress , ");                                    
-            strSql.Append(" HopePosition = SQL2012HopePosition , ");                                    
-            strSql.Append(" HopeIndustry = SQL2012HopeIndustry , ");                                    
-            strSql.Append(" HopeSalary = SQL2012HopeSalary , ");                                    
-            strSql.Append(" HunterComment = SQL2012HunterComment , ");                                    
-            strSql.Append(" ResumeInitFile = SQL2012ResumeInitFile , ");                                    
-            strSql.Append(" ResumePDFFile = SQL2012ResumePDFFile , ");                                    
-            strSql.Append(" Other = SQL2012Other , ");                                    
-            strSql.Append(" Price = SQL2012Price , ");                                    
-            strSql.Append(" SourceUrl = SQL2012SourceUrl , ");                                    
-            strSql.Append(" SourceText = SQL2012SourceText , ");                                    
-            strSql.Append(" Tags = SQL2012Tags , ");                                    
-            strSql.Append(" Lang = SQL2012Lang , ");                                                            
-            strSql.Append(" AppID = SQL2012AppID , ");                                    
-            strSql.Append(" Version = SQL2012Version , ");                                    
-            strSql.Append(" RandomNo = SQL2012RandomNo , ");                                    
-            strSql.Append(" ParentID = SQL2012ParentID , ");                                    
-            strSql.Append(" Remark = SQL2012Remark , ");                                    
-            strSql.Append(" LableText = SQL2012LableText , ");                                    
-            strSql.Append(" ExJson = SQL2012ExJson , ");                                    
-            strSql.Append(" Status = SQL2012Status , ");                                    
-            strSql.Append(" OrderNo = SQL2012OrderNo , ");                                    
-            strSql.Append(" CreateDate = SQL2012CreateDate , ");                                    
-            strSql.Append(" ModifyDate = SQL2012ModifyDate , ");                                    
-            strSql.Append(" CreateUser = SQL2012CreateUser , ");                                    
-            strSql.Append(" ModifyUser = SQL2012ModifyUser  ");            			
-			strSql.Append(" where id=SQL2012id ");
+            strSql.Append(" ResumeNo = @ResumeNo , ");                                    
+            strSql.Append(" ResumeName = @ResumeName , ");                                    
+            strSql.Append(" UserID = @UserID , ");                                    
+            strSql.Append(" IsMe = @IsMe , ");                                    
+            strSql.Append(" IsDisplayRealName = @IsDisplayRealName , ");                                    
+            strSql.Append(" CurPosition = @CurPosition , ");                                    
+            strSql.Append(" CurSalary = @CurSalary , ");                                    
+            strSql.Append(" CurComapny = @CurComapny , ");                                    
+            strSql.Append(" CurIndustry = @CurIndustry , ");                                    
+            strSql.Append(" CurStatus = @CurStatus , ");                                    
+            strSql.Append(" CurAddress = @CurAddress , ");                                    
+            strSql.Append(" HopeAddress = @HopeAddress , ");                                    
+            strSql.Append(" HopePosition = @HopePosition , ");                                    
+            strSql.Append(" HopeIndustry = @HopeIndustry , ");                                    
+            strSql.Append(" HopeSalary = @HopeSalary , ");                                    
+            strSql.Append(" HunterComment = @HunterComment , ");                                    
+            strSql.Append(" ResumeInitFile = @ResumeInitFile , ");                                    
+            strSql.Append(" ResumePDFFile = @ResumePDFFile , ");                                    
+            strSql.Append(" Other = @Other , ");                                    
+            strSql.Append(" Price = @Price , ");                                    
+            strSql.Append(" SourceUrl = @SourceUrl , ");                                    
+            strSql.Append(" SourceText = @SourceText , ");                                    
+            strSql.Append(" Tags = @Tags , ");                                    
+            strSql.Append(" Lang = @Lang , ");                                                            
+            strSql.Append(" AppID = @AppID , ");                                    
+            strSql.Append(" Version = @Version , ");                                    
+            strSql.Append(" RandomNo = @RandomNo , ");                                    
+            strSql.Append(" ParentID = @ParentID , ");                                    
+            strSql.Append(" Remark = @Remark , ");                                    
+            strSql.Append(" LableText = @LableText , ");                                    
+            strSql.Append(" ExJson = @ExJson , ");                                    
+            strSql.Append(" Status = @Status , ");                                    
+            strSql.Append(" OrderNo = @OrderNo , ");                                    
+            strSql.Append(" CreateDate = @CreateDate , ");                                    
+            strSql.Append(" ModifyDate = @ModifyDate , ");                                    
+            strSql.Append(" CreateUser = @CreateUser , ");                                    
+            strSql.Append(" ModifyUser = @ModifyUser  ");            			
+			strSql.Append(" where id=@id ");
 						
 SqlParameter[] parameters = {
-			            new SqlParameter("SQL2012ResumeNo", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012ResumeName", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012UserID", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012IsMe", SqlDbType.Bit,1) ,            
-                        new SqlParameter("SQL2012IsDisplayRealName", SqlDbType.Bit,1) ,            
-                        new SqlParameter("SQL2012CurPosition", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012CurSalary", SqlDbType.Decimal,9) ,            
-                        new SqlParameter("SQL2012CurComapny", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012CurIndustry", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012CurStatus", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012CurAddress", SqlDbType.NVarChar,100) ,            
-                        new SqlParameter("SQL2012HopeAddress", SqlDbType.NVarChar,100) ,            
-                        new SqlParameter("SQL2012HopePosition", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012HopeIndustry", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012HopeSalary", SqlDbType.Decimal,9) ,            
-                        new SqlParameter("SQL2012HunterComment", SqlDbType.NVarChar,-1) ,            
-                        new SqlParameter("SQL2012ResumeInitFile", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012ResumePDFFile", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012Other", SqlDbType.NVarChar,-1) ,            
-                        new SqlParameter("SQL2012Price", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012SourceUrl", SqlDbType.NVarChar,200) ,            
-                        new SqlParameter("SQL2012SourceText", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012Tags", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012Lang", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012id", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012AppID", SqlDbType.NVarChar,100) ,            
-                        new SqlParameter("SQL2012Version", SqlDbType.NVarChar,100) ,            
-                        new SqlParameter("SQL2012RandomNo", SqlDbType.NVarChar,200) ,            
-                        new SqlParameter("SQL2012ParentID", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012Remark", SqlDbType.NVarChar,-1) ,            
-                        new SqlParameter("SQL2012LableText", SqlDbType.NVarChar,-1) ,            
-                        new SqlParameter("SQL2012ExJson", SqlDbType.NVarChar,-1) ,            
-                        new SqlParameter("SQL2012Status", SqlDbType.NVarChar,-1) ,            
-                        new SqlParameter("SQL2012OrderNo", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012CreateDate", SqlDbType.NVarChar,200) ,            
-                        new SqlParameter("SQL2012ModifyDate", SqlDbType.NVarChar,200) ,            
-                        new SqlParameter("SQL2012CreateUser", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012ModifyUser", SqlDbType.Int,4)             
+			            new SqlParameter("@ResumeNo", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@ResumeName", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@UserID", SqlDbType.Int,4) ,            
+                        new SqlParameter("@IsMe", SqlDbType.Bit,1) ,            
+                        new SqlParameter("@IsDisplayRealName", SqlDbType.Bit,1) ,            
+                        new SqlParameter("@CurPosition", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@CurSalary", SqlDbType.Decimal,9) ,            
+                        new SqlParameter("@CurComapny", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@CurIndustry", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@CurStatus", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@CurAddress", SqlDbType.NVarChar,100) ,            
+                        new SqlParameter("@HopeAddress", SqlDbType.NVarChar,100) ,            
+                        new SqlParameter("@HopePosition", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@HopeIndustry", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@HopeSalary", SqlDbType.Decimal,9) ,            
+                        new SqlParameter("@HunterComment", SqlDbType.NVarChar,-1) ,            
+                        new SqlParameter("@ResumeInitFile", SqlDbType.Int,4) ,            
+                        new SqlParameter("@ResumePDFFile", SqlDbType.Int,4) ,            
+                        new SqlParameter("@Other", SqlDbType.NVarChar,-1) ,            
+                        new SqlParameter("@Price", SqlDbType.Int,4) ,            
+                        new SqlParameter("@SourceUrl", SqlDbType.NVarChar,200) ,            
+                        new SqlParameter("@SourceText", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@Tags", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@Lang", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@id", SqlDbType.Int,4) ,            
+                        new SqlParameter("@AppID", SqlDbType.NVarChar,100) ,            
+                        new SqlParameter("@Version", SqlDbType.NVarChar,100) ,            
+                        new SqlParameter("@RandomNo", SqlDbType.NVarChar,200) ,            
+                        new SqlParameter("@ParentID", SqlDbType.Int,4) ,            
+                        new SqlParameter("@Remark", SqlDbType.NVarChar,-1) ,            
+                        new SqlParameter("@LableText", SqlDbType.NVarChar,-1) ,            
+                        new SqlParameter("@ExJson", SqlDbType.NVarChar,-1) ,            
+                        new SqlParameter("@Status", SqlDbType.NVarChar,-1) ,            
+                        new SqlParameter("@OrderNo", SqlDbType.Int,4) ,            
+                        new SqlParameter("@CreateDate", SqlDbType.NVarChar,200) ,            
+                        new SqlParameter("@ModifyDate", SqlDbType.NVarChar,200) ,            
+                        new SqlParameter("@CreateUser", SqlDbType.Int,4) ,            
+                        new SqlParameter("@ModifyUser", SqlDbType.Int,4)             
               
             };
 						            
@@ -722,83 +722,83 @@ SqlParameter[] parameters = {
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("update tabResume set ");
 			                        
-            strSql.Append(" ResumeNo = SQL2012ResumeNo , ");                                    
-            strSql.Append(" ResumeName = SQL2012ResumeName , ");                                    
-            strSql.Append(" UserID = SQL2012UserID , ");                                    
-            strSql.Append(" IsMe = SQL2012IsMe , ");                                    
-            strSql.Append(" IsDisplayRealName = SQL2012IsDisplayRealName , ");                                    
-            strSql.Append(" CurPosition = SQL2012CurPosition , ");                                    
-            strSql.Append(" CurSalary = SQL2012CurSalary , ");                                    
-            strSql.Append(" CurComapny = SQL2012CurComapny , ");                                    
-            strSql.Append(" CurIndustry = SQL2012CurIndustry , ");                                    
-            strSql.Append(" CurStatus = SQL2012CurStatus , ");                                    
-            strSql.Append(" CurAddress = SQL2012CurAddress , ");                                    
-            strSql.Append(" HopeAddress = SQL2012HopeAddress , ");                                    
-            strSql.Append(" HopePosition = SQL2012HopePosition , ");                                    
-            strSql.Append(" HopeIndustry = SQL2012HopeIndustry , ");                                    
-            strSql.Append(" HopeSalary = SQL2012HopeSalary , ");                                    
-            strSql.Append(" HunterComment = SQL2012HunterComment , ");                                    
-            strSql.Append(" ResumeInitFile = SQL2012ResumeInitFile , ");                                    
-            strSql.Append(" ResumePDFFile = SQL2012ResumePDFFile , ");                                    
-            strSql.Append(" Other = SQL2012Other , ");                                    
-            strSql.Append(" Price = SQL2012Price , ");                                    
-            strSql.Append(" SourceUrl = SQL2012SourceUrl , ");                                    
-            strSql.Append(" SourceText = SQL2012SourceText , ");                                    
-            strSql.Append(" Tags = SQL2012Tags , ");                                    
-            strSql.Append(" Lang = SQL2012Lang , ");                                                            
-            strSql.Append(" AppID = SQL2012AppID , ");                                    
-            strSql.Append(" Version = SQL2012Version , ");                                    
-            strSql.Append(" RandomNo = SQL2012RandomNo , ");                                    
-            strSql.Append(" ParentID = SQL2012ParentID , ");                                    
-            strSql.Append(" Remark = SQL2012Remark , ");                                    
-            strSql.Append(" LableText = SQL2012LableText , ");                                    
-            strSql.Append(" ExJson = SQL2012ExJson , ");                                    
-            strSql.Append(" Status = SQL2012Status , ");                                    
-            strSql.Append(" OrderNo = SQL2012OrderNo , ");                                    
-            strSql.Append(" CreateDate = SQL2012CreateDate , ");                                    
-            strSql.Append(" ModifyDate = SQL2012ModifyDate , ");                                    
-            strSql.Append(" CreateUser = SQL2012CreateUser , ");                                    
-            strSql.Append(" ModifyUser = SQL2012ModifyUser  ");            			
-			strSql.Append(" where id=SQL2012id ");						
+            strSql.Append(" ResumeNo = @ResumeNo , ");                                    
+            strSql.Append(" ResumeName = @ResumeName , ");                                    
+            strSql.Append(" UserID = @UserID , ");                                    
+            strSql.Append(" IsMe = @IsMe , ");                                    
+            strSql.Append(" IsDisplayRealName = @IsDisplayRealName , ");                                    
+            strSql.Append(" CurPosition = @CurPosition , ");                                    
+            strSql.Append(" CurSalary = @CurSalary , ");                                    
+            strSql.Append(" CurComapny = @CurComapny , ");                                    
+            strSql.Append(" CurIndustry = @CurIndustry , ");                                    
+            strSql.Append(" CurStatus = @CurStatus , ");                                    
+            strSql.Append(" CurAddress = @CurAddress , ");                                    
+            strSql.Append(" HopeAddress = @HopeAddress , ");                                    
+            strSql.Append(" HopePosition = @HopePosition , ");                                    
+            strSql.Append(" HopeIndustry = @HopeIndustry , ");                                    
+            strSql.Append(" HopeSalary = @HopeSalary , ");                                    
+            strSql.Append(" HunterComment = @HunterComment , ");                                    
+            strSql.Append(" ResumeInitFile = @ResumeInitFile , ");                                    
+            strSql.Append(" ResumePDFFile = @ResumePDFFile , ");                                    
+            strSql.Append(" Other = @Other , ");                                    
+            strSql.Append(" Price = @Price , ");                                    
+            strSql.Append(" SourceUrl = @SourceUrl , ");                                    
+            strSql.Append(" SourceText = @SourceText , ");                                    
+            strSql.Append(" Tags = @Tags , ");                                    
+            strSql.Append(" Lang = @Lang , ");                                                            
+            strSql.Append(" AppID = @AppID , ");                                    
+            strSql.Append(" Version = @Version , ");                                    
+            strSql.Append(" RandomNo = @RandomNo , ");                                    
+            strSql.Append(" ParentID = @ParentID , ");                                    
+            strSql.Append(" Remark = @Remark , ");                                    
+            strSql.Append(" LableText = @LableText , ");                                    
+            strSql.Append(" ExJson = @ExJson , ");                                    
+            strSql.Append(" Status = @Status , ");                                    
+            strSql.Append(" OrderNo = @OrderNo , ");                                    
+            strSql.Append(" CreateDate = @CreateDate , ");                                    
+            strSql.Append(" ModifyDate = @ModifyDate , ");                                    
+            strSql.Append(" CreateUser = @CreateUser , ");                                    
+            strSql.Append(" ModifyUser = @ModifyUser  ");            			
+			strSql.Append(" where id=@id ");						
 SqlParameter[] parameters = {
-			            new SqlParameter("SQL2012ResumeNo", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012ResumeName", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012UserID", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012IsMe", SqlDbType.Bit,1) ,            
-                        new SqlParameter("SQL2012IsDisplayRealName", SqlDbType.Bit,1) ,            
-                        new SqlParameter("SQL2012CurPosition", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012CurSalary", SqlDbType.Decimal,9) ,            
-                        new SqlParameter("SQL2012CurComapny", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012CurIndustry", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012CurStatus", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012CurAddress", SqlDbType.NVarChar,100) ,            
-                        new SqlParameter("SQL2012HopeAddress", SqlDbType.NVarChar,100) ,            
-                        new SqlParameter("SQL2012HopePosition", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012HopeIndustry", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012HopeSalary", SqlDbType.Decimal,9) ,            
-                        new SqlParameter("SQL2012HunterComment", SqlDbType.NVarChar,-1) ,            
-                        new SqlParameter("SQL2012ResumeInitFile", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012ResumePDFFile", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012Other", SqlDbType.NVarChar,-1) ,            
-                        new SqlParameter("SQL2012Price", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012SourceUrl", SqlDbType.NVarChar,200) ,            
-                        new SqlParameter("SQL2012SourceText", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012Tags", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012Lang", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012id", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012AppID", SqlDbType.NVarChar,100) ,            
-                        new SqlParameter("SQL2012Version", SqlDbType.NVarChar,100) ,            
-                        new SqlParameter("SQL2012RandomNo", SqlDbType.NVarChar,200) ,            
-                        new SqlParameter("SQL2012ParentID", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012Remark", SqlDbType.NVarChar,-1) ,            
-                        new SqlParameter("SQL2012LableText", SqlDbType.NVarChar,-1) ,            
-                        new SqlParameter("SQL2012ExJson", SqlDbType.NVarChar,-1) ,            
-                        new SqlParameter("SQL2012Status", SqlDbType.NVarChar,-1) ,            
-                        new SqlParameter("SQL2012OrderNo", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012CreateDate", SqlDbType.NVarChar,200) ,            
-                        new SqlParameter("SQL2012ModifyDate", SqlDbType.NVarChar,200) ,            
-                        new SqlParameter("SQL2012CreateUser", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012ModifyUser", SqlDbType.Int,4)             
+			            new SqlParameter("@ResumeNo", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@ResumeName", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@UserID", SqlDbType.Int,4) ,            
+                        new SqlParameter("@IsMe", SqlDbType.Bit,1) ,            
+                        new SqlParameter("@IsDisplayRealName", SqlDbType.Bit,1) ,            
+                        new SqlParameter("@CurPosition", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@CurSalary", SqlDbType.Decimal,9) ,            
+                        new SqlParameter("@CurComapny", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@CurIndustry", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@CurStatus", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@CurAddress", SqlDbType.NVarChar,100) ,            
+                        new SqlParameter("@HopeAddress", SqlDbType.NVarChar,100) ,            
+                        new SqlParameter("@HopePosition", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@HopeIndustry", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@HopeSalary", SqlDbType.Decimal,9) ,            
+                        new SqlParameter("@HunterComment", SqlDbType.NVarChar,-1) ,            
+                        new SqlParameter("@ResumeInitFile", SqlDbType.Int,4) ,            
+                        new SqlParameter("@ResumePDFFile", SqlDbType.Int,4) ,            
+                        new SqlParameter("@Other", SqlDbType.NVarChar,-1) ,            
+                        new SqlParameter("@Price", SqlDbType.Int,4) ,            
+                        new SqlParameter("@SourceUrl", SqlDbType.NVarChar,200) ,            
+                        new SqlParameter("@SourceText", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@Tags", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@Lang", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@id", SqlDbType.Int,4) ,            
+                        new SqlParameter("@AppID", SqlDbType.NVarChar,100) ,            
+                        new SqlParameter("@Version", SqlDbType.NVarChar,100) ,            
+                        new SqlParameter("@RandomNo", SqlDbType.NVarChar,200) ,            
+                        new SqlParameter("@ParentID", SqlDbType.Int,4) ,            
+                        new SqlParameter("@Remark", SqlDbType.NVarChar,-1) ,            
+                        new SqlParameter("@LableText", SqlDbType.NVarChar,-1) ,            
+                        new SqlParameter("@ExJson", SqlDbType.NVarChar,-1) ,            
+                        new SqlParameter("@Status", SqlDbType.NVarChar,-1) ,            
+                        new SqlParameter("@OrderNo", SqlDbType.Int,4) ,            
+                        new SqlParameter("@CreateDate", SqlDbType.NVarChar,200) ,            
+                        new SqlParameter("@ModifyDate", SqlDbType.NVarChar,200) ,            
+                        new SqlParameter("@CreateUser", SqlDbType.Int,4) ,            
+                        new SqlParameter("@ModifyUser", SqlDbType.Int,4)             
               
             };
 						            
@@ -858,9 +858,9 @@ SqlParameter[] parameters = {
 			
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("delete from tabResume ");
-			strSql.Append(" where id=SQL2012id");
+			strSql.Append(" where id=@id");
 						SqlParameter[] parameters = {
-					new SqlParameter("SQL2012id", SqlDbType.Int,4)
+					new SqlParameter("@id", SqlDbType.Int,4)
 			};
 			parameters[0].Value = id;
 
@@ -902,9 +902,9 @@ SqlParameter[] parameters = {
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("select * ");			
 			strSql.Append("  from tabResume ");
-			strSql.Append(" where id=SQL2012id");
+			strSql.Append(" where id=@id");
 						SqlParameter[] parameters = {
-					new SqlParameter("SQL2012id", SqlDbType.Int,4)
+					new SqlParameter("@id", SqlDbType.Int,4)
 			};
 			parameters[0].Value = id;
 
