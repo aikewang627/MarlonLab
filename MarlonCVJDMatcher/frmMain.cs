@@ -27,6 +27,7 @@ namespace MarlonCVJDMatcher
 
         private void btnSegment_Click(object sender, EventArgs e)
         {
+
             if (rtbSourseText.TextLength == 0)
             {
                 AddLog(rtbLog, "请先输入文本");
@@ -38,38 +39,39 @@ namespace MarlonCVJDMatcher
             {
                 rtbResultText.Text += str + "    ";
             }
-            SegmentJDKeyword();
-            SegmentCVKeyword();
-            Matcher();
+
+
+
         }
-
-        void SegmentJDKeyword()
+        private void 关键字加载ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //读取文件
-            string path = Path.Combine(Application.StartupPath,
-                MarlonLab.CommonLib.Common.AppConfigHelper.GetConfigString("JDKeywordFilePath"));
-            FileStream fs = new FileStream(path, FileMode.Open);
-            byte[] btFileContent = new byte[fs.Length];
-            fs.Read(btFileContent, 0, (int)fs.Length);
-            fs.Close();
-            string strFileContent = Encoding.Default.GetString(btFileContent);
 
-
-            //分词
-            List<string> lsFile = PanGuSegmentHelper.SegmentReturnStringList(strFileContent);
-
-
-            //存放于Redis
-            DoRedisSet redisSet = new DoRedisSet();
-            redisSet.Add("JDKeyword",lsFile);
-
+            List<string> lsJD = FileSegment(Config.JDKeywordFilePath);
+            List<string> lsCV = FileSegment(Config.CVKeywordFilePath); 
             
+            //存放于Redis
+            DoRedisSet rs = new DoRedisSet();
+            rs.Add("CVKeyword", lsCV);
+            rs.Add("JDKeyword", lsJD);
         }
-        void SegmentCVKeyword()
+        private void 简历精要提取ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void 职位精要提取ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void 匹配ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+        List<string> FileSegment(string FileRelativePath)
         {
             //读取文件
-            string path = Path.Combine(Application.StartupPath,
-    MarlonLab.CommonLib.Common.AppConfigHelper.GetConfigString("CVKeywordFilePath"));
+            string path = Path.Combine(Application.StartupPath,FileRelativePath);
             FileStream fs = new FileStream(path, FileMode.Open);
             byte[] btFileContent = new byte[fs.Length];
             fs.Read(btFileContent, 0, (int)fs.Length);
@@ -78,19 +80,9 @@ namespace MarlonCVJDMatcher
 
             //分词
             List<string> lsFile = PanGuSegmentHelper.SegmentReturnStringList(strFileContent);
-
-
-            //存放于Redis
-            DoRedisSet redisSet = new DoRedisSet();
-            redisSet.Add("JDKeyword", lsFile);
-
-
+            return lsFile;            
         }
-        void Matcher()
-        {
 
-
-        }
         public void AddLog(RichTextBox rtbLog,string strLog)
         {
             rtbLog.Text += string.Format("{0} {1}\r\n",DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss fff"),strLog);
@@ -98,5 +90,7 @@ namespace MarlonCVJDMatcher
             rtbLog.ScrollToCaret();
 
         }
+
+
     }
 }

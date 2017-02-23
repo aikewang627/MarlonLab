@@ -11,7 +11,7 @@ namespace MarlonLab.CommonLib.RedisHelper
     /// <summary>
     /// 用于读取配置文件中的相关配置信息
     /// </summary>
-    public sealed class RedisConfig : ConfigurationSection
+    public class RedisConfig : ConfigurationSection
     {
         public static RedisConfig GetConfig()
         {
@@ -21,7 +21,7 @@ namespace MarlonLab.CommonLib.RedisHelper
 
         public static RedisConfig GetConfig(string sectionName)
         {
-            RedisConfig section = (RedisConfig)ConfigurationManager.GetSection(sectionName);
+            RedisConfig section = ConfigurationManager.GetSection(sectionName) as RedisConfig;
             if (section == null)
                 throw new ConfigurationErrorsException("Section " + sectionName + " is not found.");
             return section;

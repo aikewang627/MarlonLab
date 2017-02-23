@@ -32,11 +32,18 @@
             this.btnSegment = new System.Windows.Forms.Button();
             this.rtbResultText = new System.Windows.Forms.RichTextBox();
             this.rtbLog = new System.Windows.Forms.RichTextBox();
+            this.msMain = new System.Windows.Forms.MenuStrip();
+            this.cVJDToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.简历精要提取ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.职位精要提取ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.匹配ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.关键字加载ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.msMain.SuspendLayout();
             this.SuspendLayout();
             // 
             // rtbSourseText
             // 
-            this.rtbSourseText.Location = new System.Drawing.Point(12, 12);
+            this.rtbSourseText.Location = new System.Drawing.Point(12, 82);
             this.rtbSourseText.Name = "rtbSourseText";
             this.rtbSourseText.Size = new System.Drawing.Size(356, 103);
             this.rtbSourseText.TabIndex = 0;
@@ -44,9 +51,9 @@
             // 
             // btnSegment
             // 
-            this.btnSegment.Location = new System.Drawing.Point(385, 106);
+            this.btnSegment.Location = new System.Drawing.Point(374, 118);
             this.btnSegment.Name = "btnSegment";
-            this.btnSegment.Size = new System.Drawing.Size(75, 23);
+            this.btnSegment.Size = new System.Drawing.Size(80, 23);
             this.btnSegment.TabIndex = 1;
             this.btnSegment.Text = "分词";
             this.btnSegment.UseVisualStyleBackColor = true;
@@ -54,7 +61,7 @@
             // 
             // rtbResultText
             // 
-            this.rtbResultText.Location = new System.Drawing.Point(12, 121);
+            this.rtbResultText.Location = new System.Drawing.Point(460, 82);
             this.rtbResultText.Name = "rtbResultText";
             this.rtbResultText.Size = new System.Drawing.Size(356, 103);
             this.rtbResultText.TabIndex = 2;
@@ -62,25 +69,79 @@
             // 
             // rtbLog
             // 
-            this.rtbLog.Location = new System.Drawing.Point(12, 261);
+            this.rtbLog.Location = new System.Drawing.Point(12, 358);
             this.rtbLog.Name = "rtbLog";
-            this.rtbLog.Size = new System.Drawing.Size(356, 103);
+            this.rtbLog.Size = new System.Drawing.Size(804, 103);
             this.rtbLog.TabIndex = 3;
             this.rtbLog.Text = "";
+            // 
+            // msMain
+            // 
+            this.msMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cVJDToolStripMenuItem});
+            this.msMain.Location = new System.Drawing.Point(0, 0);
+            this.msMain.Name = "msMain";
+            this.msMain.Size = new System.Drawing.Size(828, 25);
+            this.msMain.TabIndex = 5;
+            this.msMain.Text = "menuStrip1";
+            // 
+            // cVJDToolStripMenuItem
+            // 
+            this.cVJDToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.关键字加载ToolStripMenuItem,
+            this.简历精要提取ToolStripMenuItem,
+            this.职位精要提取ToolStripMenuItem,
+            this.匹配ToolStripMenuItem});
+            this.cVJDToolStripMenuItem.Name = "cVJDToolStripMenuItem";
+            this.cVJDToolStripMenuItem.Size = new System.Drawing.Size(50, 21);
+            this.cVJDToolStripMenuItem.Text = "CVJD";
+            // 
+            // 简历精要提取ToolStripMenuItem
+            // 
+            this.简历精要提取ToolStripMenuItem.Name = "简历精要提取ToolStripMenuItem";
+            this.简历精要提取ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.简历精要提取ToolStripMenuItem.Text = "简历精要提取";
+            this.简历精要提取ToolStripMenuItem.Click += new System.EventHandler(this.简历精要提取ToolStripMenuItem_Click);
+            // 
+            // 职位精要提取ToolStripMenuItem
+            // 
+            this.职位精要提取ToolStripMenuItem.Name = "职位精要提取ToolStripMenuItem";
+            this.职位精要提取ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.职位精要提取ToolStripMenuItem.Text = "职位精要提取";
+            this.职位精要提取ToolStripMenuItem.Click += new System.EventHandler(this.职位精要提取ToolStripMenuItem_Click);
+            // 
+            // 匹配ToolStripMenuItem
+            // 
+            this.匹配ToolStripMenuItem.Name = "匹配ToolStripMenuItem";
+            this.匹配ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.匹配ToolStripMenuItem.Text = "匹配";
+            this.匹配ToolStripMenuItem.Click += new System.EventHandler(this.匹配ToolStripMenuItem_Click);
+            // 
+            // 关键字加载ToolStripMenuItem
+            // 
+            this.关键字加载ToolStripMenuItem.Name = "关键字加载ToolStripMenuItem";
+            this.关键字加载ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.关键字加载ToolStripMenuItem.Text = "关键字加载";
+            this.关键字加载ToolStripMenuItem.Click += new System.EventHandler(this.关键字加载ToolStripMenuItem_Click);
             // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(535, 376);
+            this.ClientSize = new System.Drawing.Size(828, 473);
             this.Controls.Add(this.rtbLog);
             this.Controls.Add(this.rtbResultText);
             this.Controls.Add(this.btnSegment);
             this.Controls.Add(this.rtbSourseText);
+            this.Controls.Add(this.msMain);
+            this.MainMenuStrip = this.msMain;
             this.Name = "frmMain";
             this.Text = "职位简历匹配";
             this.Load += new System.EventHandler(this.frmMain_Load);
+            this.msMain.ResumeLayout(false);
+            this.msMain.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -90,6 +151,12 @@
         private System.Windows.Forms.Button btnSegment;
         private System.Windows.Forms.RichTextBox rtbResultText;
         private System.Windows.Forms.RichTextBox rtbLog;
+        private System.Windows.Forms.MenuStrip msMain;
+        private System.Windows.Forms.ToolStripMenuItem cVJDToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 简历精要提取ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 职位精要提取ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 匹配ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 关键字加载ToolStripMenuItem;
     }
 }
 

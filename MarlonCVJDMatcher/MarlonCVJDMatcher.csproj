@@ -36,9 +36,6 @@
     <Reference Include="MySql.Data">
       <HintPath>..\DllLib\MySql.Data.dll</HintPath>
     </Reference>
-    <Reference Include="PanGu">
-      <HintPath>..\DllLib\PanGuSegment\PanGu.dll</HintPath>
-    </Reference>
     <Reference Include="ServiceStack.Redis">
       <HintPath>..\DllLib\ServiceStack.Redis-4.0.52\ServiceStack.Redis.dll</HintPath>
     </Reference>
@@ -67,6 +64,7 @@
     <Compile Include="BLL\tabPosition.cs" />
     <Compile Include="BLL\tabResume.cs" />
     <Compile Include="BLL\tabUser.cs" />
+    <Compile Include="Config.cs" />
     <Compile Include="DAL\tabExperienceEdu.cs" />
     <Compile Include="DAL\tabExperienceProject.cs" />
     <Compile Include="DAL\tabExperienceWork.cs" />
