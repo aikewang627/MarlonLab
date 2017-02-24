@@ -12,7 +12,7 @@ namespace MarlonLab.CommonLib
     /// </summary>
     public class PanGuSegmentHelper
     {
-        public static Segment segment;
+        private static Segment segment;
 
         public static ICollection<WordInfo> Segment(string text)
         {
@@ -24,7 +24,7 @@ namespace MarlonLab.CommonLib
             ICollection<WordInfo> words = segment.DoSegment(text);
             return words;
         }
-        public static List<string> SegmentReturnStringList(string text)
+        public static List<string> SegmentToStringList(string text)
         {
             List<string> ret = new List<string>();
             if (segment == null)
@@ -33,7 +33,7 @@ namespace MarlonLab.CommonLib
                 segment = new Segment();
             }
             ICollection<WordInfo> words = segment.DoSegment(text);
-            foreach (WordInfo word in words )
+            foreach (WordInfo word in words)
             {
                 ret.Add(word.Word);
             }

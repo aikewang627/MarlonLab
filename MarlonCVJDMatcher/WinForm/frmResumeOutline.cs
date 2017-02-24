@@ -11,6 +11,7 @@ using MarlonLab.CommonLib;//
 using MarlonLab.CommonLib.Common;
 using Tclywork.Model;
 using Tclywork.BLL;
+using System.IO;
 
 namespace MarlonCVJDMatcher.WinForm
 {
@@ -21,14 +22,23 @@ namespace MarlonCVJDMatcher.WinForm
         int iEndNo = 0;
         int iCurNo = 0;
 
-
+        HashSet<string> hsCVJDKeyWord = new HashSet<string>();
+        HashSet<string> hsCVSkill = new HashSet<string>();
+        HashSet<string> hsCVSkillFull = new HashSet<string>();
 
         public frmResumeOutline()
         {
             InitializeComponent();
 
-            tbStNo.Text = "9443";
-            tbEndNo.Text = "10000";
+            tbStNo.Text = "19973";
+            tbEndNo.Text = "19979";
+            string path = Path.Combine(Application.StartupPath, Config.CVJDKeywordFilePath);
+            string strCVJDKeyWord = FileHelper.ReadFromFile(path);//读文件
+            List<string> lsCVJDKeyWord = PanGuSegmentHelper.SegmentToStringList(strCVJDKeyWord);//盘古分词
+            foreach(string key in lsCVJDKeyWord)//加入集合
+            {
+                hsCVJDKeyWord.Add(key);
+            }
 
         }
 
@@ -63,13 +73,15 @@ namespace MarlonCVJDMatcher.WinForm
 
         }
 
-        private void btnStop_Click(object sender, EventArgs e)
+        private void btnSaveSkillKeywordNew_Click(object sender, EventArgs e)
         {
             try
             {
                 #region 
-
-
+                string strKeywordNew = "";
+                foreach(string str in hsCVSkillFull)
+                { strKeywordNew += str + "\r\n"; }
+                FileHelper.SaveToFile(string.Format(@"{0}\CVKeywordNew{1}.txt",Application.StartupPath,DateTime.Now.ToString("yyyyMMddHHmmss")),strKeywordNew);
                 #endregion
             }
             catch (Exception ex)
@@ -119,30 +131,46 @@ namespace MarlonCVJDMatcher.WinForm
                 modelRmOtln.Mobile = modelUsr.Mobile;
                 modelRmOtln.Email = modelUsr.Email;
                 modelRmOtln.Sex = modelUsr.Sex;
+                string strSkill = modelRm.Other+" ";
                 #region 
-                foreach ( tabExperienceEduModel model in lsmodelEdu)
+                modelRmOtln.School = "";
+                modelRmOtln.Major = "";
+                foreach (tabExperienceEduModel model in lsmodelEdu)
                 {
-
+                    modelRmOtln.School += model.SchoolName + " ";
+                    modelRmOtln.Major += model.ProfessionalName + " ";
                 }
                 #endregion
                 #region 
-                string strSkill = "";
                 foreach (tabExperienceWorkModel model in lsmodelWork)
                 {
-
-
+                    strSkill +=  model.PositionDuties+" "+ model.WorkPerformance + " ";
                 }
                 #endregion
                 #region 
                 foreach (tabExperienceProjectModel model in lsmodelProject)
                 {
-
-
+                    strSkill += model.ProjectDesc + " " + model.ProjectPerformance + " ";
                 }
                 #endregion
-                #region 
-
-
+                #region  Skill
+               //
+                List<string> lsSkill = PanGuSegmentHelper.SegmentToStringList(strSkill); //分词
+                hsCVSkill = new HashSet<string>();
+                foreach (string key in lsSkill)//加入集合
+                {
+                    hsCVSkill.Add(key);
+                    hsCVSkillFull.Add(key);
+                }
+                //获得交集
+                hsCVSkill.IntersectWith(hsCVJDKeyWord);
+                //转化成字符串
+                strSkill = "";
+                foreach (string str in hsCVSkill)
+                {
+                    strSkill += str + " ";
+                }
+                modelRmOtln.Skill = strSkill;
                 #endregion
                 #endregion
                 //插入或更新

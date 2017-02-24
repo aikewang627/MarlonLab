@@ -12,9 +12,36 @@ namespace MarlonCVJDMatcher.WinForm
 {
     public partial class frmCVJDMatch : Form
     {
+        int ResumeID = 0;
+        int PositionID = 0;
+
+
         public frmCVJDMatch()
         {
             InitializeComponent();
+
+
+
+
+
         }
+
+        private void btnCVStart_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnJDStart_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
+
+
+
+
+
+
     }
 }

@@ -599,13 +599,13 @@ namespace Tclywork.DAL{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("select count(1) from tabOrg");
 			strSql.Append(" where ");
-			                        strSql.Append(" OrgName = SQL2012OrgName and  ");
-                                                    strSql.Append(" id = SQL2012id and  ");
-                                                    strSql.Append(" ParentID = SQL2012ParentID  ");
+			                        strSql.Append(" OrgName = @OrgName and  ");
+                                                    strSql.Append(" id = @id and  ");
+                                                    strSql.Append(" ParentID = @ParentID  ");
                             			SqlParameter[] parameters = {
-					new SqlParameter("SQL2012OrgName", SqlDbType.NVarChar,50),
-					new SqlParameter("SQL2012id", SqlDbType.Int,4),
-					new SqlParameter("SQL2012ParentID", SqlDbType.Int,4)			};
+					new SqlParameter("@OrgName", SqlDbType.NVarChar,50),
+					new SqlParameter("@id", SqlDbType.Int,4),
+					new SqlParameter("@ParentID", SqlDbType.Int,4)			};
 			parameters[0].Value = OrgName;
 			parameters[1].Value = id;
 			parameters[2].Value = ParentID;
@@ -627,65 +627,65 @@ namespace Tclywork.DAL{
 			strSql.Append("insert into tabOrg(");			
             strSql.Append("OrgName,OrgDesc,OrgNickName,OrgZZ,OrgCode,OrgType,OrgClass,OrgLevel,OrgEdge,OrgPro,OrgCard,PlanNum,Leader,LeaderMobile,Logo,WebSite,Phone,ZZNo,ZZImg,Natrue,PY,Country,State,City,District,Community,Address,AreaFull,ZipCode,QQOpenID,WeiXinOpenID,Fax,Email,SaleType,Scale,Source,SaleStatus,BankName,BankAccount,CreateUnitDate,BeginDate,EndDate,AppID,Version,RandomNo,ParentID,Remark,LableText,ExJson,Status,OrderNo,CreateDate,ModifyDate,CreateUser,ModifyUser");
 			strSql.Append(") values (");
-            strSql.Append("SQL2012OrgName,SQL2012OrgDesc,SQL2012OrgNickName,SQL2012OrgZZ,SQL2012OrgCode,SQL2012OrgType,SQL2012OrgClass,SQL2012OrgLevel,SQL2012OrgEdge,SQL2012OrgPro,SQL2012OrgCard,SQL2012PlanNum,SQL2012Leader,SQL2012LeaderMobile,SQL2012Logo,SQL2012WebSite,SQL2012Phone,SQL2012ZZNo,SQL2012ZZImg,SQL2012Natrue,SQL2012PY,SQL2012Country,SQL2012State,SQL2012City,SQL2012District,SQL2012Community,SQL2012Address,SQL2012AreaFull,SQL2012ZipCode,SQL2012QQOpenID,SQL2012WeiXinOpenID,SQL2012Fax,SQL2012Email,SQL2012SaleType,SQL2012Scale,SQL2012Source,SQL2012SaleStatus,SQL2012BankName,SQL2012BankAccount,SQL2012CreateUnitDate,SQL2012BeginDate,SQL2012EndDate,SQL2012AppID,SQL2012Version,SQL2012RandomNo,SQL2012ParentID,SQL2012Remark,SQL2012LableText,SQL2012ExJson,SQL2012Status,SQL2012OrderNo,SQL2012CreateDate,SQL2012ModifyDate,SQL2012CreateUser,SQL2012ModifyUser");            
+            strSql.Append("@OrgName,@OrgDesc,@OrgNickName,@OrgZZ,@OrgCode,@OrgType,@OrgClass,@OrgLevel,@OrgEdge,@OrgPro,@OrgCard,@PlanNum,@Leader,@LeaderMobile,@Logo,@WebSite,@Phone,@ZZNo,@ZZImg,@Natrue,@PY,@Country,@State,@City,@District,@Community,@Address,@AreaFull,@ZipCode,@QQOpenID,@WeiXinOpenID,@Fax,@Email,@SaleType,@Scale,@Source,@SaleStatus,@BankName,@BankAccount,@CreateUnitDate,@BeginDate,@EndDate,@AppID,@Version,@RandomNo,@ParentID,@Remark,@LableText,@ExJson,@Status,@OrderNo,@CreateDate,@ModifyDate,@CreateUser,@ModifyUser");            
             strSql.Append(") ");            
             strSql.Append(";select @@IDENTITY");		
 			SqlParameter[] parameters = {
-			            new SqlParameter("SQL2012OrgName", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012OrgDesc", SqlDbType.NVarChar,-1) ,            
-                        new SqlParameter("SQL2012OrgNickName", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012OrgZZ", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012OrgCode", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012OrgType", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012OrgClass", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012OrgLevel", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012OrgEdge", SqlDbType.NVarChar,500) ,            
-                        new SqlParameter("SQL2012OrgPro", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012OrgCard", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012PlanNum", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012Leader", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012LeaderMobile", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012Logo", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012WebSite", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012Phone", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012ZZNo", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012ZZImg", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012Natrue", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012PY", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012Country", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012State", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012City", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012District", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012Community", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012Address", SqlDbType.NVarChar,-1) ,            
-                        new SqlParameter("SQL2012AreaFull", SqlDbType.NVarChar,-1) ,            
-                        new SqlParameter("SQL2012ZipCode", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012QQOpenID", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012WeiXinOpenID", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012Fax", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012Email", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012SaleType", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012Scale", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012Source", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012SaleStatus", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012BankName", SqlDbType.NVarChar,-1) ,            
-                        new SqlParameter("SQL2012BankAccount", SqlDbType.NVarChar,-1) ,            
-                        new SqlParameter("SQL2012CreateUnitDate", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012BeginDate", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012EndDate", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012AppID", SqlDbType.NVarChar,100) ,            
-                        new SqlParameter("SQL2012Version", SqlDbType.NVarChar,100) ,            
-                        new SqlParameter("SQL2012RandomNo", SqlDbType.NVarChar,200) ,            
-                        new SqlParameter("SQL2012ParentID", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012Remark", SqlDbType.NVarChar,-1) ,            
-                        new SqlParameter("SQL2012LableText", SqlDbType.NVarChar,-1) ,            
-                        new SqlParameter("SQL2012ExJson", SqlDbType.NVarChar,-1) ,            
-                        new SqlParameter("SQL2012Status", SqlDbType.NVarChar,-1) ,            
-                        new SqlParameter("SQL2012OrderNo", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012CreateDate", SqlDbType.NVarChar,200) ,            
-                        new SqlParameter("SQL2012ModifyDate", SqlDbType.NVarChar,200) ,            
-                        new SqlParameter("SQL2012CreateUser", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012ModifyUser", SqlDbType.Int,4)             
+			            new SqlParameter("@OrgName", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@OrgDesc", SqlDbType.NVarChar,-1) ,            
+                        new SqlParameter("@OrgNickName", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@OrgZZ", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@OrgCode", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@OrgType", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@OrgClass", SqlDbType.Int,4) ,            
+                        new SqlParameter("@OrgLevel", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@OrgEdge", SqlDbType.NVarChar,500) ,            
+                        new SqlParameter("@OrgPro", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@OrgCard", SqlDbType.Int,4) ,            
+                        new SqlParameter("@PlanNum", SqlDbType.Int,4) ,            
+                        new SqlParameter("@Leader", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@LeaderMobile", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@Logo", SqlDbType.Int,4) ,            
+                        new SqlParameter("@WebSite", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@Phone", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@ZZNo", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@ZZImg", SqlDbType.Int,4) ,            
+                        new SqlParameter("@Natrue", SqlDbType.Int,4) ,            
+                        new SqlParameter("@PY", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@Country", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@State", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@City", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@District", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@Community", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@Address", SqlDbType.NVarChar,-1) ,            
+                        new SqlParameter("@AreaFull", SqlDbType.NVarChar,-1) ,            
+                        new SqlParameter("@ZipCode", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@QQOpenID", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@WeiXinOpenID", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@Fax", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@Email", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@SaleType", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@Scale", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@Source", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@SaleStatus", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@BankName", SqlDbType.NVarChar,-1) ,            
+                        new SqlParameter("@BankAccount", SqlDbType.NVarChar,-1) ,            
+                        new SqlParameter("@CreateUnitDate", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@BeginDate", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@EndDate", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@AppID", SqlDbType.NVarChar,100) ,            
+                        new SqlParameter("@Version", SqlDbType.NVarChar,100) ,            
+                        new SqlParameter("@RandomNo", SqlDbType.NVarChar,200) ,            
+                        new SqlParameter("@ParentID", SqlDbType.Int,4) ,            
+                        new SqlParameter("@Remark", SqlDbType.NVarChar,-1) ,            
+                        new SqlParameter("@LableText", SqlDbType.NVarChar,-1) ,            
+                        new SqlParameter("@ExJson", SqlDbType.NVarChar,-1) ,            
+                        new SqlParameter("@Status", SqlDbType.NVarChar,-1) ,            
+                        new SqlParameter("@OrderNo", SqlDbType.Int,4) ,            
+                        new SqlParameter("@CreateDate", SqlDbType.NVarChar,200) ,            
+                        new SqlParameter("@ModifyDate", SqlDbType.NVarChar,200) ,            
+                        new SqlParameter("@CreateUser", SqlDbType.Int,4) ,            
+                        new SqlParameter("@ModifyUser", SqlDbType.Int,4)             
               
             };
 			            
@@ -767,120 +767,120 @@ namespace Tclywork.DAL{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("update tabOrg set ");
 			                        
-            strSql.Append(" OrgName = SQL2012OrgName , ");                                    
-            strSql.Append(" OrgDesc = SQL2012OrgDesc , ");                                    
-            strSql.Append(" OrgNickName = SQL2012OrgNickName , ");                                    
-            strSql.Append(" OrgZZ = SQL2012OrgZZ , ");                                    
-            strSql.Append(" OrgCode = SQL2012OrgCode , ");                                    
-            strSql.Append(" OrgType = SQL2012OrgType , ");                                    
-            strSql.Append(" OrgClass = SQL2012OrgClass , ");                                    
-            strSql.Append(" OrgLevel = SQL2012OrgLevel , ");                                    
-            strSql.Append(" OrgEdge = SQL2012OrgEdge , ");                                    
-            strSql.Append(" OrgPro = SQL2012OrgPro , ");                                    
-            strSql.Append(" OrgCard = SQL2012OrgCard , ");                                    
-            strSql.Append(" PlanNum = SQL2012PlanNum , ");                                    
-            strSql.Append(" Leader = SQL2012Leader , ");                                    
-            strSql.Append(" LeaderMobile = SQL2012LeaderMobile , ");                                    
-            strSql.Append(" Logo = SQL2012Logo , ");                                    
-            strSql.Append(" WebSite = SQL2012WebSite , ");                                    
-            strSql.Append(" Phone = SQL2012Phone , ");                                    
-            strSql.Append(" ZZNo = SQL2012ZZNo , ");                                    
-            strSql.Append(" ZZImg = SQL2012ZZImg , ");                                    
-            strSql.Append(" Natrue = SQL2012Natrue , ");                                    
-            strSql.Append(" PY = SQL2012PY , ");                                    
-            strSql.Append(" Country = SQL2012Country , ");                                    
-            strSql.Append(" State = SQL2012State , ");                                    
-            strSql.Append(" City = SQL2012City , ");                                    
-            strSql.Append(" District = SQL2012District , ");                                    
-            strSql.Append(" Community = SQL2012Community , ");                                    
-            strSql.Append(" Address = SQL2012Address , ");                                    
-            strSql.Append(" AreaFull = SQL2012AreaFull , ");                                    
-            strSql.Append(" ZipCode = SQL2012ZipCode , ");                                    
-            strSql.Append(" QQOpenID = SQL2012QQOpenID , ");                                    
-            strSql.Append(" WeiXinOpenID = SQL2012WeiXinOpenID , ");                                    
-            strSql.Append(" Fax = SQL2012Fax , ");                                    
-            strSql.Append(" Email = SQL2012Email , ");                                    
-            strSql.Append(" SaleType = SQL2012SaleType , ");                                    
-            strSql.Append(" Scale = SQL2012Scale , ");                                    
-            strSql.Append(" Source = SQL2012Source , ");                                    
-            strSql.Append(" SaleStatus = SQL2012SaleStatus , ");                                    
-            strSql.Append(" BankName = SQL2012BankName , ");                                    
-            strSql.Append(" BankAccount = SQL2012BankAccount , ");                                    
-            strSql.Append(" CreateUnitDate = SQL2012CreateUnitDate , ");                                    
-            strSql.Append(" BeginDate = SQL2012BeginDate , ");                                    
-            strSql.Append(" EndDate = SQL2012EndDate , ");                                                            
-            strSql.Append(" AppID = SQL2012AppID , ");                                    
-            strSql.Append(" Version = SQL2012Version , ");                                    
-            strSql.Append(" RandomNo = SQL2012RandomNo , ");                                    
-            strSql.Append(" ParentID = SQL2012ParentID , ");                                    
-            strSql.Append(" Remark = SQL2012Remark , ");                                    
-            strSql.Append(" LableText = SQL2012LableText , ");                                    
-            strSql.Append(" ExJson = SQL2012ExJson , ");                                    
-            strSql.Append(" Status = SQL2012Status , ");                                    
-            strSql.Append(" OrderNo = SQL2012OrderNo , ");                                    
-            strSql.Append(" CreateDate = SQL2012CreateDate , ");                                    
-            strSql.Append(" ModifyDate = SQL2012ModifyDate , ");                                    
-            strSql.Append(" CreateUser = SQL2012CreateUser , ");                                    
-            strSql.Append(" ModifyUser = SQL2012ModifyUser  ");            			
-			strSql.Append(" where id=SQL2012id ");
+            strSql.Append(" OrgName = @OrgName , ");                                    
+            strSql.Append(" OrgDesc = @OrgDesc , ");                                    
+            strSql.Append(" OrgNickName = @OrgNickName , ");                                    
+            strSql.Append(" OrgZZ = @OrgZZ , ");                                    
+            strSql.Append(" OrgCode = @OrgCode , ");                                    
+            strSql.Append(" OrgType = @OrgType , ");                                    
+            strSql.Append(" OrgClass = @OrgClass , ");                                    
+            strSql.Append(" OrgLevel = @OrgLevel , ");                                    
+            strSql.Append(" OrgEdge = @OrgEdge , ");                                    
+            strSql.Append(" OrgPro = @OrgPro , ");                                    
+            strSql.Append(" OrgCard = @OrgCard , ");                                    
+            strSql.Append(" PlanNum = @PlanNum , ");                                    
+            strSql.Append(" Leader = @Leader , ");                                    
+            strSql.Append(" LeaderMobile = @LeaderMobile , ");                                    
+            strSql.Append(" Logo = @Logo , ");                                    
+            strSql.Append(" WebSite = @WebSite , ");                                    
+            strSql.Append(" Phone = @Phone , ");                                    
+            strSql.Append(" ZZNo = @ZZNo , ");                                    
+            strSql.Append(" ZZImg = @ZZImg , ");                                    
+            strSql.Append(" Natrue = @Natrue , ");                                    
+            strSql.Append(" PY = @PY , ");                                    
+            strSql.Append(" Country = @Country , ");                                    
+            strSql.Append(" State = @State , ");                                    
+            strSql.Append(" City = @City , ");                                    
+            strSql.Append(" District = @District , ");                                    
+            strSql.Append(" Community = @Community , ");                                    
+            strSql.Append(" Address = @Address , ");                                    
+            strSql.Append(" AreaFull = @AreaFull , ");                                    
+            strSql.Append(" ZipCode = @ZipCode , ");                                    
+            strSql.Append(" QQOpenID = @QQOpenID , ");                                    
+            strSql.Append(" WeiXinOpenID = @WeiXinOpenID , ");                                    
+            strSql.Append(" Fax = @Fax , ");                                    
+            strSql.Append(" Email = @Email , ");                                    
+            strSql.Append(" SaleType = @SaleType , ");                                    
+            strSql.Append(" Scale = @Scale , ");                                    
+            strSql.Append(" Source = @Source , ");                                    
+            strSql.Append(" SaleStatus = @SaleStatus , ");                                    
+            strSql.Append(" BankName = @BankName , ");                                    
+            strSql.Append(" BankAccount = @BankAccount , ");                                    
+            strSql.Append(" CreateUnitDate = @CreateUnitDate , ");                                    
+            strSql.Append(" BeginDate = @BeginDate , ");                                    
+            strSql.Append(" EndDate = @EndDate , ");                                                            
+            strSql.Append(" AppID = @AppID , ");                                    
+            strSql.Append(" Version = @Version , ");                                    
+            strSql.Append(" RandomNo = @RandomNo , ");                                    
+            strSql.Append(" ParentID = @ParentID , ");                                    
+            strSql.Append(" Remark = @Remark , ");                                    
+            strSql.Append(" LableText = @LableText , ");                                    
+            strSql.Append(" ExJson = @ExJson , ");                                    
+            strSql.Append(" Status = @Status , ");                                    
+            strSql.Append(" OrderNo = @OrderNo , ");                                    
+            strSql.Append(" CreateDate = @CreateDate , ");                                    
+            strSql.Append(" ModifyDate = @ModifyDate , ");                                    
+            strSql.Append(" CreateUser = @CreateUser , ");                                    
+            strSql.Append(" ModifyUser = @ModifyUser  ");            			
+			strSql.Append(" where id=@id ");
 						
 SqlParameter[] parameters = {
-			            new SqlParameter("SQL2012OrgName", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012OrgDesc", SqlDbType.NVarChar,-1) ,            
-                        new SqlParameter("SQL2012OrgNickName", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012OrgZZ", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012OrgCode", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012OrgType", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012OrgClass", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012OrgLevel", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012OrgEdge", SqlDbType.NVarChar,500) ,            
-                        new SqlParameter("SQL2012OrgPro", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012OrgCard", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012PlanNum", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012Leader", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012LeaderMobile", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012Logo", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012WebSite", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012Phone", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012ZZNo", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012ZZImg", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012Natrue", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012PY", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012Country", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012State", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012City", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012District", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012Community", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012Address", SqlDbType.NVarChar,-1) ,            
-                        new SqlParameter("SQL2012AreaFull", SqlDbType.NVarChar,-1) ,            
-                        new SqlParameter("SQL2012ZipCode", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012QQOpenID", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012WeiXinOpenID", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012Fax", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012Email", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012SaleType", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012Scale", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012Source", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012SaleStatus", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012BankName", SqlDbType.NVarChar,-1) ,            
-                        new SqlParameter("SQL2012BankAccount", SqlDbType.NVarChar,-1) ,            
-                        new SqlParameter("SQL2012CreateUnitDate", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012BeginDate", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012EndDate", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012id", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012AppID", SqlDbType.NVarChar,100) ,            
-                        new SqlParameter("SQL2012Version", SqlDbType.NVarChar,100) ,            
-                        new SqlParameter("SQL2012RandomNo", SqlDbType.NVarChar,200) ,            
-                        new SqlParameter("SQL2012ParentID", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012Remark", SqlDbType.NVarChar,-1) ,            
-                        new SqlParameter("SQL2012LableText", SqlDbType.NVarChar,-1) ,            
-                        new SqlParameter("SQL2012ExJson", SqlDbType.NVarChar,-1) ,            
-                        new SqlParameter("SQL2012Status", SqlDbType.NVarChar,-1) ,            
-                        new SqlParameter("SQL2012OrderNo", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012CreateDate", SqlDbType.NVarChar,200) ,            
-                        new SqlParameter("SQL2012ModifyDate", SqlDbType.NVarChar,200) ,            
-                        new SqlParameter("SQL2012CreateUser", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012ModifyUser", SqlDbType.Int,4)             
+			            new SqlParameter("@OrgName", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@OrgDesc", SqlDbType.NVarChar,-1) ,            
+                        new SqlParameter("@OrgNickName", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@OrgZZ", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@OrgCode", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@OrgType", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@OrgClass", SqlDbType.Int,4) ,            
+                        new SqlParameter("@OrgLevel", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@OrgEdge", SqlDbType.NVarChar,500) ,            
+                        new SqlParameter("@OrgPro", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@OrgCard", SqlDbType.Int,4) ,            
+                        new SqlParameter("@PlanNum", SqlDbType.Int,4) ,            
+                        new SqlParameter("@Leader", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@LeaderMobile", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@Logo", SqlDbType.Int,4) ,            
+                        new SqlParameter("@WebSite", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@Phone", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@ZZNo", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@ZZImg", SqlDbType.Int,4) ,            
+                        new SqlParameter("@Natrue", SqlDbType.Int,4) ,            
+                        new SqlParameter("@PY", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@Country", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@State", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@City", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@District", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@Community", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@Address", SqlDbType.NVarChar,-1) ,            
+                        new SqlParameter("@AreaFull", SqlDbType.NVarChar,-1) ,            
+                        new SqlParameter("@ZipCode", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@QQOpenID", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@WeiXinOpenID", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@Fax", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@Email", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@SaleType", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@Scale", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@Source", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@SaleStatus", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@BankName", SqlDbType.NVarChar,-1) ,            
+                        new SqlParameter("@BankAccount", SqlDbType.NVarChar,-1) ,            
+                        new SqlParameter("@CreateUnitDate", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@BeginDate", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@EndDate", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@id", SqlDbType.Int,4) ,            
+                        new SqlParameter("@AppID", SqlDbType.NVarChar,100) ,            
+                        new SqlParameter("@Version", SqlDbType.NVarChar,100) ,            
+                        new SqlParameter("@RandomNo", SqlDbType.NVarChar,200) ,            
+                        new SqlParameter("@ParentID", SqlDbType.Int,4) ,            
+                        new SqlParameter("@Remark", SqlDbType.NVarChar,-1) ,            
+                        new SqlParameter("@LableText", SqlDbType.NVarChar,-1) ,            
+                        new SqlParameter("@ExJson", SqlDbType.NVarChar,-1) ,            
+                        new SqlParameter("@Status", SqlDbType.NVarChar,-1) ,            
+                        new SqlParameter("@OrderNo", SqlDbType.Int,4) ,            
+                        new SqlParameter("@CreateDate", SqlDbType.NVarChar,200) ,            
+                        new SqlParameter("@ModifyDate", SqlDbType.NVarChar,200) ,            
+                        new SqlParameter("@CreateUser", SqlDbType.Int,4) ,            
+                        new SqlParameter("@ModifyUser", SqlDbType.Int,4)             
               
             };
 						            
@@ -968,119 +968,119 @@ SqlParameter[] parameters = {
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("update tabOrg set ");
 			                        
-            strSql.Append(" OrgName = SQL2012OrgName , ");                                    
-            strSql.Append(" OrgDesc = SQL2012OrgDesc , ");                                    
-            strSql.Append(" OrgNickName = SQL2012OrgNickName , ");                                    
-            strSql.Append(" OrgZZ = SQL2012OrgZZ , ");                                    
-            strSql.Append(" OrgCode = SQL2012OrgCode , ");                                    
-            strSql.Append(" OrgType = SQL2012OrgType , ");                                    
-            strSql.Append(" OrgClass = SQL2012OrgClass , ");                                    
-            strSql.Append(" OrgLevel = SQL2012OrgLevel , ");                                    
-            strSql.Append(" OrgEdge = SQL2012OrgEdge , ");                                    
-            strSql.Append(" OrgPro = SQL2012OrgPro , ");                                    
-            strSql.Append(" OrgCard = SQL2012OrgCard , ");                                    
-            strSql.Append(" PlanNum = SQL2012PlanNum , ");                                    
-            strSql.Append(" Leader = SQL2012Leader , ");                                    
-            strSql.Append(" LeaderMobile = SQL2012LeaderMobile , ");                                    
-            strSql.Append(" Logo = SQL2012Logo , ");                                    
-            strSql.Append(" WebSite = SQL2012WebSite , ");                                    
-            strSql.Append(" Phone = SQL2012Phone , ");                                    
-            strSql.Append(" ZZNo = SQL2012ZZNo , ");                                    
-            strSql.Append(" ZZImg = SQL2012ZZImg , ");                                    
-            strSql.Append(" Natrue = SQL2012Natrue , ");                                    
-            strSql.Append(" PY = SQL2012PY , ");                                    
-            strSql.Append(" Country = SQL2012Country , ");                                    
-            strSql.Append(" State = SQL2012State , ");                                    
-            strSql.Append(" City = SQL2012City , ");                                    
-            strSql.Append(" District = SQL2012District , ");                                    
-            strSql.Append(" Community = SQL2012Community , ");                                    
-            strSql.Append(" Address = SQL2012Address , ");                                    
-            strSql.Append(" AreaFull = SQL2012AreaFull , ");                                    
-            strSql.Append(" ZipCode = SQL2012ZipCode , ");                                    
-            strSql.Append(" QQOpenID = SQL2012QQOpenID , ");                                    
-            strSql.Append(" WeiXinOpenID = SQL2012WeiXinOpenID , ");                                    
-            strSql.Append(" Fax = SQL2012Fax , ");                                    
-            strSql.Append(" Email = SQL2012Email , ");                                    
-            strSql.Append(" SaleType = SQL2012SaleType , ");                                    
-            strSql.Append(" Scale = SQL2012Scale , ");                                    
-            strSql.Append(" Source = SQL2012Source , ");                                    
-            strSql.Append(" SaleStatus = SQL2012SaleStatus , ");                                    
-            strSql.Append(" BankName = SQL2012BankName , ");                                    
-            strSql.Append(" BankAccount = SQL2012BankAccount , ");                                    
-            strSql.Append(" CreateUnitDate = SQL2012CreateUnitDate , ");                                    
-            strSql.Append(" BeginDate = SQL2012BeginDate , ");                                    
-            strSql.Append(" EndDate = SQL2012EndDate , ");                                                            
-            strSql.Append(" AppID = SQL2012AppID , ");                                    
-            strSql.Append(" Version = SQL2012Version , ");                                    
-            strSql.Append(" RandomNo = SQL2012RandomNo , ");                                    
-            strSql.Append(" ParentID = SQL2012ParentID , ");                                    
-            strSql.Append(" Remark = SQL2012Remark , ");                                    
-            strSql.Append(" LableText = SQL2012LableText , ");                                    
-            strSql.Append(" ExJson = SQL2012ExJson , ");                                    
-            strSql.Append(" Status = SQL2012Status , ");                                    
-            strSql.Append(" OrderNo = SQL2012OrderNo , ");                                    
-            strSql.Append(" CreateDate = SQL2012CreateDate , ");                                    
-            strSql.Append(" ModifyDate = SQL2012ModifyDate , ");                                    
-            strSql.Append(" CreateUser = SQL2012CreateUser , ");                                    
-            strSql.Append(" ModifyUser = SQL2012ModifyUser  ");            			
-			strSql.Append(" where id=SQL2012id ");						
+            strSql.Append(" OrgName = @OrgName , ");                                    
+            strSql.Append(" OrgDesc = @OrgDesc , ");                                    
+            strSql.Append(" OrgNickName = @OrgNickName , ");                                    
+            strSql.Append(" OrgZZ = @OrgZZ , ");                                    
+            strSql.Append(" OrgCode = @OrgCode , ");                                    
+            strSql.Append(" OrgType = @OrgType , ");                                    
+            strSql.Append(" OrgClass = @OrgClass , ");                                    
+            strSql.Append(" OrgLevel = @OrgLevel , ");                                    
+            strSql.Append(" OrgEdge = @OrgEdge , ");                                    
+            strSql.Append(" OrgPro = @OrgPro , ");                                    
+            strSql.Append(" OrgCard = @OrgCard , ");                                    
+            strSql.Append(" PlanNum = @PlanNum , ");                                    
+            strSql.Append(" Leader = @Leader , ");                                    
+            strSql.Append(" LeaderMobile = @LeaderMobile , ");                                    
+            strSql.Append(" Logo = @Logo , ");                                    
+            strSql.Append(" WebSite = @WebSite , ");                                    
+            strSql.Append(" Phone = @Phone , ");                                    
+            strSql.Append(" ZZNo = @ZZNo , ");                                    
+            strSql.Append(" ZZImg = @ZZImg , ");                                    
+            strSql.Append(" Natrue = @Natrue , ");                                    
+            strSql.Append(" PY = @PY , ");                                    
+            strSql.Append(" Country = @Country , ");                                    
+            strSql.Append(" State = @State , ");                                    
+            strSql.Append(" City = @City , ");                                    
+            strSql.Append(" District = @District , ");                                    
+            strSql.Append(" Community = @Community , ");                                    
+            strSql.Append(" Address = @Address , ");                                    
+            strSql.Append(" AreaFull = @AreaFull , ");                                    
+            strSql.Append(" ZipCode = @ZipCode , ");                                    
+            strSql.Append(" QQOpenID = @QQOpenID , ");                                    
+            strSql.Append(" WeiXinOpenID = @WeiXinOpenID , ");                                    
+            strSql.Append(" Fax = @Fax , ");                                    
+            strSql.Append(" Email = @Email , ");                                    
+            strSql.Append(" SaleType = @SaleType , ");                                    
+            strSql.Append(" Scale = @Scale , ");                                    
+            strSql.Append(" Source = @Source , ");                                    
+            strSql.Append(" SaleStatus = @SaleStatus , ");                                    
+            strSql.Append(" BankName = @BankName , ");                                    
+            strSql.Append(" BankAccount = @BankAccount , ");                                    
+            strSql.Append(" CreateUnitDate = @CreateUnitDate , ");                                    
+            strSql.Append(" BeginDate = @BeginDate , ");                                    
+            strSql.Append(" EndDate = @EndDate , ");                                                            
+            strSql.Append(" AppID = @AppID , ");                                    
+            strSql.Append(" Version = @Version , ");                                    
+            strSql.Append(" RandomNo = @RandomNo , ");                                    
+            strSql.Append(" ParentID = @ParentID , ");                                    
+            strSql.Append(" Remark = @Remark , ");                                    
+            strSql.Append(" LableText = @LableText , ");                                    
+            strSql.Append(" ExJson = @ExJson , ");                                    
+            strSql.Append(" Status = @Status , ");                                    
+            strSql.Append(" OrderNo = @OrderNo , ");                                    
+            strSql.Append(" CreateDate = @CreateDate , ");                                    
+            strSql.Append(" ModifyDate = @ModifyDate , ");                                    
+            strSql.Append(" CreateUser = @CreateUser , ");                                    
+            strSql.Append(" ModifyUser = @ModifyUser  ");            			
+			strSql.Append(" where id=@id ");						
 SqlParameter[] parameters = {
-			            new SqlParameter("SQL2012OrgName", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012OrgDesc", SqlDbType.NVarChar,-1) ,            
-                        new SqlParameter("SQL2012OrgNickName", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012OrgZZ", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012OrgCode", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012OrgType", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012OrgClass", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012OrgLevel", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012OrgEdge", SqlDbType.NVarChar,500) ,            
-                        new SqlParameter("SQL2012OrgPro", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012OrgCard", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012PlanNum", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012Leader", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012LeaderMobile", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012Logo", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012WebSite", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012Phone", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012ZZNo", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012ZZImg", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012Natrue", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012PY", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012Country", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012State", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012City", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012District", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012Community", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012Address", SqlDbType.NVarChar,-1) ,            
-                        new SqlParameter("SQL2012AreaFull", SqlDbType.NVarChar,-1) ,            
-                        new SqlParameter("SQL2012ZipCode", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012QQOpenID", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012WeiXinOpenID", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012Fax", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012Email", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012SaleType", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012Scale", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012Source", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012SaleStatus", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012BankName", SqlDbType.NVarChar,-1) ,            
-                        new SqlParameter("SQL2012BankAccount", SqlDbType.NVarChar,-1) ,            
-                        new SqlParameter("SQL2012CreateUnitDate", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012BeginDate", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012EndDate", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012id", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012AppID", SqlDbType.NVarChar,100) ,            
-                        new SqlParameter("SQL2012Version", SqlDbType.NVarChar,100) ,            
-                        new SqlParameter("SQL2012RandomNo", SqlDbType.NVarChar,200) ,            
-                        new SqlParameter("SQL2012ParentID", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012Remark", SqlDbType.NVarChar,-1) ,            
-                        new SqlParameter("SQL2012LableText", SqlDbType.NVarChar,-1) ,            
-                        new SqlParameter("SQL2012ExJson", SqlDbType.NVarChar,-1) ,            
-                        new SqlParameter("SQL2012Status", SqlDbType.NVarChar,-1) ,            
-                        new SqlParameter("SQL2012OrderNo", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012CreateDate", SqlDbType.NVarChar,200) ,            
-                        new SqlParameter("SQL2012ModifyDate", SqlDbType.NVarChar,200) ,            
-                        new SqlParameter("SQL2012CreateUser", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012ModifyUser", SqlDbType.Int,4)             
+			            new SqlParameter("@OrgName", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@OrgDesc", SqlDbType.NVarChar,-1) ,            
+                        new SqlParameter("@OrgNickName", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@OrgZZ", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@OrgCode", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@OrgType", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@OrgClass", SqlDbType.Int,4) ,            
+                        new SqlParameter("@OrgLevel", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@OrgEdge", SqlDbType.NVarChar,500) ,            
+                        new SqlParameter("@OrgPro", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@OrgCard", SqlDbType.Int,4) ,            
+                        new SqlParameter("@PlanNum", SqlDbType.Int,4) ,            
+                        new SqlParameter("@Leader", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@LeaderMobile", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@Logo", SqlDbType.Int,4) ,            
+                        new SqlParameter("@WebSite", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@Phone", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@ZZNo", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@ZZImg", SqlDbType.Int,4) ,            
+                        new SqlParameter("@Natrue", SqlDbType.Int,4) ,            
+                        new SqlParameter("@PY", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@Country", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@State", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@City", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@District", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@Community", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@Address", SqlDbType.NVarChar,-1) ,            
+                        new SqlParameter("@AreaFull", SqlDbType.NVarChar,-1) ,            
+                        new SqlParameter("@ZipCode", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@QQOpenID", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@WeiXinOpenID", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@Fax", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@Email", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@SaleType", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@Scale", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@Source", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@SaleStatus", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@BankName", SqlDbType.NVarChar,-1) ,            
+                        new SqlParameter("@BankAccount", SqlDbType.NVarChar,-1) ,            
+                        new SqlParameter("@CreateUnitDate", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@BeginDate", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@EndDate", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@id", SqlDbType.Int,4) ,            
+                        new SqlParameter("@AppID", SqlDbType.NVarChar,100) ,            
+                        new SqlParameter("@Version", SqlDbType.NVarChar,100) ,            
+                        new SqlParameter("@RandomNo", SqlDbType.NVarChar,200) ,            
+                        new SqlParameter("@ParentID", SqlDbType.Int,4) ,            
+                        new SqlParameter("@Remark", SqlDbType.NVarChar,-1) ,            
+                        new SqlParameter("@LableText", SqlDbType.NVarChar,-1) ,            
+                        new SqlParameter("@ExJson", SqlDbType.NVarChar,-1) ,            
+                        new SqlParameter("@Status", SqlDbType.NVarChar,-1) ,            
+                        new SqlParameter("@OrderNo", SqlDbType.Int,4) ,            
+                        new SqlParameter("@CreateDate", SqlDbType.NVarChar,200) ,            
+                        new SqlParameter("@ModifyDate", SqlDbType.NVarChar,200) ,            
+                        new SqlParameter("@CreateUser", SqlDbType.Int,4) ,            
+                        new SqlParameter("@ModifyUser", SqlDbType.Int,4)             
               
             };
 						            
@@ -1158,9 +1158,9 @@ SqlParameter[] parameters = {
 			
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("delete from tabOrg ");
-			strSql.Append(" where id=SQL2012id");
+			strSql.Append(" where id=@id");
 						SqlParameter[] parameters = {
-					new SqlParameter("SQL2012id", SqlDbType.Int,4)
+					new SqlParameter("@id", SqlDbType.Int,4)
 			};
 			parameters[0].Value = id;
 
@@ -1202,9 +1202,9 @@ SqlParameter[] parameters = {
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("select * ");			
 			strSql.Append("  from tabOrg ");
-			strSql.Append(" where id=SQL2012id");
+			strSql.Append(" where id=@id");
 						SqlParameter[] parameters = {
-					new SqlParameter("SQL2012id", SqlDbType.Int,4)
+					new SqlParameter("@id", SqlDbType.Int,4)
 			};
 			parameters[0].Value = id;
 

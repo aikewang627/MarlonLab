@@ -489,11 +489,11 @@ namespace Tclywork.DAL{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("select count(1) from tabPosition");
 			strSql.Append(" where ");
-			                        strSql.Append(" id = SQL2012id and  ");
-                                                    strSql.Append(" ParentID = SQL2012ParentID  ");
+			                        strSql.Append(" id = @id and  ");
+                                                    strSql.Append(" ParentID = @ParentID  ");
                             			SqlParameter[] parameters = {
-					new SqlParameter("SQL2012id", SqlDbType.Int,4),
-					new SqlParameter("SQL2012ParentID", SqlDbType.Int,4)			};
+					new SqlParameter("@id", SqlDbType.Int,4),
+					new SqlParameter("@ParentID", SqlDbType.Int,4)			};
 			parameters[0].Value = id;
 			parameters[1].Value = ParentID;
 
@@ -514,54 +514,54 @@ namespace Tclywork.DAL{
 			strSql.Append("insert into tabPosition(");			
             strSql.Append("PositionName,PositionDesc,WordAddress,NeedNum,DeptID,PubOrgID,ReportObj,OrgNum,SalaryBein,SalaryEnd,PositionEdge,PostionReason,CommissionType,PriceCommission,PricePre,PriceInterview,PriceJoinWork,PriceGetWork,SafeDay,RequireContent,RequireEdu,RequireAbility,RequireExperience,RequireYear,RequireProject,AdditionInfo,PositionInitFile,PositionPdfFile,PositionSourceUrl,PositionSourceText,PubDate,AppID,Version,RandomNo,ParentID,Remark,LableText,ExJson,Status,OrderNo,CreateDate,ModifyDate,CreateUser,ModifyUser");
 			strSql.Append(") values (");
-            strSql.Append("SQL2012PositionName,SQL2012PositionDesc,SQL2012WordAddress,SQL2012NeedNum,SQL2012DeptID,SQL2012PubOrgID,SQL2012ReportObj,SQL2012OrgNum,SQL2012SalaryBein,SQL2012SalaryEnd,SQL2012PositionEdge,SQL2012PostionReason,SQL2012CommissionType,SQL2012PriceCommission,SQL2012PricePre,SQL2012PriceInterview,SQL2012PriceJoinWork,SQL2012PriceGetWork,SQL2012SafeDay,SQL2012RequireContent,SQL2012RequireEdu,SQL2012RequireAbility,SQL2012RequireExperience,SQL2012RequireYear,SQL2012RequireProject,SQL2012AdditionInfo,SQL2012PositionInitFile,SQL2012PositionPdfFile,SQL2012PositionSourceUrl,SQL2012PositionSourceText,SQL2012PubDate,SQL2012AppID,SQL2012Version,SQL2012RandomNo,SQL2012ParentID,SQL2012Remark,SQL2012LableText,SQL2012ExJson,SQL2012Status,SQL2012OrderNo,SQL2012CreateDate,SQL2012ModifyDate,SQL2012CreateUser,SQL2012ModifyUser");            
+            strSql.Append("@PositionName,@PositionDesc,@WordAddress,@NeedNum,@DeptID,@PubOrgID,@ReportObj,@OrgNum,@SalaryBein,@SalaryEnd,@PositionEdge,@PostionReason,@CommissionType,@PriceCommission,@PricePre,@PriceInterview,@PriceJoinWork,@PriceGetWork,@SafeDay,@RequireContent,@RequireEdu,@RequireAbility,@RequireExperience,@RequireYear,@RequireProject,@AdditionInfo,@PositionInitFile,@PositionPdfFile,@PositionSourceUrl,@PositionSourceText,@PubDate,@AppID,@Version,@RandomNo,@ParentID,@Remark,@LableText,@ExJson,@Status,@OrderNo,@CreateDate,@ModifyDate,@CreateUser,@ModifyUser");            
             strSql.Append(") ");            
             strSql.Append(";select @@IDENTITY");		
 			SqlParameter[] parameters = {
-			            new SqlParameter("SQL2012PositionName", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012PositionDesc", SqlDbType.NVarChar,-1) ,            
-                        new SqlParameter("SQL2012WordAddress", SqlDbType.NVarChar,-1) ,            
-                        new SqlParameter("SQL2012NeedNum", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012DeptID", SqlDbType.NVarChar,200) ,            
-                        new SqlParameter("SQL2012PubOrgID", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012ReportObj", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012OrgNum", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012SalaryBein", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012SalaryEnd", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012PositionEdge", SqlDbType.NVarChar,500) ,            
-                        new SqlParameter("SQL2012PostionReason", SqlDbType.NVarChar,500) ,            
-                        new SqlParameter("SQL2012CommissionType", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012PriceCommission", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012PricePre", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012PriceInterview", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012PriceJoinWork", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012PriceGetWork", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012SafeDay", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012RequireContent", SqlDbType.NVarChar,-1) ,            
-                        new SqlParameter("SQL2012RequireEdu", SqlDbType.NVarChar,-1) ,            
-                        new SqlParameter("SQL2012RequireAbility", SqlDbType.NVarChar,-1) ,            
-                        new SqlParameter("SQL2012RequireExperience", SqlDbType.NVarChar,-1) ,            
-                        new SqlParameter("SQL2012RequireYear", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012RequireProject", SqlDbType.NVarChar,-1) ,            
-                        new SqlParameter("SQL2012AdditionInfo", SqlDbType.NVarChar,-1) ,            
-                        new SqlParameter("SQL2012PositionInitFile", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012PositionPdfFile", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012PositionSourceUrl", SqlDbType.NVarChar,200) ,            
-                        new SqlParameter("SQL2012PositionSourceText", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012PubDate", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012AppID", SqlDbType.NVarChar,100) ,            
-                        new SqlParameter("SQL2012Version", SqlDbType.NVarChar,100) ,            
-                        new SqlParameter("SQL2012RandomNo", SqlDbType.NVarChar,200) ,            
-                        new SqlParameter("SQL2012ParentID", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012Remark", SqlDbType.NVarChar,-1) ,            
-                        new SqlParameter("SQL2012LableText", SqlDbType.NVarChar,-1) ,            
-                        new SqlParameter("SQL2012ExJson", SqlDbType.NVarChar,-1) ,            
-                        new SqlParameter("SQL2012Status", SqlDbType.NVarChar,-1) ,            
-                        new SqlParameter("SQL2012OrderNo", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012CreateDate", SqlDbType.NVarChar,200) ,            
-                        new SqlParameter("SQL2012ModifyDate", SqlDbType.NVarChar,200) ,            
-                        new SqlParameter("SQL2012CreateUser", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012ModifyUser", SqlDbType.Int,4)             
+			            new SqlParameter("@PositionName", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@PositionDesc", SqlDbType.NVarChar,-1) ,            
+                        new SqlParameter("@WordAddress", SqlDbType.NVarChar,-1) ,            
+                        new SqlParameter("@NeedNum", SqlDbType.Int,4) ,            
+                        new SqlParameter("@DeptID", SqlDbType.NVarChar,200) ,            
+                        new SqlParameter("@PubOrgID", SqlDbType.Int,4) ,            
+                        new SqlParameter("@ReportObj", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@OrgNum", SqlDbType.Int,4) ,            
+                        new SqlParameter("@SalaryBein", SqlDbType.Int,4) ,            
+                        new SqlParameter("@SalaryEnd", SqlDbType.Int,4) ,            
+                        new SqlParameter("@PositionEdge", SqlDbType.NVarChar,500) ,            
+                        new SqlParameter("@PostionReason", SqlDbType.NVarChar,500) ,            
+                        new SqlParameter("@CommissionType", SqlDbType.Int,4) ,            
+                        new SqlParameter("@PriceCommission", SqlDbType.Int,4) ,            
+                        new SqlParameter("@PricePre", SqlDbType.Int,4) ,            
+                        new SqlParameter("@PriceInterview", SqlDbType.Int,4) ,            
+                        new SqlParameter("@PriceJoinWork", SqlDbType.Int,4) ,            
+                        new SqlParameter("@PriceGetWork", SqlDbType.Int,4) ,            
+                        new SqlParameter("@SafeDay", SqlDbType.Int,4) ,            
+                        new SqlParameter("@RequireContent", SqlDbType.NVarChar,-1) ,            
+                        new SqlParameter("@RequireEdu", SqlDbType.NVarChar,-1) ,            
+                        new SqlParameter("@RequireAbility", SqlDbType.NVarChar,-1) ,            
+                        new SqlParameter("@RequireExperience", SqlDbType.NVarChar,-1) ,            
+                        new SqlParameter("@RequireYear", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@RequireProject", SqlDbType.NVarChar,-1) ,            
+                        new SqlParameter("@AdditionInfo", SqlDbType.NVarChar,-1) ,            
+                        new SqlParameter("@PositionInitFile", SqlDbType.Int,4) ,            
+                        new SqlParameter("@PositionPdfFile", SqlDbType.Int,4) ,            
+                        new SqlParameter("@PositionSourceUrl", SqlDbType.NVarChar,200) ,            
+                        new SqlParameter("@PositionSourceText", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@PubDate", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@AppID", SqlDbType.NVarChar,100) ,            
+                        new SqlParameter("@Version", SqlDbType.NVarChar,100) ,            
+                        new SqlParameter("@RandomNo", SqlDbType.NVarChar,200) ,            
+                        new SqlParameter("@ParentID", SqlDbType.Int,4) ,            
+                        new SqlParameter("@Remark", SqlDbType.NVarChar,-1) ,            
+                        new SqlParameter("@LableText", SqlDbType.NVarChar,-1) ,            
+                        new SqlParameter("@ExJson", SqlDbType.NVarChar,-1) ,            
+                        new SqlParameter("@Status", SqlDbType.NVarChar,-1) ,            
+                        new SqlParameter("@OrderNo", SqlDbType.Int,4) ,            
+                        new SqlParameter("@CreateDate", SqlDbType.NVarChar,200) ,            
+                        new SqlParameter("@ModifyDate", SqlDbType.NVarChar,200) ,            
+                        new SqlParameter("@CreateUser", SqlDbType.Int,4) ,            
+                        new SqlParameter("@ModifyUser", SqlDbType.Int,4)             
               
             };
 			            
@@ -632,98 +632,98 @@ namespace Tclywork.DAL{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("update tabPosition set ");
 			                        
-            strSql.Append(" PositionName = SQL2012PositionName , ");                                    
-            strSql.Append(" PositionDesc = SQL2012PositionDesc , ");                                    
-            strSql.Append(" WordAddress = SQL2012WordAddress , ");                                    
-            strSql.Append(" NeedNum = SQL2012NeedNum , ");                                    
-            strSql.Append(" DeptID = SQL2012DeptID , ");                                    
-            strSql.Append(" PubOrgID = SQL2012PubOrgID , ");                                    
-            strSql.Append(" ReportObj = SQL2012ReportObj , ");                                    
-            strSql.Append(" OrgNum = SQL2012OrgNum , ");                                    
-            strSql.Append(" SalaryBein = SQL2012SalaryBein , ");                                    
-            strSql.Append(" SalaryEnd = SQL2012SalaryEnd , ");                                    
-            strSql.Append(" PositionEdge = SQL2012PositionEdge , ");                                    
-            strSql.Append(" PostionReason = SQL2012PostionReason , ");                                    
-            strSql.Append(" CommissionType = SQL2012CommissionType , ");                                    
-            strSql.Append(" PriceCommission = SQL2012PriceCommission , ");                                    
-            strSql.Append(" PricePre = SQL2012PricePre , ");                                    
-            strSql.Append(" PriceInterview = SQL2012PriceInterview , ");                                    
-            strSql.Append(" PriceJoinWork = SQL2012PriceJoinWork , ");                                    
-            strSql.Append(" PriceGetWork = SQL2012PriceGetWork , ");                                    
-            strSql.Append(" SafeDay = SQL2012SafeDay , ");                                    
-            strSql.Append(" RequireContent = SQL2012RequireContent , ");                                    
-            strSql.Append(" RequireEdu = SQL2012RequireEdu , ");                                    
-            strSql.Append(" RequireAbility = SQL2012RequireAbility , ");                                    
-            strSql.Append(" RequireExperience = SQL2012RequireExperience , ");                                    
-            strSql.Append(" RequireYear = SQL2012RequireYear , ");                                    
-            strSql.Append(" RequireProject = SQL2012RequireProject , ");                                    
-            strSql.Append(" AdditionInfo = SQL2012AdditionInfo , ");                                    
-            strSql.Append(" PositionInitFile = SQL2012PositionInitFile , ");                                    
-            strSql.Append(" PositionPdfFile = SQL2012PositionPdfFile , ");                                    
-            strSql.Append(" PositionSourceUrl = SQL2012PositionSourceUrl , ");                                    
-            strSql.Append(" PositionSourceText = SQL2012PositionSourceText , ");                                    
-            strSql.Append(" PubDate = SQL2012PubDate , ");                                                            
-            strSql.Append(" AppID = SQL2012AppID , ");                                    
-            strSql.Append(" Version = SQL2012Version , ");                                    
-            strSql.Append(" RandomNo = SQL2012RandomNo , ");                                    
-            strSql.Append(" ParentID = SQL2012ParentID , ");                                    
-            strSql.Append(" Remark = SQL2012Remark , ");                                    
-            strSql.Append(" LableText = SQL2012LableText , ");                                    
-            strSql.Append(" ExJson = SQL2012ExJson , ");                                    
-            strSql.Append(" Status = SQL2012Status , ");                                    
-            strSql.Append(" OrderNo = SQL2012OrderNo , ");                                    
-            strSql.Append(" CreateDate = SQL2012CreateDate , ");                                    
-            strSql.Append(" ModifyDate = SQL2012ModifyDate , ");                                    
-            strSql.Append(" CreateUser = SQL2012CreateUser , ");                                    
-            strSql.Append(" ModifyUser = SQL2012ModifyUser  ");            			
-			strSql.Append(" where id=SQL2012id ");
+            strSql.Append(" PositionName = @PositionName , ");                                    
+            strSql.Append(" PositionDesc = @PositionDesc , ");                                    
+            strSql.Append(" WordAddress = @WordAddress , ");                                    
+            strSql.Append(" NeedNum = @NeedNum , ");                                    
+            strSql.Append(" DeptID = @DeptID , ");                                    
+            strSql.Append(" PubOrgID = @PubOrgID , ");                                    
+            strSql.Append(" ReportObj = @ReportObj , ");                                    
+            strSql.Append(" OrgNum = @OrgNum , ");                                    
+            strSql.Append(" SalaryBein = @SalaryBein , ");                                    
+            strSql.Append(" SalaryEnd = @SalaryEnd , ");                                    
+            strSql.Append(" PositionEdge = @PositionEdge , ");                                    
+            strSql.Append(" PostionReason = @PostionReason , ");                                    
+            strSql.Append(" CommissionType = @CommissionType , ");                                    
+            strSql.Append(" PriceCommission = @PriceCommission , ");                                    
+            strSql.Append(" PricePre = @PricePre , ");                                    
+            strSql.Append(" PriceInterview = @PriceInterview , ");                                    
+            strSql.Append(" PriceJoinWork = @PriceJoinWork , ");                                    
+            strSql.Append(" PriceGetWork = @PriceGetWork , ");                                    
+            strSql.Append(" SafeDay = @SafeDay , ");                                    
+            strSql.Append(" RequireContent = @RequireContent , ");                                    
+            strSql.Append(" RequireEdu = @RequireEdu , ");                                    
+            strSql.Append(" RequireAbility = @RequireAbility , ");                                    
+            strSql.Append(" RequireExperience = @RequireExperience , ");                                    
+            strSql.Append(" RequireYear = @RequireYear , ");                                    
+            strSql.Append(" RequireProject = @RequireProject , ");                                    
+            strSql.Append(" AdditionInfo = @AdditionInfo , ");                                    
+            strSql.Append(" PositionInitFile = @PositionInitFile , ");                                    
+            strSql.Append(" PositionPdfFile = @PositionPdfFile , ");                                    
+            strSql.Append(" PositionSourceUrl = @PositionSourceUrl , ");                                    
+            strSql.Append(" PositionSourceText = @PositionSourceText , ");                                    
+            strSql.Append(" PubDate = @PubDate , ");                                                            
+            strSql.Append(" AppID = @AppID , ");                                    
+            strSql.Append(" Version = @Version , ");                                    
+            strSql.Append(" RandomNo = @RandomNo , ");                                    
+            strSql.Append(" ParentID = @ParentID , ");                                    
+            strSql.Append(" Remark = @Remark , ");                                    
+            strSql.Append(" LableText = @LableText , ");                                    
+            strSql.Append(" ExJson = @ExJson , ");                                    
+            strSql.Append(" Status = @Status , ");                                    
+            strSql.Append(" OrderNo = @OrderNo , ");                                    
+            strSql.Append(" CreateDate = @CreateDate , ");                                    
+            strSql.Append(" ModifyDate = @ModifyDate , ");                                    
+            strSql.Append(" CreateUser = @CreateUser , ");                                    
+            strSql.Append(" ModifyUser = @ModifyUser  ");            			
+			strSql.Append(" where id=@id ");
 						
 SqlParameter[] parameters = {
-			            new SqlParameter("SQL2012PositionName", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012PositionDesc", SqlDbType.NVarChar,-1) ,            
-                        new SqlParameter("SQL2012WordAddress", SqlDbType.NVarChar,-1) ,            
-                        new SqlParameter("SQL2012NeedNum", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012DeptID", SqlDbType.NVarChar,200) ,            
-                        new SqlParameter("SQL2012PubOrgID", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012ReportObj", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012OrgNum", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012SalaryBein", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012SalaryEnd", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012PositionEdge", SqlDbType.NVarChar,500) ,            
-                        new SqlParameter("SQL2012PostionReason", SqlDbType.NVarChar,500) ,            
-                        new SqlParameter("SQL2012CommissionType", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012PriceCommission", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012PricePre", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012PriceInterview", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012PriceJoinWork", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012PriceGetWork", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012SafeDay", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012RequireContent", SqlDbType.NVarChar,-1) ,            
-                        new SqlParameter("SQL2012RequireEdu", SqlDbType.NVarChar,-1) ,            
-                        new SqlParameter("SQL2012RequireAbility", SqlDbType.NVarChar,-1) ,            
-                        new SqlParameter("SQL2012RequireExperience", SqlDbType.NVarChar,-1) ,            
-                        new SqlParameter("SQL2012RequireYear", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012RequireProject", SqlDbType.NVarChar,-1) ,            
-                        new SqlParameter("SQL2012AdditionInfo", SqlDbType.NVarChar,-1) ,            
-                        new SqlParameter("SQL2012PositionInitFile", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012PositionPdfFile", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012PositionSourceUrl", SqlDbType.NVarChar,200) ,            
-                        new SqlParameter("SQL2012PositionSourceText", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012PubDate", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012id", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012AppID", SqlDbType.NVarChar,100) ,            
-                        new SqlParameter("SQL2012Version", SqlDbType.NVarChar,100) ,            
-                        new SqlParameter("SQL2012RandomNo", SqlDbType.NVarChar,200) ,            
-                        new SqlParameter("SQL2012ParentID", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012Remark", SqlDbType.NVarChar,-1) ,            
-                        new SqlParameter("SQL2012LableText", SqlDbType.NVarChar,-1) ,            
-                        new SqlParameter("SQL2012ExJson", SqlDbType.NVarChar,-1) ,            
-                        new SqlParameter("SQL2012Status", SqlDbType.NVarChar,-1) ,            
-                        new SqlParameter("SQL2012OrderNo", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012CreateDate", SqlDbType.NVarChar,200) ,            
-                        new SqlParameter("SQL2012ModifyDate", SqlDbType.NVarChar,200) ,            
-                        new SqlParameter("SQL2012CreateUser", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012ModifyUser", SqlDbType.Int,4)             
+			            new SqlParameter("@PositionName", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@PositionDesc", SqlDbType.NVarChar,-1) ,            
+                        new SqlParameter("@WordAddress", SqlDbType.NVarChar,-1) ,            
+                        new SqlParameter("@NeedNum", SqlDbType.Int,4) ,            
+                        new SqlParameter("@DeptID", SqlDbType.NVarChar,200) ,            
+                        new SqlParameter("@PubOrgID", SqlDbType.Int,4) ,            
+                        new SqlParameter("@ReportObj", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@OrgNum", SqlDbType.Int,4) ,            
+                        new SqlParameter("@SalaryBein", SqlDbType.Int,4) ,            
+                        new SqlParameter("@SalaryEnd", SqlDbType.Int,4) ,            
+                        new SqlParameter("@PositionEdge", SqlDbType.NVarChar,500) ,            
+                        new SqlParameter("@PostionReason", SqlDbType.NVarChar,500) ,            
+                        new SqlParameter("@CommissionType", SqlDbType.Int,4) ,            
+                        new SqlParameter("@PriceCommission", SqlDbType.Int,4) ,            
+                        new SqlParameter("@PricePre", SqlDbType.Int,4) ,            
+                        new SqlParameter("@PriceInterview", SqlDbType.Int,4) ,            
+                        new SqlParameter("@PriceJoinWork", SqlDbType.Int,4) ,            
+                        new SqlParameter("@PriceGetWork", SqlDbType.Int,4) ,            
+                        new SqlParameter("@SafeDay", SqlDbType.Int,4) ,            
+                        new SqlParameter("@RequireContent", SqlDbType.NVarChar,-1) ,            
+                        new SqlParameter("@RequireEdu", SqlDbType.NVarChar,-1) ,            
+                        new SqlParameter("@RequireAbility", SqlDbType.NVarChar,-1) ,            
+                        new SqlParameter("@RequireExperience", SqlDbType.NVarChar,-1) ,            
+                        new SqlParameter("@RequireYear", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@RequireProject", SqlDbType.NVarChar,-1) ,            
+                        new SqlParameter("@AdditionInfo", SqlDbType.NVarChar,-1) ,            
+                        new SqlParameter("@PositionInitFile", SqlDbType.Int,4) ,            
+                        new SqlParameter("@PositionPdfFile", SqlDbType.Int,4) ,            
+                        new SqlParameter("@PositionSourceUrl", SqlDbType.NVarChar,200) ,            
+                        new SqlParameter("@PositionSourceText", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@PubDate", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@id", SqlDbType.Int,4) ,            
+                        new SqlParameter("@AppID", SqlDbType.NVarChar,100) ,            
+                        new SqlParameter("@Version", SqlDbType.NVarChar,100) ,            
+                        new SqlParameter("@RandomNo", SqlDbType.NVarChar,200) ,            
+                        new SqlParameter("@ParentID", SqlDbType.Int,4) ,            
+                        new SqlParameter("@Remark", SqlDbType.NVarChar,-1) ,            
+                        new SqlParameter("@LableText", SqlDbType.NVarChar,-1) ,            
+                        new SqlParameter("@ExJson", SqlDbType.NVarChar,-1) ,            
+                        new SqlParameter("@Status", SqlDbType.NVarChar,-1) ,            
+                        new SqlParameter("@OrderNo", SqlDbType.Int,4) ,            
+                        new SqlParameter("@CreateDate", SqlDbType.NVarChar,200) ,            
+                        new SqlParameter("@ModifyDate", SqlDbType.NVarChar,200) ,            
+                        new SqlParameter("@CreateUser", SqlDbType.Int,4) ,            
+                        new SqlParameter("@ModifyUser", SqlDbType.Int,4)             
               
             };
 						            
@@ -800,97 +800,97 @@ SqlParameter[] parameters = {
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("update tabPosition set ");
 			                        
-            strSql.Append(" PositionName = SQL2012PositionName , ");                                    
-            strSql.Append(" PositionDesc = SQL2012PositionDesc , ");                                    
-            strSql.Append(" WordAddress = SQL2012WordAddress , ");                                    
-            strSql.Append(" NeedNum = SQL2012NeedNum , ");                                    
-            strSql.Append(" DeptID = SQL2012DeptID , ");                                    
-            strSql.Append(" PubOrgID = SQL2012PubOrgID , ");                                    
-            strSql.Append(" ReportObj = SQL2012ReportObj , ");                                    
-            strSql.Append(" OrgNum = SQL2012OrgNum , ");                                    
-            strSql.Append(" SalaryBein = SQL2012SalaryBein , ");                                    
-            strSql.Append(" SalaryEnd = SQL2012SalaryEnd , ");                                    
-            strSql.Append(" PositionEdge = SQL2012PositionEdge , ");                                    
-            strSql.Append(" PostionReason = SQL2012PostionReason , ");                                    
-            strSql.Append(" CommissionType = SQL2012CommissionType , ");                                    
-            strSql.Append(" PriceCommission = SQL2012PriceCommission , ");                                    
-            strSql.Append(" PricePre = SQL2012PricePre , ");                                    
-            strSql.Append(" PriceInterview = SQL2012PriceInterview , ");                                    
-            strSql.Append(" PriceJoinWork = SQL2012PriceJoinWork , ");                                    
-            strSql.Append(" PriceGetWork = SQL2012PriceGetWork , ");                                    
-            strSql.Append(" SafeDay = SQL2012SafeDay , ");                                    
-            strSql.Append(" RequireContent = SQL2012RequireContent , ");                                    
-            strSql.Append(" RequireEdu = SQL2012RequireEdu , ");                                    
-            strSql.Append(" RequireAbility = SQL2012RequireAbility , ");                                    
-            strSql.Append(" RequireExperience = SQL2012RequireExperience , ");                                    
-            strSql.Append(" RequireYear = SQL2012RequireYear , ");                                    
-            strSql.Append(" RequireProject = SQL2012RequireProject , ");                                    
-            strSql.Append(" AdditionInfo = SQL2012AdditionInfo , ");                                    
-            strSql.Append(" PositionInitFile = SQL2012PositionInitFile , ");                                    
-            strSql.Append(" PositionPdfFile = SQL2012PositionPdfFile , ");                                    
-            strSql.Append(" PositionSourceUrl = SQL2012PositionSourceUrl , ");                                    
-            strSql.Append(" PositionSourceText = SQL2012PositionSourceText , ");                                    
-            strSql.Append(" PubDate = SQL2012PubDate , ");                                                            
-            strSql.Append(" AppID = SQL2012AppID , ");                                    
-            strSql.Append(" Version = SQL2012Version , ");                                    
-            strSql.Append(" RandomNo = SQL2012RandomNo , ");                                    
-            strSql.Append(" ParentID = SQL2012ParentID , ");                                    
-            strSql.Append(" Remark = SQL2012Remark , ");                                    
-            strSql.Append(" LableText = SQL2012LableText , ");                                    
-            strSql.Append(" ExJson = SQL2012ExJson , ");                                    
-            strSql.Append(" Status = SQL2012Status , ");                                    
-            strSql.Append(" OrderNo = SQL2012OrderNo , ");                                    
-            strSql.Append(" CreateDate = SQL2012CreateDate , ");                                    
-            strSql.Append(" ModifyDate = SQL2012ModifyDate , ");                                    
-            strSql.Append(" CreateUser = SQL2012CreateUser , ");                                    
-            strSql.Append(" ModifyUser = SQL2012ModifyUser  ");            			
-			strSql.Append(" where id=SQL2012id ");						
+            strSql.Append(" PositionName = @PositionName , ");                                    
+            strSql.Append(" PositionDesc = @PositionDesc , ");                                    
+            strSql.Append(" WordAddress = @WordAddress , ");                                    
+            strSql.Append(" NeedNum = @NeedNum , ");                                    
+            strSql.Append(" DeptID = @DeptID , ");                                    
+            strSql.Append(" PubOrgID = @PubOrgID , ");                                    
+            strSql.Append(" ReportObj = @ReportObj , ");                                    
+            strSql.Append(" OrgNum = @OrgNum , ");                                    
+            strSql.Append(" SalaryBein = @SalaryBein , ");                                    
+            strSql.Append(" SalaryEnd = @SalaryEnd , ");                                    
+            strSql.Append(" PositionEdge = @PositionEdge , ");                                    
+            strSql.Append(" PostionReason = @PostionReason , ");                                    
+            strSql.Append(" CommissionType = @CommissionType , ");                                    
+            strSql.Append(" PriceCommission = @PriceCommission , ");                                    
+            strSql.Append(" PricePre = @PricePre , ");                                    
+            strSql.Append(" PriceInterview = @PriceInterview , ");                                    
+            strSql.Append(" PriceJoinWork = @PriceJoinWork , ");                                    
+            strSql.Append(" PriceGetWork = @PriceGetWork , ");                                    
+            strSql.Append(" SafeDay = @SafeDay , ");                                    
+            strSql.Append(" RequireContent = @RequireContent , ");                                    
+            strSql.Append(" RequireEdu = @RequireEdu , ");                                    
+            strSql.Append(" RequireAbility = @RequireAbility , ");                                    
+            strSql.Append(" RequireExperience = @RequireExperience , ");                                    
+            strSql.Append(" RequireYear = @RequireYear , ");                                    
+            strSql.Append(" RequireProject = @RequireProject , ");                                    
+            strSql.Append(" AdditionInfo = @AdditionInfo , ");                                    
+            strSql.Append(" PositionInitFile = @PositionInitFile , ");                                    
+            strSql.Append(" PositionPdfFile = @PositionPdfFile , ");                                    
+            strSql.Append(" PositionSourceUrl = @PositionSourceUrl , ");                                    
+            strSql.Append(" PositionSourceText = @PositionSourceText , ");                                    
+            strSql.Append(" PubDate = @PubDate , ");                                                            
+            strSql.Append(" AppID = @AppID , ");                                    
+            strSql.Append(" Version = @Version , ");                                    
+            strSql.Append(" RandomNo = @RandomNo , ");                                    
+            strSql.Append(" ParentID = @ParentID , ");                                    
+            strSql.Append(" Remark = @Remark , ");                                    
+            strSql.Append(" LableText = @LableText , ");                                    
+            strSql.Append(" ExJson = @ExJson , ");                                    
+            strSql.Append(" Status = @Status , ");                                    
+            strSql.Append(" OrderNo = @OrderNo , ");                                    
+            strSql.Append(" CreateDate = @CreateDate , ");                                    
+            strSql.Append(" ModifyDate = @ModifyDate , ");                                    
+            strSql.Append(" CreateUser = @CreateUser , ");                                    
+            strSql.Append(" ModifyUser = @ModifyUser  ");            			
+			strSql.Append(" where id=@id ");						
 SqlParameter[] parameters = {
-			            new SqlParameter("SQL2012PositionName", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012PositionDesc", SqlDbType.NVarChar,-1) ,            
-                        new SqlParameter("SQL2012WordAddress", SqlDbType.NVarChar,-1) ,            
-                        new SqlParameter("SQL2012NeedNum", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012DeptID", SqlDbType.NVarChar,200) ,            
-                        new SqlParameter("SQL2012PubOrgID", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012ReportObj", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012OrgNum", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012SalaryBein", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012SalaryEnd", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012PositionEdge", SqlDbType.NVarChar,500) ,            
-                        new SqlParameter("SQL2012PostionReason", SqlDbType.NVarChar,500) ,            
-                        new SqlParameter("SQL2012CommissionType", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012PriceCommission", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012PricePre", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012PriceInterview", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012PriceJoinWork", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012PriceGetWork", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012SafeDay", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012RequireContent", SqlDbType.NVarChar,-1) ,            
-                        new SqlParameter("SQL2012RequireEdu", SqlDbType.NVarChar,-1) ,            
-                        new SqlParameter("SQL2012RequireAbility", SqlDbType.NVarChar,-1) ,            
-                        new SqlParameter("SQL2012RequireExperience", SqlDbType.NVarChar,-1) ,            
-                        new SqlParameter("SQL2012RequireYear", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012RequireProject", SqlDbType.NVarChar,-1) ,            
-                        new SqlParameter("SQL2012AdditionInfo", SqlDbType.NVarChar,-1) ,            
-                        new SqlParameter("SQL2012PositionInitFile", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012PositionPdfFile", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012PositionSourceUrl", SqlDbType.NVarChar,200) ,            
-                        new SqlParameter("SQL2012PositionSourceText", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012PubDate", SqlDbType.NVarChar,50) ,            
-                        new SqlParameter("SQL2012id", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012AppID", SqlDbType.NVarChar,100) ,            
-                        new SqlParameter("SQL2012Version", SqlDbType.NVarChar,100) ,            
-                        new SqlParameter("SQL2012RandomNo", SqlDbType.NVarChar,200) ,            
-                        new SqlParameter("SQL2012ParentID", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012Remark", SqlDbType.NVarChar,-1) ,            
-                        new SqlParameter("SQL2012LableText", SqlDbType.NVarChar,-1) ,            
-                        new SqlParameter("SQL2012ExJson", SqlDbType.NVarChar,-1) ,            
-                        new SqlParameter("SQL2012Status", SqlDbType.NVarChar,-1) ,            
-                        new SqlParameter("SQL2012OrderNo", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012CreateDate", SqlDbType.NVarChar,200) ,            
-                        new SqlParameter("SQL2012ModifyDate", SqlDbType.NVarChar,200) ,            
-                        new SqlParameter("SQL2012CreateUser", SqlDbType.Int,4) ,            
-                        new SqlParameter("SQL2012ModifyUser", SqlDbType.Int,4)             
+			            new SqlParameter("@PositionName", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@PositionDesc", SqlDbType.NVarChar,-1) ,            
+                        new SqlParameter("@WordAddress", SqlDbType.NVarChar,-1) ,            
+                        new SqlParameter("@NeedNum", SqlDbType.Int,4) ,            
+                        new SqlParameter("@DeptID", SqlDbType.NVarChar,200) ,            
+                        new SqlParameter("@PubOrgID", SqlDbType.Int,4) ,            
+                        new SqlParameter("@ReportObj", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@OrgNum", SqlDbType.Int,4) ,            
+                        new SqlParameter("@SalaryBein", SqlDbType.Int,4) ,            
+                        new SqlParameter("@SalaryEnd", SqlDbType.Int,4) ,            
+                        new SqlParameter("@PositionEdge", SqlDbType.NVarChar,500) ,            
+                        new SqlParameter("@PostionReason", SqlDbType.NVarChar,500) ,            
+                        new SqlParameter("@CommissionType", SqlDbType.Int,4) ,            
+                        new SqlParameter("@PriceCommission", SqlDbType.Int,4) ,            
+                        new SqlParameter("@PricePre", SqlDbType.Int,4) ,            
+                        new SqlParameter("@PriceInterview", SqlDbType.Int,4) ,            
+                        new SqlParameter("@PriceJoinWork", SqlDbType.Int,4) ,            
+                        new SqlParameter("@PriceGetWork", SqlDbType.Int,4) ,            
+                        new SqlParameter("@SafeDay", SqlDbType.Int,4) ,            
+                        new SqlParameter("@RequireContent", SqlDbType.NVarChar,-1) ,            
+                        new SqlParameter("@RequireEdu", SqlDbType.NVarChar,-1) ,            
+                        new SqlParameter("@RequireAbility", SqlDbType.NVarChar,-1) ,            
+                        new SqlParameter("@RequireExperience", SqlDbType.NVarChar,-1) ,            
+                        new SqlParameter("@RequireYear", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@RequireProject", SqlDbType.NVarChar,-1) ,            
+                        new SqlParameter("@AdditionInfo", SqlDbType.NVarChar,-1) ,            
+                        new SqlParameter("@PositionInitFile", SqlDbType.Int,4) ,            
+                        new SqlParameter("@PositionPdfFile", SqlDbType.Int,4) ,            
+                        new SqlParameter("@PositionSourceUrl", SqlDbType.NVarChar,200) ,            
+                        new SqlParameter("@PositionSourceText", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@PubDate", SqlDbType.NVarChar,50) ,            
+                        new SqlParameter("@id", SqlDbType.Int,4) ,            
+                        new SqlParameter("@AppID", SqlDbType.NVarChar,100) ,            
+                        new SqlParameter("@Version", SqlDbType.NVarChar,100) ,            
+                        new SqlParameter("@RandomNo", SqlDbType.NVarChar,200) ,            
+                        new SqlParameter("@ParentID", SqlDbType.Int,4) ,            
+                        new SqlParameter("@Remark", SqlDbType.NVarChar,-1) ,            
+                        new SqlParameter("@LableText", SqlDbType.NVarChar,-1) ,            
+                        new SqlParameter("@ExJson", SqlDbType.NVarChar,-1) ,            
+                        new SqlParameter("@Status", SqlDbType.NVarChar,-1) ,            
+                        new SqlParameter("@OrderNo", SqlDbType.Int,4) ,            
+                        new SqlParameter("@CreateDate", SqlDbType.NVarChar,200) ,            
+                        new SqlParameter("@ModifyDate", SqlDbType.NVarChar,200) ,            
+                        new SqlParameter("@CreateUser", SqlDbType.Int,4) ,            
+                        new SqlParameter("@ModifyUser", SqlDbType.Int,4)             
               
             };
 						            
@@ -957,9 +957,9 @@ SqlParameter[] parameters = {
 			
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("delete from tabPosition ");
-			strSql.Append(" where id=SQL2012id");
+			strSql.Append(" where id=@id");
 						SqlParameter[] parameters = {
-					new SqlParameter("SQL2012id", SqlDbType.Int,4)
+					new SqlParameter("@id", SqlDbType.Int,4)
 			};
 			parameters[0].Value = id;
 
@@ -1001,9 +1001,9 @@ SqlParameter[] parameters = {
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("select * ");			
 			strSql.Append("  from tabPosition ");
-			strSql.Append(" where id=SQL2012id");
+			strSql.Append(" where id=@id");
 						SqlParameter[] parameters = {
-					new SqlParameter("SQL2012id", SqlDbType.Int,4)
+					new SqlParameter("@id", SqlDbType.Int,4)
 			};
 			parameters[0].Value = id;
 

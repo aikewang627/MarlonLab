@@ -35,7 +35,7 @@ namespace MarlonCVJDMatcher
                 return;
             }
             rtbResultText.Text = "";
-            List<string> strList = PanGuSegmentHelper.SegmentReturnStringList(rtbSourseText.Text);
+            List<string> strList = PanGuSegmentHelper.SegmentToStringList(rtbSourseText.Text);
             foreach (string str in strList)
             {
                 rtbResultText.Text += str + "    ";
@@ -79,7 +79,7 @@ namespace MarlonCVJDMatcher
             string strFileContent = Encoding.Default.GetString(btFileContent);
 
             //分词
-            List<string> lsFile = PanGuSegmentHelper.SegmentReturnStringList(strFileContent);
+            List<string> lsFile = PanGuSegmentHelper.SegmentToStringList(strFileContent);
             return lsFile;
         }
         void SaveToFile(string FileRelativePath, HashSet<string> hsSet)

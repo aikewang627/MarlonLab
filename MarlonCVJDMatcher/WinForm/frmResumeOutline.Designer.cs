@@ -34,13 +34,13 @@
             this.tbEndNo = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.rtbLog = new System.Windows.Forms.RichTextBox();
-            this.btnStop = new System.Windows.Forms.Button();
+            this.btnSaveSkillKeywordNew = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnStart
             // 
             this.btnStart.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnStart.Location = new System.Drawing.Point(465, 10);
+            this.btnStart.Location = new System.Drawing.Point(420, 10);
             this.btnStart.Name = "btnStart";
             this.btnStart.Size = new System.Drawing.Size(55, 23);
             this.btnStart.TabIndex = 0;
@@ -91,23 +91,23 @@
             this.rtbLog.TabIndex = 5;
             this.rtbLog.Text = "";
             // 
-            // btnStop
+            // btnSaveSkillKeywordNew
             // 
-            this.btnStop.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnStop.Location = new System.Drawing.Point(532, 10);
-            this.btnStop.Name = "btnStop";
-            this.btnStop.Size = new System.Drawing.Size(55, 23);
-            this.btnStop.TabIndex = 6;
-            this.btnStop.Text = "停止";
-            this.btnStop.UseVisualStyleBackColor = true;
-            this.btnStop.Click += new System.EventHandler(this.btnStop_Click);
+            this.btnSaveSkillKeywordNew.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSaveSkillKeywordNew.Location = new System.Drawing.Point(481, 10);
+            this.btnSaveSkillKeywordNew.Name = "btnSaveSkillKeywordNew";
+            this.btnSaveSkillKeywordNew.Size = new System.Drawing.Size(106, 23);
+            this.btnSaveSkillKeywordNew.TabIndex = 6;
+            this.btnSaveSkillKeywordNew.Text = "保存新增关键字";
+            this.btnSaveSkillKeywordNew.UseVisualStyleBackColor = true;
+            this.btnSaveSkillKeywordNew.Click += new System.EventHandler(this.btnSaveSkillKeywordNew_Click);
             // 
             // frmResumeOutline
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(599, 399);
-            this.Controls.Add(this.btnStop);
+            this.Controls.Add(this.btnSaveSkillKeywordNew);
             this.Controls.Add(this.rtbLog);
             this.Controls.Add(this.tbEndNo);
             this.Controls.Add(this.label2);
@@ -130,6 +130,6 @@
         private System.Windows.Forms.TextBox tbEndNo;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.RichTextBox rtbLog;
-        private System.Windows.Forms.Button btnStop;
+        private System.Windows.Forms.Button btnSaveSkillKeywordNew;
     }
 }

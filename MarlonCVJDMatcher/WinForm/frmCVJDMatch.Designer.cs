@@ -46,6 +46,7 @@
             this.btnJDStart.TabIndex = 13;
             this.btnJDStart.Text = "匹配";
             this.btnJDStart.UseVisualStyleBackColor = true;
+            this.btnJDStart.Click += new System.EventHandler(this.btnJDStart_Click);
             // 
             // rtbLog
             // 
@@ -100,6 +101,7 @@
             this.btnCVStart.TabIndex = 7;
             this.btnCVStart.Text = "匹配";
             this.btnCVStart.UseVisualStyleBackColor = true;
+            this.btnCVStart.Click += new System.EventHandler(this.btnCVStart_Click);
             // 
             // frmCVJDMatch
             // 
