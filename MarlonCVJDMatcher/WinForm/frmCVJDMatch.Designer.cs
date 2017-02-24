@@ -30,9 +30,9 @@
         {
             this.btnJDStart = new System.Windows.Forms.Button();
             this.rtbLog = new System.Windows.Forms.RichTextBox();
-            this.tbEndNo = new System.Windows.Forms.TextBox();
+            this.tbPositionNo = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.tbStNo = new System.Windows.Forms.TextBox();
+            this.tbResumeNo = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnCVStart = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -59,13 +59,13 @@
             this.rtbLog.TabIndex = 12;
             this.rtbLog.Text = "";
             // 
-            // tbEndNo
+            // tbPositionNo
             // 
-            this.tbEndNo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbEndNo.Location = new System.Drawing.Point(430, 10);
-            this.tbEndNo.Name = "tbEndNo";
-            this.tbEndNo.Size = new System.Drawing.Size(100, 21);
-            this.tbEndNo.TabIndex = 11;
+            this.tbPositionNo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbPositionNo.Location = new System.Drawing.Point(430, 10);
+            this.tbPositionNo.Name = "tbPositionNo";
+            this.tbPositionNo.Size = new System.Drawing.Size(100, 21);
+            this.tbPositionNo.TabIndex = 11;
             // 
             // label2
             // 
@@ -77,12 +77,12 @@
             this.label2.TabIndex = 10;
             this.label2.Text = "JD编号";
             // 
-            // tbStNo
+            // tbResumeNo
             // 
-            this.tbStNo.Location = new System.Drawing.Point(68, 12);
-            this.tbStNo.Name = "tbStNo";
-            this.tbStNo.Size = new System.Drawing.Size(100, 21);
-            this.tbStNo.TabIndex = 9;
+            this.tbResumeNo.Location = new System.Drawing.Point(68, 12);
+            this.tbResumeNo.Name = "tbResumeNo";
+            this.tbResumeNo.Size = new System.Drawing.Size(100, 21);
+            this.tbResumeNo.TabIndex = 9;
             // 
             // label1
             // 
@@ -110,9 +110,9 @@
             this.ClientSize = new System.Drawing.Size(603, 437);
             this.Controls.Add(this.btnJDStart);
             this.Controls.Add(this.rtbLog);
-            this.Controls.Add(this.tbEndNo);
+            this.Controls.Add(this.tbPositionNo);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.tbStNo);
+            this.Controls.Add(this.tbResumeNo);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnCVStart);
             this.Name = "frmCVJDMatch";
@@ -126,9 +126,9 @@
 
         private System.Windows.Forms.Button btnJDStart;
         private System.Windows.Forms.RichTextBox rtbLog;
-        private System.Windows.Forms.TextBox tbEndNo;
+        private System.Windows.Forms.TextBox tbPositionNo;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox tbStNo;
+        private System.Windows.Forms.TextBox tbResumeNo;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnCVStart;
     }
