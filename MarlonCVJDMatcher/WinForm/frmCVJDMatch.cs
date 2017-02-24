@@ -88,7 +88,7 @@ namespace MarlonCVJDMatcher.WinForm
                 #region 
                 //
                 List<tabCVJDMatchModel> slsCVJDMatch = new List< tabCVJDMatchModel>();//用于存放匹配结果，最大数量为100
-                slsCVJDMatch.Capacity = 5;
+                slsCVJDMatch.Capacity =100;
                 //
                 #region 获取JD简要模型
                 tabPositionOutlineModel modelPosOtln = tabPositionOutlineBLL.GetInstance().GetModel(" PositionID="+PositionID+" ",0);
@@ -111,10 +111,12 @@ namespace MarlonCVJDMatcher.WinForm
                 //粗选适合的简历
                 string _where = "";
                 if (modelPosOtln.RequireSchool.IsNotNull()) { _where += " "; }
-
+                if (modelPosOtln.RequireXueLi.IsNotNull()) { _where += " "; }
+                if (modelPosOtln.RequireMajor.IsNotNull()) { _where += " "; }
+                string.Format(" id in ( select [KEY] form containstable(tabCVJDMatch,' or  or  or  ',1000) )");
                 string _orderby = "";
                 int count = 0;
-                int pageSize = 1000;
+                int pageSize = 100;
                 int pageNo = 1;
                 do
                 {
@@ -124,8 +126,7 @@ namespace MarlonCVJDMatcher.WinForm
                     //逐个计算
                     foreach (int ResumeID in lsResumeID)
                     {
-
-                        #region 获取CV简历模型
+                        #region 获取CV简要模型
                         tabResumeOutlineModel modelRmOtln = tabResumeOutlineBLL.GetInstance().GetModel(" ResumeID=" + ResumeID + " ",0);
                         //Skill
                         string[] aryCVSkill = modelRmOtln.Skill.Split(new char[] { ' ', ',' });
@@ -138,7 +139,7 @@ namespace MarlonCVJDMatcher.WinForm
                         WinFormControlHelper.AddLog(rtbLog, "简历"+modelRmOtln.ResumeNo+"技能关键字", modelRmOtln.Skill); ;
                         #endregion
 
-                        #region  评价
+                        #region  计算匹配度
                         tabCVJDMatchModel modelMch = new tabCVJDMatchModel();
                         modelMch.PositionID = modelPosOtln.PositionID;
                         modelMch.ResumeID = modelRmOtln.ResumeID;

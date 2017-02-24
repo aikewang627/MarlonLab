@@ -45,13 +45,9 @@ namespace MarlonCVJDMatcher
 
         private void 加载词库至RedisToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            List<string> lsJD = ReadFromFile(Config.JDKeywordFilePath);
-            List<string> lsCV = ReadFromFile(Config.CVKeywordFilePath);
             List<string> lsCVJD = ReadFromFile(Config.CVJDKeywordFilePath);
             //存放于Redis
             DoRedisSet rs = new DoRedisSet();
-            rs.Add("CVKeyword", lsCV);
-            rs.Add("JDKeyword", lsJD);
             rs.Add("CVJDKeyword", lsCVJD);
         }
 
@@ -60,12 +56,8 @@ namespace MarlonCVJDMatcher
             //存放于Redis
             DoRedisSet rs = new DoRedisSet();
 
-            HashSet<string> hsJD = rs.GetAllItemsFromSet("CVKeyword");
-            HashSet<string> hsCV = rs.GetAllItemsFromSet("JDKeyword");
             HashSet<string> hsCVJD = rs.GetAllItemsFromSet("CVJDKeyword");
 
-            SaveToFile(Config.JDKeywordFilePath,hsJD);
-            SaveToFile(Config.CVKeywordFilePath, hsCV);
             SaveToFile(Config.CVJDKeywordFilePath, hsCVJD);
         }
         List<string> ReadFromFile(string FileRelativePath)

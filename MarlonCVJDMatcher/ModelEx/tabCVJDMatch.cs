@@ -38,8 +38,8 @@ namespace Tclywork.DAL
             StringBuilder strSql = new StringBuilder();
             strSql.Append(" select count(*) ");
             strSql.Append(" from tabResumeOutline  ");
-            if (where.IsNotNullOrEmpty()) { strSql.Append(" " + where + ""); }
-            if (orderby.IsNotNullOrEmpty()) { strSql.Append(" "+orderby+" "); }
+            if (where.IsNotNullOrEmpty()) { strSql.Append(" where " + where + ""); }
+            if (orderby.IsNotNullOrEmpty()) { strSql.Append(" order by "+orderby+" "); }
             count = (int)DbHelperSQL.GetSingle(strSql.ToString());
 
             //获得ListID
@@ -47,7 +47,7 @@ namespace Tclywork.DAL
             strSql.Append(" select ResumeID from ( ");
             strSql.AppendFormat(" select ResumeID, ROW_NUMBER() OVER(ORDER BY {0}) AS RowNo", orderby.IsNullOrEmpty() ? "id" : orderby); 
             strSql.Append(" from tabResumeOutline  ");
-            if (where.IsNotNullOrEmpty()) { strSql.Append(" " + where + ""); }
+            if (where.IsNotNullOrEmpty()) { strSql.Append(" where " + where + ""); }
             strSql.Append(" ) as ret ");
             strSql.Append(" where RowNo between "+ pageSize * (pageNo-1 )+ " and "+pageSize*pageNo);
 
