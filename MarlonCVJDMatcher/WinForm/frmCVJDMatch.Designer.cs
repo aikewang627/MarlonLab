@@ -35,12 +35,14 @@
             this.tbResumeNo = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnCVStart = new System.Windows.Forms.Button();
+            this.btnJDGet = new System.Windows.Forms.Button();
+            this.btnCVGet = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnJDStart
             // 
             this.btnJDStart.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnJDStart.Location = new System.Drawing.Point(536, 10);
+            this.btnJDStart.Location = new System.Drawing.Point(571, 10);
             this.btnJDStart.Name = "btnJDStart";
             this.btnJDStart.Size = new System.Drawing.Size(55, 23);
             this.btnJDStart.TabIndex = 13;
@@ -55,14 +57,14 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.rtbLog.Location = new System.Drawing.Point(11, 39);
             this.rtbLog.Name = "rtbLog";
-            this.rtbLog.Size = new System.Drawing.Size(580, 386);
+            this.rtbLog.Size = new System.Drawing.Size(676, 386);
             this.rtbLog.TabIndex = 12;
             this.rtbLog.Text = "";
             // 
             // tbPositionNo
             // 
             this.tbPositionNo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbPositionNo.Location = new System.Drawing.Point(430, 10);
+            this.tbPositionNo.Location = new System.Drawing.Point(465, 10);
             this.tbPositionNo.Name = "tbPositionNo";
             this.tbPositionNo.Size = new System.Drawing.Size(100, 21);
             this.tbPositionNo.TabIndex = 11;
@@ -71,7 +73,7 @@
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(371, 13);
+            this.label2.Location = new System.Drawing.Point(418, 15);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(41, 12);
             this.label2.TabIndex = 10;
@@ -103,11 +105,33 @@
             this.btnCVStart.UseVisualStyleBackColor = true;
             this.btnCVStart.Click += new System.EventHandler(this.btnCVStart_Click);
             // 
+            // btnJDGet
+            // 
+            this.btnJDGet.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnJDGet.Location = new System.Drawing.Point(632, 10);
+            this.btnJDGet.Name = "btnJDGet";
+            this.btnJDGet.Size = new System.Drawing.Size(55, 23);
+            this.btnJDGet.TabIndex = 14;
+            this.btnJDGet.Text = "获得";
+            this.btnJDGet.UseVisualStyleBackColor = true;
+            this.btnJDGet.Click += new System.EventHandler(this.btnJDGet_Click);
+            // 
+            // btnCVGet
+            // 
+            this.btnCVGet.Location = new System.Drawing.Point(235, 10);
+            this.btnCVGet.Name = "btnCVGet";
+            this.btnCVGet.Size = new System.Drawing.Size(55, 23);
+            this.btnCVGet.TabIndex = 15;
+            this.btnCVGet.Text = "获取";
+            this.btnCVGet.UseVisualStyleBackColor = true;
+            // 
             // frmCVJDMatch
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(603, 437);
+            this.ClientSize = new System.Drawing.Size(699, 437);
+            this.Controls.Add(this.btnCVGet);
+            this.Controls.Add(this.btnJDGet);
             this.Controls.Add(this.btnJDStart);
             this.Controls.Add(this.rtbLog);
             this.Controls.Add(this.tbPositionNo);
@@ -131,5 +155,7 @@
         private System.Windows.Forms.TextBox tbResumeNo;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnCVStart;
+        private System.Windows.Forms.Button btnJDGet;
+        private System.Windows.Forms.Button btnCVGet;
     }
 }

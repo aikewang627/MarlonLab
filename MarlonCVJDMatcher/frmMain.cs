@@ -26,39 +26,28 @@ namespace MarlonCVJDMatcher
 
         }
 
-        private void btnSegment_Click(object sender, EventArgs e)
-        {
 
-            if (rtbSourseText.TextLength == 0)
-            {
-                WinFormControlHelper.AddLog(rtbLog,"", "请先输入文本");
-                return;
-            }
-            rtbResultText.Text = "";
-            List<string> strList = PanGuSegmentHelper.SegmentToStringList(rtbSourseText.Text);
-            foreach (string str in strList)
-            {
-                rtbResultText.Text += str + "    ";
-            }          
-        }
 
 
         #region
         private void 简历精要提取ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             WinForm.frmResumeOutline frmRmOtli = new WinForm.frmResumeOutline();
+            frmRmOtli.MdiParent = this;
             frmRmOtli.Show();
         }
 
         private void 职位精要提取ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             WinForm.frmPositionOutLine frmPosOtli = new WinForm.frmPositionOutLine();
+            frmPosOtli.MdiParent = this;
             frmPosOtli.Show();
         }
 
         private void 匹配ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             WinForm.frmCVJDMatch frmMch = new WinForm.frmCVJDMatch();
+            frmMch.MdiParent = this;
             frmMch.Show();
         }
 
@@ -70,7 +59,29 @@ namespace MarlonCVJDMatcher
         private void 集运算ToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             WinForm.frmHashSetOperater frm = new WinForm.frmHashSetOperater();
+            frm.MdiParent = this;
             frm.Show();
+        }
+
+
+        private void 层叠排列ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LayoutMdi(MdiLayout.Cascade);// //使用MdiLayout枚举实现窗体的层叠排列              
+        }
+
+        private void 水平排列ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LayoutMdi(MdiLayout.TileHorizontal);//
+        }
+
+        private void 垂直排列ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LayoutMdi(MdiLayout.TileVertical);//
+        }
+
+        private void 缩小成图标ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LayoutMdi(MdiLayout.ArrangeIcons);//
         }
     }
 }

@@ -26,7 +26,7 @@ namespace MarlonCVJDMatcher.WinForm
             InitializeComponent();
 
             tbResumeNo.Text = "19973";
-            tbPositionNo.Text = "9";
+            tbPositionNo.Text = "1179";
 
 
 
@@ -182,12 +182,15 @@ namespace MarlonCVJDMatcher.WinForm
                 //删除原来的
                 tabCVJDMatchBLL.GetInstance().Delete(" PositionID="+PositionID+" and BaseOn='Position' ");
                 //添加新的
-                WinFormControlHelper.AddLog(rtbLog, "匹配结果", ""); 
+                WinFormControlHelper.AddLog(rtbLog, "匹配结果", "");
+                string strLsResumeID = "";
                 foreach (tabCVJDMatchModel model in slsCVJDMatch)
                 {
                     tabCVJDMatchBLL.GetInstance().Add(model);
-                    WinFormControlHelper.AddLog(rtbLog, model.ResumeID.ToString() + " " + model.ResumeNo, model.MatchDegree.ToString());
+                    strLsResumeID += model.ResumeID.ToString() + ",";
                 }
+                WinFormControlHelper.AddLog(rtbLog, " " ,strLsResumeID);
+
                 #endregion
 
                 #endregion
@@ -199,11 +202,36 @@ namespace MarlonCVJDMatcher.WinForm
 
 
         }
+        private void btnJDGet_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                iPositionID = int.Parse(tbPositionNo.Text);
+
+            }
+            catch (Exception ex)
+            { WinFormControlHelper.AddLog(rtbLog, "", ex.Message); }
+
+            GetForJD(iPositionID);
+        }
+        void GetForJD(int PositionID)
+        {
+            int count = 0;
+            int pageSize = 100;
+            int pageNo = 1;
+            List<int> lsResumeID = tabCVJDMatchBLL.GetInstance().GetMatchedResumeIDListForJD(pageSize, pageNo, PositionID, out count);
+            string strlsResumeID = "";
+            foreach(int i in lsResumeID)
+            {
+                strlsResumeID += i.ToString()+",";
+            }
+            WinFormControlHelper.AddLog(rtbLog, "匹配结果", strlsResumeID);
+
+        }
+
+
+
         #endregion
-
-
-
-
 
 
     }

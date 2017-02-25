@@ -30,8 +30,8 @@ namespace MarlonCVJDMatcher.WinForm
         {
             InitializeComponent();
 
-            tbStNo.Text = "9";
-            tbEndNo.Text = "50";
+            tbStNo.Text = "1170";
+            tbEndNo.Text = "1179";
             string path = Path.Combine(Application.StartupPath, Config.CVJDKeywordFilePath);
             string strCVJDKeyWord = FileHelper.ReadFromFile(path);//读文件
             List<string> lsCVJDKeyWord = PanGuSegmentHelper.SegmentToStringList(strCVJDKeyWord);//盘古分词
@@ -81,7 +81,7 @@ namespace MarlonCVJDMatcher.WinForm
                 #region 
 
 
-                WinFormControlHelper.AddLog(rtbLog, "开始插入/更新tabPositionOutlineModel " + PositionID, "");
+                WinFormControlHelper.AddLog(rtbLog, "开始操作" + PositionID, "");
                 int count = 0;
                 string _where = "";
                 string _order = " id desc";
@@ -134,18 +134,17 @@ namespace MarlonCVJDMatcher.WinForm
                     strSkill += str + " ";
                 }
                 modelPosOtln.RequireSkill = strSkill;
+                WinFormControlHelper.AddLog(rtbLog, modelPosOtln.PositionName ,modelPosOtln.RequireSkill);
                 #endregion
                 #endregion
                 //插入或更新
                 if (IsExist)
                 {
                     tabPositionOutlineBLL.GetInstance().Update(modelPosOtln);
-                    WinFormControlHelper.AddLog(rtbLog, "更新tabPositionOutlineModel " + PositionID, "成功");
                 }
                 else
                 {
                     tabPositionOutlineBLL.GetInstance().Add(modelPosOtln);
-                    WinFormControlHelper.AddLog(rtbLog, "插入tabPositionOutlineModel " + PositionID, "成功");
                 }
 
                 #endregion
