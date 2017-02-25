@@ -248,7 +248,6 @@ namespace MarlonCVJDMatcher.WinForm
                 hsRet.Add(str);
             }
             hsRet.Remove("");
-            WinFormControlHelper.AddLog(rtbLog, "", strFileContent);
             return hsRet;
         }
 
@@ -259,7 +258,6 @@ namespace MarlonCVJDMatcher.WinForm
             {
                 strFileContent += str + " ";
             }
-            WinFormControlHelper.AddLog(rtbLog, "", strFileContent);
             FileHelper.SaveToFile(fileFullName, strFileContent);
         }
 
