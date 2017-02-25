@@ -50,6 +50,7 @@
             this.btnBUnionA = new System.Windows.Forms.Button();
             this.btnAUnionB = new System.Windows.Forms.Button();
             this.btnAUnionBExceptC = new System.Windows.Forms.Button();
+            this.btnBExceptAC = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // dlgOpenFile
@@ -252,21 +253,31 @@
             // 
             // btnAUnionBExceptC
             // 
-            this.btnAUnionBExceptC.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAUnionBExceptC.Location = new System.Drawing.Point(53, 209);
+            this.btnAUnionBExceptC.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAUnionBExceptC.Location = new System.Drawing.Point(379, 209);
             this.btnAUnionBExceptC.Name = "btnAUnionBExceptC";
-            this.btnAUnionBExceptC.Size = new System.Drawing.Size(622, 23);
+            this.btnAUnionBExceptC.Size = new System.Drawing.Size(296, 23);
             this.btnAUnionBExceptC.TabIndex = 20;
             this.btnAUnionBExceptC.Text = "A集 合并 ( B集 排除 C集 )，保存于A集";
             this.btnAUnionBExceptC.UseVisualStyleBackColor = true;
             this.btnAUnionBExceptC.Click += new System.EventHandler(this.btnAUnionBExceptC_Click);
+            // 
+            // btnBExceptAC
+            // 
+            this.btnBExceptAC.Location = new System.Drawing.Point(53, 209);
+            this.btnBExceptAC.Name = "btnBExceptAC";
+            this.btnBExceptAC.Size = new System.Drawing.Size(320, 23);
+            this.btnBExceptAC.TabIndex = 21;
+            this.btnBExceptAC.Text = "B集 排除 A、C集，保存于B集";
+            this.btnBExceptAC.UseVisualStyleBackColor = true;
+            this.btnBExceptAC.Click += new System.EventHandler(this.btnBExceptAC_Click);
             // 
             // frmHashSetOperater
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(726, 485);
+            this.Controls.Add(this.btnBExceptAC);
             this.Controls.Add(this.btnAUnionBExceptC);
             this.Controls.Add(this.btnBUnionA);
             this.Controls.Add(this.btnAUnionB);
@@ -318,5 +329,6 @@
         private System.Windows.Forms.Button btnBUnionA;
         private System.Windows.Forms.Button btnAUnionB;
         private System.Windows.Forms.Button btnAUnionBExceptC;
+        private System.Windows.Forms.Button btnBExceptAC;
     }
 }

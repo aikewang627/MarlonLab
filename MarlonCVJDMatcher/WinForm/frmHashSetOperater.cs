@@ -217,6 +217,22 @@ namespace MarlonCVJDMatcher.WinForm
                 SaveToFile(tbFileFUllNameC.Text, hsSetA);
             }
         }
+        private void btnBExceptAC_Click(object sender, EventArgs e)
+        {
+            if (CheckCondition())
+            {
+                hsSetA = ReadFromFile(tbFileFUllNameA.Text);
+                WinFormControlHelper.AddLog(rtbLog, "A集数量", hsSetA.Count.ToString());
+                hsSetB = ReadFromFile(tbFileFUllNameB.Text);
+                WinFormControlHelper.AddLog(rtbLog, "B集数量", hsSetB.Count.ToString());
+                hsSetC = ReadFromFile(tbFileFUllNameC.Text);
+                WinFormControlHelper.AddLog(rtbLog, "C集数量", hsSetC.Count.ToString());
+                hsSetB.ExceptWith(hsSetC);
+                hsSetB.ExceptWith(hsSetA);
+                WinFormControlHelper.AddLog(rtbLog, "运算后数量", hsSetB.Count.ToString());
+                SaveToFile(tbFileFUllNameB.Text, hsSetB);
+            }
+        }
         private void btnAUnionBExceptC_Click(object sender, EventArgs e)
         {
             if (CheckCondition())
@@ -230,7 +246,7 @@ namespace MarlonCVJDMatcher.WinForm
                 hsSetB.ExceptWith(hsSetC);
                 hsSetA.UnionWith(hsSetB);
                 WinFormControlHelper.AddLog(rtbLog, "运算后数量", hsSetA.Count.ToString());
-                SaveToFile(tbFileFUllNameC.Text, hsSetA);
+                SaveToFile(tbFileFUllNameA.Text, hsSetA);
             }
         }
 
@@ -260,6 +276,7 @@ namespace MarlonCVJDMatcher.WinForm
             }
             FileHelper.SaveToFile(fileFullName, strFileContent);
         }
+
 
 
         #endregion
