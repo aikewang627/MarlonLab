@@ -17,18 +17,20 @@ namespace MarlonCVJDMatcher.WinForm
 {
     public partial class frmCVJDMatch : Form
     {
-        int iResumeID = 0;
-        int iPositionID = 0;
+        int iResumeIDSt = 0;
+        int iResumeIDEnd = 0;
+        int iPositionIDSt = 0;
+        int iPositionIDEnd = 0;
 
 
         public frmCVJDMatch()
         {
             InitializeComponent();
 
-            tbResumeNo.Text = "19973";
-            tbPositionNo.Text = "1179";
-
-
+            tbResumeNoSt.Text = "19973";
+            tbResumeNoEnd.Text = "19974";
+            tbPositionNoSt.Text = "1179";
+            tbPositionNoEnd.Text = "1180";
 
 
         }
@@ -37,15 +39,57 @@ namespace MarlonCVJDMatcher.WinForm
         {
             try
             {
-                iResumeID = int.Parse(tbResumeNo.Text);
+                iResumeIDSt = tbResumeNoSt.Text.ToInt(0);
+                iResumeIDEnd = tbResumeNoSt.Text.ToInt(0);
+                WinFormControlHelper.AddLog(rtbLog, "此功能暂未实现", "");
 
             }
             catch (Exception ex)
             { WinFormControlHelper.AddLog(rtbLog, "", ex.Message); }
 
-            MatchForCV(iResumeID);
-
         }
+
+
+        private void btnJDStart_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                iPositionIDSt = tbPositionNoSt.Text.ToInt(0);
+                iPositionIDEnd = tbPositionNoEnd.Text.ToInt(0);
+                if (iPositionIDEnd < iPositionIDSt) { iPositionIDEnd = iPositionIDSt; }
+                for (int i = iPositionIDSt; i <= iPositionIDEnd; i++)
+                {
+                    MatchForJD(i);
+                }
+   
+            }
+            catch (Exception ex)
+            { WinFormControlHelper.AddLog(rtbLog, "", ex.Message); }
+       
+        }
+         private void btnJDGet_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                iPositionIDSt = tbPositionNoSt.Text.ToInt(0);
+                iPositionIDEnd = tbPositionNoEnd.Text.ToInt(0);
+                if (iPositionIDEnd < iPositionIDSt) { iPositionIDEnd = iPositionIDSt; }
+                for (int i = iPositionIDSt; i <= iPositionIDEnd; i++)
+                {
+                    GetForJD(i);
+                }
+
+            }
+            catch (Exception ex)
+            { WinFormControlHelper.AddLog(rtbLog, "", ex.Message); }
+        }
+ 
+        #endregion
+
+
+        #region
+      
         void MatchForCV(int ResumeID)
         {
 
@@ -62,25 +106,7 @@ namespace MarlonCVJDMatcher.WinForm
             }
 
         }
-
-        #endregion
-
-        #region
-
-
-        private void btnJDStart_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                iPositionID = int.Parse(tbPositionNo.Text);
-
-            }
-            catch (Exception ex)
-            { WinFormControlHelper.AddLog(rtbLog, "", ex.Message); }
-
-            MatchForJD(iPositionID);
-        }
-        void MatchForJD(int PositionID)
+       void MatchForJD(int PositionID)
         {
 
             try
@@ -182,14 +208,13 @@ namespace MarlonCVJDMatcher.WinForm
                 //删除原来的
                 tabCVJDMatchBLL.GetInstance().Delete(" PositionID="+PositionID+" and BaseOn='Position' ");
                 //添加新的
-                WinFormControlHelper.AddLog(rtbLog, "匹配结果", "");
                 string strLsResumeID = "";
                 foreach (tabCVJDMatchModel model in slsCVJDMatch)
                 {
                     tabCVJDMatchBLL.GetInstance().Add(model);
                     strLsResumeID += model.ResumeID.ToString() + ",";
                 }
-                WinFormControlHelper.AddLog(rtbLog, " " ,strLsResumeID);
+                WinFormControlHelper.AddLog(rtbLog, "职位 "+ PositionID.ToString()+ " 匹配结果", strLsResumeID);
 
                 #endregion
 
@@ -202,18 +227,7 @@ namespace MarlonCVJDMatcher.WinForm
 
 
         }
-        private void btnJDGet_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                iPositionID = int.Parse(tbPositionNo.Text);
-
-            }
-            catch (Exception ex)
-            { WinFormControlHelper.AddLog(rtbLog, "", ex.Message); }
-
-            GetForJD(iPositionID);
-        }
+  
         void GetForJD(int PositionID)
         {
             int count = 0;
@@ -225,7 +239,7 @@ namespace MarlonCVJDMatcher.WinForm
             {
                 strlsResumeID += i.ToString()+",";
             }
-            WinFormControlHelper.AddLog(rtbLog, "匹配结果", strlsResumeID);
+            WinFormControlHelper.AddLog(rtbLog, "职位 " + PositionID.ToString()+ " 匹配结果", strlsResumeID);
 
         }
 

@@ -44,7 +44,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.rtbLog.Location = new System.Drawing.Point(12, 37);
             this.rtbLog.Name = "rtbLog";
-            this.rtbLog.Size = new System.Drawing.Size(625, 378);
+            this.rtbLog.Size = new System.Drawing.Size(681, 378);
             this.rtbLog.TabIndex = 12;
             this.rtbLog.Text = "";
             // 
@@ -83,7 +83,7 @@
             // btnStart
             // 
             this.btnStart.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnStart.Location = new System.Drawing.Point(470, 8);
+            this.btnStart.Location = new System.Drawing.Point(526, 8);
             this.btnStart.Name = "btnStart";
             this.btnStart.Size = new System.Drawing.Size(55, 23);
             this.btnStart.TabIndex = 7;
@@ -94,7 +94,7 @@
             // btnSaveSkillKeywordNew
             // 
             this.btnSaveSkillKeywordNew.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSaveSkillKeywordNew.Location = new System.Drawing.Point(531, 8);
+            this.btnSaveSkillKeywordNew.Location = new System.Drawing.Point(587, 8);
             this.btnSaveSkillKeywordNew.Name = "btnSaveSkillKeywordNew";
             this.btnSaveSkillKeywordNew.Size = new System.Drawing.Size(106, 23);
             this.btnSaveSkillKeywordNew.TabIndex = 13;
@@ -106,7 +106,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(649, 427);
+            this.ClientSize = new System.Drawing.Size(705, 427);
             this.Controls.Add(this.btnSaveSkillKeywordNew);
             this.Controls.Add(this.rtbLog);
             this.Controls.Add(this.tbEndNo);

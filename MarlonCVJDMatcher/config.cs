@@ -8,10 +8,9 @@ namespace MarlonCVJDMatcher
 {
     public class Config
     {
-        public const string JDKeywordFilePath = "JDKeyword.txt";
-        public const string CVKeywordFilePath = "CVKeyword.txt";
-        public const string CVJDKeywordFilePath = "CVJDKeyword.txt";
 
+        public const string CVJDKeywordFilePath = "CVJDKeyword.txt";
+        public const string CVJDKeywordExceptFilePath = "CVJDKeywordExcept.txt";//暂时无用
 
 
     }

@@ -72,15 +72,8 @@
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
     <Compile Include="ModelEx\tabCVJDMatch.cs" />
-    <Compile Include="ModelEx\tabExperienceEduEx.cs" />
-    <Compile Include="ModelEx\tabExperienceProjectEx.cs" />
-    <Compile Include="ModelEx\tabExperienceWorkEx.cs" />
-    <Compile Include="ModelEx\tabOrgEx.cs" />
-    <Compile Include="ModelEx\tabPositionEx.cs" />
     <Compile Include="ModelEx\tabPositionOutline.cs" />
-    <Compile Include="ModelEx\tabResumeEx.cs" />
     <Compile Include="ModelEx\tabResumeOutline.cs" />
-    <Compile Include="ModelEx\tabUserEx.cs" />
     <Compile Include="Model\tabCVJDMatch.cs" />
     <Compile Include="Model\tabExperienceEdu.cs" />
     <Compile Include="Model\tabExperienceProject.cs" />
