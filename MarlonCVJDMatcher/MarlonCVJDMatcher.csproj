@@ -99,6 +99,12 @@
     <Compile Include="WinForm\frmCVJDMatch.Designer.cs">
       <DependentUpon>frmCVJDMatch.cs</DependentUpon>
     </Compile>
+    <Compile Include="WinForm\frmHashSetOperater.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WinForm\frmHashSetOperater.Designer.cs">
+      <DependentUpon>frmHashSetOperater.cs</DependentUpon>
+    </Compile>
     <Compile Include="WinForm\frmPositionOutLine.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -125,6 +131,9 @@
     </Compile>
     <EmbeddedResource Include="WinForm\frmCVJDMatch.resx">
       <DependentUpon>frmCVJDMatch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinForm\frmHashSetOperater.resx">
+      <DependentUpon>frmHashSetOperater.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WinForm\frmPositionOutLine.resx">
       <DependentUpon>frmPositionOutLine.cs</DependentUpon>

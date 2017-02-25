@@ -33,13 +33,12 @@
             this.rtbResultText = new System.Windows.Forms.RichTextBox();
             this.rtbLog = new System.Windows.Forms.RichTextBox();
             this.msMain = new System.Windows.Forms.MenuStrip();
-            this.匹配词库ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.加载词库至RedisToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.保存词库从RedisToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cVJDToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.简历精要提取ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.职位精要提取ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.匹配ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.集运算ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.集运算ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.msMain.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -80,36 +79,13 @@
             // msMain
             // 
             this.msMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.匹配词库ToolStripMenuItem,
-            this.cVJDToolStripMenuItem});
+            this.cVJDToolStripMenuItem,
+            this.集运算ToolStripMenuItem});
             this.msMain.Location = new System.Drawing.Point(0, 0);
             this.msMain.Name = "msMain";
             this.msMain.Size = new System.Drawing.Size(828, 25);
             this.msMain.TabIndex = 5;
             this.msMain.Text = "menuStrip1";
-            // 
-            // 匹配词库ToolStripMenuItem
-            // 
-            this.匹配词库ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.加载词库至RedisToolStripMenuItem,
-            this.保存词库从RedisToolStripMenuItem});
-            this.匹配词库ToolStripMenuItem.Name = "匹配词库ToolStripMenuItem";
-            this.匹配词库ToolStripMenuItem.Size = new System.Drawing.Size(68, 21);
-            this.匹配词库ToolStripMenuItem.Text = "匹配词库";
-            // 
-            // 加载词库至RedisToolStripMenuItem
-            // 
-            this.加载词库至RedisToolStripMenuItem.Name = "加载词库至RedisToolStripMenuItem";
-            this.加载词库至RedisToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
-            this.加载词库至RedisToolStripMenuItem.Text = "加载词库至Redis";
-            this.加载词库至RedisToolStripMenuItem.Click += new System.EventHandler(this.加载词库至RedisToolStripMenuItem_Click);
-            // 
-            // 保存词库从RedisToolStripMenuItem
-            // 
-            this.保存词库从RedisToolStripMenuItem.Name = "保存词库从RedisToolStripMenuItem";
-            this.保存词库从RedisToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
-            this.保存词库从RedisToolStripMenuItem.Text = "保存词库从Redis";
-            this.保存词库从RedisToolStripMenuItem.Click += new System.EventHandler(this.保存词库从RedisToolStripMenuItem_Click);
             // 
             // cVJDToolStripMenuItem
             // 
@@ -141,6 +117,21 @@
             this.匹配ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.匹配ToolStripMenuItem.Text = "匹配";
             this.匹配ToolStripMenuItem.Click += new System.EventHandler(this.匹配ToolStripMenuItem_Click);
+            // 
+            // 集运算ToolStripMenuItem
+            // 
+            this.集运算ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.集运算ToolStripMenuItem1});
+            this.集运算ToolStripMenuItem.Name = "集运算ToolStripMenuItem";
+            this.集运算ToolStripMenuItem.Size = new System.Drawing.Size(56, 21);
+            this.集运算ToolStripMenuItem.Text = "集运算";
+            // 
+            // 集运算ToolStripMenuItem1
+            // 
+            this.集运算ToolStripMenuItem1.Name = "集运算ToolStripMenuItem1";
+            this.集运算ToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.集运算ToolStripMenuItem1.Text = "集运算";
+            this.集运算ToolStripMenuItem1.Click += new System.EventHandler(this.集运算ToolStripMenuItem1_Click);
             // 
             // frmMain
             // 
@@ -174,9 +165,8 @@
         private System.Windows.Forms.ToolStripMenuItem 简历精要提取ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 职位精要提取ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 匹配ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 匹配词库ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 加载词库至RedisToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 保存词库从RedisToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 集运算ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 集运算ToolStripMenuItem1;
     }
 }
 

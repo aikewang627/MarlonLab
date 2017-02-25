@@ -24,7 +24,7 @@ namespace MarlonCVJDMatcher.WinForm
 
         HashSet<string> hsCVJDKeyWord = new HashSet<string>();
         HashSet<string> hsJDSkill = new HashSet<string>();
-        HashSet<string> hsJDSkillFull = new HashSet<string>();
+        HashSet<string> hsCVJDSkillFull = new HashSet<string>();
 
         public frmPositionOutLine()
         {
@@ -64,9 +64,9 @@ namespace MarlonCVJDMatcher.WinForm
             {
                 #region 
                 string strKeywordNew = "";
-                foreach (string str in hsJDSkillFull)
+                foreach (string str in hsCVJDSkillFull)
                 { strKeywordNew += str + "\r\n"; }
-                FileHelper.SaveToFile(string.Format(@"{0}\JDKeywordNew{1}.txt", Application.StartupPath, DateTime.Now.ToString("yyyyMMddHHmmss")), strKeywordNew);
+                FileHelper.SaveToFile(string.Format(@"{0}\CVJDKeywordNew{1}.txt", Application.StartupPath, DateTime.Now.ToString("yyyyMMddHHmmss")), strKeywordNew);
                 #endregion
             }
             catch (Exception ex)
@@ -123,7 +123,7 @@ namespace MarlonCVJDMatcher.WinForm
                 foreach (string key in lsSkill)//加入集合
                 {
                     hsJDSkill.Add(key);
-                    hsJDSkillFull.Add(key);
+                    hsCVJDSkillFull.Add(key);
                 }
                 //获得交集
                 hsJDSkill.IntersectWith(hsCVJDKeyWord);

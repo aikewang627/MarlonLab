@@ -41,57 +41,7 @@ namespace MarlonCVJDMatcher
                 rtbResultText.Text += str + "    ";
             }          
         }
-        #region
 
-        private void 加载词库至RedisToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            List<string> lsCVJD = ReadFromFile(Config.CVJDKeywordFilePath);
-            //存放于Redis
-            DoRedisSet rs = new DoRedisSet();
-            rs.Add("CVJDKeyword", lsCVJD);
-        }
-
-        private void 保存词库从RedisToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            //存放于Redis
-            DoRedisSet rs = new DoRedisSet();
-
-            HashSet<string> hsCVJD = rs.GetAllItemsFromSet("CVJDKeyword");
-
-            SaveToFile(Config.CVJDKeywordFilePath, hsCVJD);
-        }
-        List<string> ReadFromFile(string FileRelativePath)
-        {
-            //读取文件
-            string path = Path.Combine(Application.StartupPath, FileRelativePath);
-            FileStream fs = new FileStream(path, FileMode.Open);
-            byte[] btFileContent = new byte[fs.Length];
-            fs.Read(btFileContent, 0, (int)fs.Length);
-            fs.Close();
-            string strFileContent = Encoding.Default.GetString(btFileContent);
-
-            //分词
-            List<string> lsFile = PanGuSegmentHelper.SegmentToStringList(strFileContent);
-            return lsFile;
-        }
-        void SaveToFile(string FileRelativePath, HashSet<string> hsSet)
-        {
-            List<string> ls = hsSet.ToList<string>();
-            string strFileContent = "";
-            foreach (string str in ls)
-            {
-                strFileContent += str + "  ";
-            }
-
-            //读取文件
-            string path = Path.Combine(Application.StartupPath, FileRelativePath);
-            FileStream fs = new FileStream(path, FileMode.Create);
-            byte[] btFileContent = Encoding.Default.GetBytes(strFileContent);            
-            fs.Write(btFileContent, 0, btFileContent.Length);
-            fs.Flush();
-            fs.Close();
-        }
-        #endregion
 
         #region
         private void 简历精要提取ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -111,11 +61,16 @@ namespace MarlonCVJDMatcher
             WinForm.frmCVJDMatch frmMch = new WinForm.frmCVJDMatch();
             frmMch.Show();
         }
+
+
+
+
         #endregion
 
-
-
-
-
+        private void 集运算ToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            WinForm.frmHashSetOperater frm = new WinForm.frmHashSetOperater();
+            frm.Show();
+        }
     }
 }
