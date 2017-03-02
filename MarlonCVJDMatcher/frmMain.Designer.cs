@@ -40,6 +40,7 @@
             this.水平排列ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.垂直排列ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.缩小成图标ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.分词ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.msMain.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -89,7 +90,8 @@
             // 集运算ToolStripMenuItem
             // 
             this.集运算ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.集运算ToolStripMenuItem1});
+            this.集运算ToolStripMenuItem1,
+            this.分词ToolStripMenuItem});
             this.集运算ToolStripMenuItem.Name = "集运算ToolStripMenuItem";
             this.集运算ToolStripMenuItem.Size = new System.Drawing.Size(56, 21);
             this.集运算ToolStripMenuItem.Text = "集运算";
@@ -97,7 +99,7 @@
             // 集运算ToolStripMenuItem1
             // 
             this.集运算ToolStripMenuItem1.Name = "集运算ToolStripMenuItem1";
-            this.集运算ToolStripMenuItem1.Size = new System.Drawing.Size(112, 22);
+            this.集运算ToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.集运算ToolStripMenuItem1.Text = "集运算";
             this.集运算ToolStripMenuItem1.Click += new System.EventHandler(this.集运算ToolStripMenuItem1_Click);
             // 
@@ -115,30 +117,37 @@
             // 层叠排列ToolStripMenuItem
             // 
             this.层叠排列ToolStripMenuItem.Name = "层叠排列ToolStripMenuItem";
-            this.层叠排列ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.层叠排列ToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.层叠排列ToolStripMenuItem.Text = "层叠排列";
             this.层叠排列ToolStripMenuItem.Click += new System.EventHandler(this.层叠排列ToolStripMenuItem_Click);
             // 
             // 水平排列ToolStripMenuItem
             // 
             this.水平排列ToolStripMenuItem.Name = "水平排列ToolStripMenuItem";
-            this.水平排列ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.水平排列ToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.水平排列ToolStripMenuItem.Text = "水平排列";
             this.水平排列ToolStripMenuItem.Click += new System.EventHandler(this.水平排列ToolStripMenuItem_Click);
             // 
             // 垂直排列ToolStripMenuItem
             // 
             this.垂直排列ToolStripMenuItem.Name = "垂直排列ToolStripMenuItem";
-            this.垂直排列ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.垂直排列ToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.垂直排列ToolStripMenuItem.Text = "垂直排列";
             this.垂直排列ToolStripMenuItem.Click += new System.EventHandler(this.垂直排列ToolStripMenuItem_Click);
             // 
             // 缩小成图标ToolStripMenuItem
             // 
             this.缩小成图标ToolStripMenuItem.Name = "缩小成图标ToolStripMenuItem";
-            this.缩小成图标ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.缩小成图标ToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.缩小成图标ToolStripMenuItem.Text = "缩小成图标";
             this.缩小成图标ToolStripMenuItem.Click += new System.EventHandler(this.缩小成图标ToolStripMenuItem_Click);
+            // 
+            // 分词ToolStripMenuItem
+            // 
+            this.分词ToolStripMenuItem.Name = "分词ToolStripMenuItem";
+            this.分词ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.分词ToolStripMenuItem.Text = "分词";
+            this.分词ToolStripMenuItem.Click += new System.EventHandler(this.分词ToolStripMenuItem_Click);
             // 
             // frmMain
             // 
@@ -171,6 +180,7 @@
         private System.Windows.Forms.ToolStripMenuItem 水平排列ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 垂直排列ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 缩小成图标ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 分词ToolStripMenuItem;
     }
 }
 

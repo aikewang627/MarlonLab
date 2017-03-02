@@ -43,3 +43,4 @@ F:\MarlonWorkShop\MarlonLab\MarlonCVJDMatcher\bin\Debug\COM.Excel.dll
 F:\MarlonWorkShop\MarlonLab\MarlonCVJDMatcher\bin\Debug\Newtonsoft.Json.dll
 F:\MarlonWorkShop\MarlonLab\MarlonCVJDMatcher\bin\Debug\Newtonsoft.Json.xml
 F:\MarlonWorkShop\MarlonLab\MarlonCVJDMatcher\obj\Debug\MarlonCVJDMatcher.WinForm.frmHashSetOperater.resources
+F:\MarlonWorkShop\MarlonLab\MarlonCVJDMatcher\obj\Debug\MarlonCVJDMatcher.WinForm.frmSegment.resources

@@ -62,7 +62,12 @@ namespace MarlonCVJDMatcher
             frm.MdiParent = this;
             frm.Show();
         }
-
+        private void 分词ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            WinForm.frmSegment frm = new WinForm.frmSegment();
+            frm.MdiParent = this;
+            frm.Show();
+        }
 
         private void 层叠排列ToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -83,5 +88,7 @@ namespace MarlonCVJDMatcher
         {
             LayoutMdi(MdiLayout.ArrangeIcons);//
         }
+
+
     }
 }

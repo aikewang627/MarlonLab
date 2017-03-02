@@ -110,6 +110,12 @@
     <Compile Include="WinForm\frmResumeOutline.Designer.cs">
       <DependentUpon>frmResumeOutline.cs</DependentUpon>
     </Compile>
+    <Compile Include="WinForm\frmSegment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WinForm\frmSegment.designer.cs">
+      <DependentUpon>frmSegment.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
@@ -133,6 +139,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="WinForm\frmResumeOutline.resx">
       <DependentUpon>frmResumeOutline.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinForm\frmSegment.resx">
+      <DependentUpon>frmSegment.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

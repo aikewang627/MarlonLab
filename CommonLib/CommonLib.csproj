@@ -33,6 +33,9 @@
     <Reference Include="MySql.Data">
       <HintPath>..\DllLib\MySql.Data.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\DllLib\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="PanGu">
       <HintPath>..\DllLib\PanGuSegment\PanGu.dll</HintPath>
     </Reference>
@@ -66,8 +69,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\AddressFormater.cs" />
     <Compile Include="Common\ExHelper.cs" />
     <Compile Include="Common\FileHelper.cs" />
+    <Compile Include="Common\PinyinConverter.cs" />
     <Compile Include="Common\RandomHelper.cs" />
     <Compile Include="Common\AppConfigHelper.cs" />
     <Compile Include="Common\INIFile.cs" />
