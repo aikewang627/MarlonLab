@@ -10,9 +10,9 @@ namespace MarlonLab.CommonLib.Common
   public  class WinFormControlHelper
     {
         //往richTextBox控件中添加日志，并滚动到底部
-        public static void AddLog(RichTextBox rtbLog,string strTitle="", string strLog="")
+        public static void AddLog(RichTextBox rtbLog,string strTitle="", string strLog="",int CapLeng=100000)
         {
-            if (rtbLog.TextLength > 10000) { rtbLog.Text = ""; }
+            if (rtbLog.TextLength > CapLeng) { rtbLog.Text = ""; }
             rtbLog.Text += string.Format("{0} {1} ==>>> {2}\r\n", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss fff"),strTitle, strLog);
             rtbLog.SelectionStart = rtbLog.TextLength;
             rtbLog.ScrollToCaret();
